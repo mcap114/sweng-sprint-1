@@ -1,2 +1,1 @@
-# sweng-sprint-1
-CSSWENG Sprint #1
+# Sprint #1
