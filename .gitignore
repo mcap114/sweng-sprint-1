@@ -10,6 +10,12 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Editor Files
+*.vscode
+
+# Mac Folder File
+.DS_Store
+
 # Package Files #
 *.jar
 *.war
