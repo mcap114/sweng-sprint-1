@@ -1,6 +1,7 @@
 package cssweng.grp2;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 /**
  * Hello world!
@@ -17,13 +18,15 @@ public class App
             conn = DriverManager.getConnection(url);
             System.out.println("Database Connected!");
             DatabaseMetaData meta = conn.getMetaData();
-            ResultSet rs = meta.getTables(null, null, "Units", null); //Change to main table name as needed
+            ResultSet rs = meta.getTables(null, null, "Households", null); //Change to main table name as needed
             if (rs.next()) {
                 System.out.println("Table already exists!");
             } else {
                 System.out.println("Database not found, creating database...");
                 try {
-                    createTable(conn, "Units");
+                    createHouseholdTable(conn);
+                    createMemberTable(conn);
+                    conn.createStatement().execute("PRAGMA foreign_keys = ON");
                 } catch (Exception e) {
                     e.printStackTrace();
                     System.out.println(e.getMessage());
@@ -35,16 +38,15 @@ public class App
             System.out.println("Inserting Data");
             try {
 
-                insertRecord(conn, "Units", 2, 3, "Juan Cruz", 22, 1, "Carpenter"); //insert records here
+                LocalDate birthday = LocalDate.of(2004, 4, 2);
+
+                insertHousehold(conn, 2, 3, 19.99, 19.99, 2020);
+                insertMember(conn, "Cruz", "Juan Dela", "Yu", "Male", birthday, "Healthy", "Not PWD", 0, "Single", "0917 111 1111", "College", "Student", 0.0, 1, 2, 3);
 
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
             }
-
-            System.out.println();
-            System.out.println("Displaying DB");
-            displayDatabase(conn, "Units");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,45 +62,80 @@ public class App
         }
     }
 
-    private static void displayDatabase(Connection conn, String tableName) throws SQLException {
-        String selectSQL = "SELECT * from " + tableName;
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(selectSQL);
 
-        System.out.println("----- " + tableName + " -----");
-        while(rs.next()) {
-            System.out.print("Record: " + rs.getInt("buildingNum") + ", ");
-            System.out.print(rs.getInt("unitNum") + ", ");
-            System.out.print(rs.getString("name") + ", ");
-            System.out.print(rs.getInt("age") + ", ");
-            System.out.print(rs.getInt("birthday") + ", ");
-            System.out.println(rs.getString("occupation"));
-        }
-        System.out.println("--------------------------");
-    }
-
-    private static void insertRecord(Connection conn, String tableName, int buildingNum, int unitNum, String name, int age, int birthday, String occupation) throws SQLException {
-        String insertSQL = "INSERT INTO " + tableName + "(buildingNum, unitNum, name, age, birthday, occupation) VALUES(?, ?, ?, ?, ?, ?)";
+    private static void insertHousehold(Connection conn, int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence) throws SQLException {
+        String insertSQL = "INSERT INTO " + "Households" + "(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence) VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
         pstmt.setInt(1, buildingNum);
         pstmt.setInt(2, unitNum);
-        pstmt.setString(3, name);
-        pstmt.setInt(4, age);
-        pstmt.setInt(5, birthday); //might not be the best way to store this
-        pstmt.setString(6, occupation);
+        pstmt.setDouble(3, monthlyExpenditure);
+        pstmt.setDouble(4, monthlyAmortization);
+        pstmt.setInt(5, yearOfResidence);
         pstmt.executeUpdate();
     }
 
-    private static void  createTable(Connection conn, String tableName) throws SQLException {
+    private static void insertMember(Connection conn, String lastName, String firstName, String middleName, 
+                                    String gender, LocalDate birthday, String healthStatus, String pwdType, 
+                                    Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, 
+                                    String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum) throws SQLException {
+        String insertSQL = "INSERT INTO " + "Members" + "(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+        pstmt.setString(1, lastName);
+        pstmt.setString(2, firstName);
+        pstmt.setString(3, middleName);
+        pstmt.setString(4, gender);
+        pstmt.setObject(5, birthday);
+        pstmt.setString(6, healthStatus);
+        pstmt.setString(7, pwdType);
+        pstmt.setInt(8, isSeniorCitizen);
+        pstmt.setString(9, civilStatus);
+        pstmt.setString(10, contactNumber);
+        pstmt.setString(11, highestEducationalAttainment);
+        pstmt.setString(12, occupation);
+        pstmt.setDouble(13, monthlyIncome);
+        pstmt.setInt(14, isMainRespondent);
+        pstmt.setInt(15, buildingNum);
+        pstmt.setInt(16, unitNum);
+        pstmt.executeUpdate();
+    }
+
+    private static void  createHouseholdTable(Connection conn) throws SQLException {
         String createTablesql = "" + 
-                "CREATE TABLE " + tableName + " " +
+                "CREATE TABLE " + "Households" + " " +
                 "( " +
+                "buildingNum integer not null, " +
+                "unitNum integer not null, " +
+                "monthlyExpenditure real, " +
+                "monthlyAmortization real, " +
+                "yearOfResidence integer, " +
+                "constraint pk_building_unit primary key (buildingNum, unitNum) " +
+                "); " +
+                "";
+        Statement stmt = conn.createStatement();
+        stmt.execute(createTablesql);
+    }
+
+    private static void  createMemberTable(Connection conn) throws SQLException {
+        String createTablesql = "" + 
+                "CREATE TABLE " + "Members" + " " +
+                "( " +
+                "lastName varchar(255), " +
+                "firstName varchar(255), " +
+                "middleName varchar(255), " +
+                "gender varchar(255), " +
+                "birthday date, " +
+                "healthStatus varchar(255), " +
+                "pwdType varchar(255), " +
+                "isSeniorCitizen integer, " +
+                "civilStatus varchar(255), " +
+                "contactNumber integer, " +
+                "highestEducationalAttainment varchar(255), " +
+                "occupation varchar(255), " +
+                "monthlyIncome real, " +
+                "isMainRespondent integer, " +
                 "buildingNum integer, " +
                 "unitNum integer, " +
-                "name varchar(255), " +
-                "age integer, " +
-                "birthday integer, " +
-                "occupation varchar(255) " +
+                "constraint buildingUnitNum_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
                 "); " +
                 "";
         Statement stmt = conn.createStatement();
