@@ -1,6 +1,7 @@
 package com.s11group2.profiling_database;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
+import com.s11group2.profiling_database.Util.DisplayUtil;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -65,7 +66,7 @@ public class AppTerminal {
                         LocalDate birthday = LocalDate.parse(scanner.nextLine());
                         System.out.print("Enter health status: ");
                         String healthStatus = scanner.nextLine();
-                        System.out.print("Enter PWD type: ");
+                        System.out.print("Is PWD or Not: ");
                         String pwdType = scanner.nextLine();
                         System.out.print("Enter is senior citizen (1 for yes, 0 for no): ");
                         int isSeniorCitizen = scanner.nextInt();
@@ -89,9 +90,11 @@ public class AppTerminal {
                         dbManager.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
                         System.out.println("Member record inserted successfully.");
                         break;
-                    
-                    //TODO: add edit/delete
-                    
+                    case 4:
+                        DisplayUtil.displayTableContents(dbManager.getConnection(), "Households");
+                        //TODO: add edit functionality
+
+
                     case 8:
                         running = false;
                         break;

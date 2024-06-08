@@ -12,6 +12,10 @@ public class DatabaseManager {
         this.conn = DriverManager.getConnection(url);
     }
 
+    public Connection getConnection() {
+        return this.conn;
+    }
+
     public void closeConnection() throws SQLException {
         if (conn != null) {
             conn.close();
@@ -95,7 +99,23 @@ public class DatabaseManager {
         pstmt.setInt(16, unitNum);
         pstmt.executeUpdate();
     }
-    
+
+    public void displayDatabase(Connection conn, String tableName, String orderCondition) throws SQLException { //have this return the resultset instead so its passable for rendering to the frontend
+        String selectSQL = "SELECT * FROM " + tableName + " ORDER BY " + orderCondition;
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(selectSQL);
+
+        //sample displaying
+        System.out.println("\nRESULTS FOR " + tableName);
+        while(rs.next()) {
+            System.out.println("Entry: " + rs.getString("lastName") + ", " + rs.getString("firstName"));
+        }
+
+        //return rs
+    }
+
     //TODO: add edit/delete
+
+
     
 }
