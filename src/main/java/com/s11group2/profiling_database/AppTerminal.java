@@ -93,7 +93,7 @@ public class AppTerminal {
                     case 4:
                         DisplayUtil.displayTableContents(dbManager.getConnection(), "Households");
                         //TODO: add edit functionality
-
+                        
 
                     case 8:
                         running = false;

@@ -1,14 +1,19 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package com.s11group2.profiling_database.View;
 
-import javax.swing.*;
-
-public class ViewSearchPage extends JPanel {
+/**
+ *
+ * @author migue
+ */
+public class IndexPage extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewSearchPage
+     * Creates new form IndexPage
      */
-    public ViewSearchPage() {
+    public IndexPage() {
         initComponents();
     }
 
@@ -23,23 +28,26 @@ public class ViewSearchPage extends JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("SEARCH");
+        setPreferredSize(new java.awt.Dimension(1280, 540));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("INDEX");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(287, 287, 287)
+                .addGap(170, 170, 170)
                 .addComponent(jLabel1)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(127, 127, 127))
         );
     }// </editor-fold>//GEN-END:initComponents
 
