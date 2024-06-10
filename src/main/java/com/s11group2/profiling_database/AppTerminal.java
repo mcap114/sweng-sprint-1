@@ -92,6 +92,7 @@ public class AppTerminal {
                         break;
                     case 4:
                         DisplayUtil.displayTableContents(dbManager.getConnection(), "Households");
+                        DisplayUtil.displayTableContents(dbManager.getConnection(), "Members");
                         //TODO: add edit functionality
                         
 
