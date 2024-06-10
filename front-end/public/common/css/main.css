@@ -149,6 +149,7 @@ body {
   margin:auto;
   width: 95%;
 }
+
 .summary-units{
   background-color: #4DA9AF;
   width: 245px;
@@ -161,6 +162,42 @@ body {
 }
 
 .summary-units > span {
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 20px;
+  
+}
+
+.delete-units{
+  background-color: #7D2525;
+  width: 245px;
+  height: 245px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 2% ;
+  font-family: "Inter", Helvetica;
+  color: #ffffff;
+}
+
+.delete-units > span {
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 20px;
+  
+}
+
+.edit-units{
+  background-color: #766DE0;
+  width: 245px;
+  height: 245px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 2% ;
+  font-family: "Inter", Helvetica;
+  color: #ffffff;
+}
+
+.edit-units > span {
   letter-spacing: 0;
   line-height: normal;
   font-size: 20px;
