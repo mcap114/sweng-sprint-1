@@ -17,7 +17,6 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: grey;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -143,11 +142,31 @@ body {
 }
 
 .units{
-  background-color: green;
+  
   padding: 10px;
+  display: flex;
+  align-content: center;
+  margin:auto;
+  width: 95%;
 }
 .summary-units{
   background-color: #4DA9AF;
   width: 245px;
   height: 245px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 2% ;
+  font-family: "Inter", Helvetica;
+  color: #ffffff;
+}
+
+.summary-units > span {
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 20px;
+  
+}
+
+.deets{
+  margin-top: 25%;
 }

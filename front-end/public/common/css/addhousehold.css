@@ -58,7 +58,9 @@
   width: 100%;
 }
 
-
+.input-field{
+  display: flex;
+}
 form .fields .input-field{
   display: flex;
   width: calc(100% / 3 - 15px);
