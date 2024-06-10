@@ -11,6 +11,22 @@ body {
   overflow: auto;
 }
 
+.search-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: grey;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.search{
+  background-color: #1D2A49;
+  opacity: 0.84;
+  width: 600px; 
+}
+
 .main-page {
   display: flex;
   flex-direction: column;
@@ -102,3 +118,36 @@ body {
   font-size: 1.2em; /* Change the font size as needed */
 }
   
+.filter-button {
+  display: flex;
+  flex-direction: row;
+  width: 85px;
+  background-color: #7FCCD1;
+  border-radius: 5px;
+}
+
+.filter-button > img {
+  width: 20px;
+  height: 20px;
+  position: 17px 13px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.filter-button > span {
+  font-family: "Inter", Helvetica;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.units{
+  background-color: green;
+  padding: 10px;
+}
+.summary-units{
+  background-color: #4DA9AF;
+  width: 245px;
+  height: 245px;
+}
