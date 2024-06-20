@@ -3,31 +3,59 @@ package com.s11group2.profiling_database.Model;
 import java.sql.*;
 import java.time.LocalDate;
 
-
+/**
+ * The DatabaseManager class provides methods to manage the SQLite database,
+ * including creating tables, inserting records, and displaying data.
+ */
 public class DatabaseManager {
     private Connection conn;
     private String url = "jdbc:sqlite:units.db";
 
+    /**
+     * Constructs a DatabaseManager and establishes a connection to the SQLite database.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     public DatabaseManager() throws SQLException {
         this.conn = DriverManager.getConnection(url);
     }
 
+    /**
+     * Returns the current database connection.
+     *
+     * @return the current Connection object
+     */
     public Connection getConnection() {
         return this.conn;
     }
 
+    /**
+     * Closes the current database connection.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     public void closeConnection() throws SQLException {
         if (conn != null) {
             conn.close();
         }
     }
 
+    /**
+     * Creates the necessary tables for the database.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     public void createTables() throws SQLException {
         createHouseholdTable();
         createMemberTable();
         conn.createStatement().execute("PRAGMA foreign_keys = ON");
     }
 
+    /**
+     * Creates the Household table in the database.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     private void createHouseholdTable() throws SQLException {
         String createTableSQL = "CREATE TABLE Households (" +
                 "buildingNum integer not null, " +
@@ -41,6 +69,11 @@ public class DatabaseManager {
         stmt.execute(createTableSQL);
     }
 
+    /**
+     * Creates the Member table in the database.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     private void createMemberTable() throws SQLException {
         String createTableSQL = "CREATE TABLE Members (" +
                 "lastName varchar(255), " +
@@ -64,9 +97,17 @@ public class DatabaseManager {
         Statement stmt = conn.createStatement();
         stmt.execute(createTableSQL);
     }
-    
-    
 
+    /**
+     * Inserts a record into the Household table.
+     *
+     * @param buildingNum the building number
+     * @param unitNum the unit number
+     * @param monthlyExpenditure the monthly expenditure
+     * @param monthlyAmortization the monthly amortization
+     * @param yearOfResidence the year of residence
+     * @throws SQLException if a database access error occurs
+     */
     public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence) throws SQLException {
         String insertSQL = "INSERT INTO Households (buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
@@ -78,6 +119,27 @@ public class DatabaseManager {
         pstmt.executeUpdate();
     }
 
+    /**
+     * Inserts a record into the Member table.
+     *
+     * @param lastName the last name
+     * @param firstName the first name
+     * @param middleName the middle name
+     * @param gender the gender
+     * @param birthday the birthday
+     * @param healthStatus the health status
+     * @param pwdType the type of PWD
+     * @param isSeniorCitizen indicates if the person is a senior citizen
+     * @param civilStatus the civil status
+     * @param contactNumber the contact number
+     * @param highestEducationalAttainment the highest educational attainment
+     * @param occupation the occupation
+     * @param monthlyIncome the monthly income
+     * @param isMainRespondent indicates if the person is the main respondent
+     * @param buildingNum the building number
+     * @param unitNum the unit number
+     * @throws SQLException if a database access error occurs
+     */
     public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum) throws SQLException {
         String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
@@ -100,6 +162,14 @@ public class DatabaseManager {
         pstmt.executeUpdate();
     }
 
+    /**
+     * Displays the contents of a specified table ordered by a given condition.
+     *
+     * @param conn the database connection
+     * @param tableName the name of the table to display
+     * @param orderCondition the condition to order the results by
+     * @throws SQLException if a database access error occurs
+     */
     public void displayDatabase(Connection conn, String tableName, String orderCondition) throws SQLException { //have this return the resultset instead so its passable for rendering to the frontend
         String selectSQL = "SELECT * FROM " + tableName + " ORDER BY " + orderCondition;
         Statement stmt = conn.createStatement();
@@ -111,11 +181,6 @@ public class DatabaseManager {
             System.out.println("Entry: " + rs.getString("lastName") + ", " + rs.getString("firstName"));
         }
 
-        //return rs
     }
-    
-    //TODO: add edit/delete
 
-
-    
 }

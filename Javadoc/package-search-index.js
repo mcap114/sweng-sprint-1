@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.s11group2.profiling_database"},{"l":"com.s11group2.profiling_database.Controller"},{"l":"com.s11group2.profiling_database.Model"},{"l":"com.s11group2.profiling_database.Util"},{"l":"com.s11group2.profiling_database.View"}];updateSearchResults();
