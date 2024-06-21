@@ -2,7 +2,6 @@
 .input-page{
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: center;
   margin: 0px 50px;
 }
@@ -53,23 +52,29 @@
   line-height: normal;
 }
 
-.input-page > hr {
+hr {
   border: 1px solid #000000;
   width: 100%;
 }
 
-.input-field{
+form .fields{
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
-form .fields .input-field{
+
+form .input-field{
   display: flex;
   width: calc(100% / 3 - 15px);
   flex-direction: column;
-  margin: 4px 0;
+  margin: 10px 0;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
+
 .input-field label{
-  
   font-family: "Inter", Helvetica;
   font-weight: 400;
   color: #1d2a49;
@@ -77,667 +82,94 @@ form .fields .input-field{
   letter-spacing: 0;
 }
 
-.input-field input, select {
+.input-field input, select, ::placeholder {
   outline: none;
   font-size: 14px;
   font-weight: 400;
-  color: #333;
-  border-radius: 5px;
-  border: 1px solid #aaa;
-  padding: 0 15px;
-  height: 22.14px;
+  color: #fff;
+  border-radius: 7px;
+  border: 1px solid #1d2a49;
+  padding: 0 10px;
+  height: 28px;
   margin: 8px 0;
+  background-color: #1d2a49;
+  opacity: 84%;
 }
 
-/* trash code below */
-.input-page .overlap-wrapper {
-  overflow-x: auto;
-  width: 1280px;
-  height: 720px;
+.form-row{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
-.input-page .overlap {
+.main-respondent-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-panel {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  width: 1300px;
-  height: 795px;
-  top: -10px;
-  left: -10px;
+  width: 30%;
+
 }
 
-.input-page .div {
+.text-panel {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-evenly;
   position: relative;
-  width: 1280px;
-  height: 785px;
-  top: 10px;
-  left: 10px;
-  background-color: #fff0d6;
+  width: 70%;
 }
 
-.input-page .overlap-3 {
-  position: relative;
-  width: 1282px;
-  height: 103px;
-}
-
-
-
-.input-page .household {
-  position: absolute;
-  width: 616px;
-  height: 99px;
-  top: 196px;
-  left: 67px;
-}
-
-.input-page .text-wrapper-2 {
-  position: absolute;
-  width: 106px;
-  top: 0;
-  left: 1px;
+.fields span {
   font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .text-wrapper-3 {
-  position: absolute;
-  width: 205px;
-  top: 55px;
-  left: 1px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .text-wrapper-4 {
-  position: absolute;
-  width: 168px;
-  top: 55px;
-  left: 255px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .text-wrapper-5 {
-  position: absolute;
-  width: 116px;
-  top: 55px;
-  left: 471px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .rectangle {
-  width: 208px;
-  top: 76px;
-  left: 1px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .img {
-  width: 169px;
-  top: 76px;
-  left: 255px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .text-wrapper-6 {
-  position: absolute;
-  width: 81px;
-  top: 0;
-  left: 225px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .rectangle-2 {
-  width: 135px;
-  top: 19px;
-  left: 224px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .rectangle-3 {
-  position: absolute;
-  width: 135px;
-  height: 22px;
-  top: 19px;
-  left: 0;
-}
-
-.input-page .dropdown {
-  position: absolute;
-  width: 135px;
-  height: 22px;
-  top: 76px;
-  left: 471px;
-  background-image: url(./img/rectangle-6-6.svg);
-  background-size: 100% 100%;
-}
-
-.input-page .expand-arrow {
-  position: absolute;
-  width: 14px;
-  height: 13px;
-  top: 4px;
-  left: 115px;
-}
-
-.input-page .line-break {
-  position: absolute;
-  width: 1217px;
-  height: 1px;
-  top: 621px;
-  left: 50px;
-  background-image: url(./img/line-break-3.svg);
-  background-size: cover;
-  background-position: 50% 50%;
-}
-
-.input-page .main-respondent-form {
-  position: absolute;
-  width: 985px;
-  height: 267px;
-  top: 335px;
-  left: 56px;
-}
-
-.input-page .text-wrapper-7 {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  font-family: "Inter", Helvetica;
-  font-weight: 700;
+  font-weight: 800;
   color: #1d2a49;
   font-size: 20px;
   letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+  width: 100%
 }
 
-.input-page .last-name {
-  position: absolute;
-  top: 38px;
-  left: 212px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: transparent;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .span {
-  color: #1d2a49;
-}
-
-.input-page .text-wrapper-8 {
-  color: #ff0000;
-}
-
-.input-page .first-name {
-  position: absolute;
-  top: 38px;
-  left: 486px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: transparent;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .upload-button {
-  position: absolute;
-  width: 81px;
-  height: 22px;
-  top: 184px;
-  left: 30px;
-}
-
-.input-page .overlap-group {
-  position: relative;
-  width: 79px;
-  height: 22px;
-  background-image: url(./img/rectangle-10-1.svg);
-  background-size: 100% 100%;
-}
-
-.input-page .text-wrapper-9 {
-  position: absolute;
-  height: 11px;
-  top: 5px;
-  left: 7px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 9px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .expand-arrow-wrapper {
-  width: 79px;
-  top: 119px;
-  left: 212px;
-  background-image: url(./img/rectangle-6-7.svg);
-  background-size: 100% 100%;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .expand-arrow-2 {
-  width: 9px;
-  left: 65px;
-  position: absolute;
-  height: 13px;
-  top: 4px;
-}
-
-.input-page .overlap-group-wrapper {
-  width: 137px;
-  top: 119px;
-  left: 330px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .overlap-2 {
-  position: relative;
-  width: 135px;
-  height: 22px;
-  background-image: url(./img/rectangle-6-8.svg);
-  background-size: 100% 100%;
-}
-
-.input-page .calendar {
-  position: absolute;
-  width: 19px;
-  height: 19px;
-  top: 1px;
-  left: 109px;
-}
-
-.input-page .text-wrapper-10 {
-  position: absolute;
-  top: 2px;
-  left: 6px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .profile-picture {
-  position: absolute;
-  width: 144px;
-  height: 141px;
-  top: 39px;
-  left: 0;
-  background-color: #d9d9d9;
-  border: 1px solid;
-  border-color: #1d2a49;
-}
-
-.input-page .customer {
-  position: absolute;
-  width: 140px;
-  height: 141px;
-  top: -1px;
-  left: -1px;
-}
-
-.input-page .rectangle-4 {
-  width: 225px;
-  top: 55px;
-  left: 212px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .text-wrapper-11 {
-  position: absolute;
-  top: 102px;
-  left: 212px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .img-wrapper {
-  width: 135px;
-  top: 119px;
-  left: 505px;
-  background-image: url(./img/rectangle-6-9.svg);
-  background-size: 100% 100%;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .text-wrapper-12 {
-  position: absolute;
-  top: 102px;
-  left: 505px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .dropdown-2 {
-  width: 202px;
-  top: 181px;
-  left: 212px;
-  background-image: url(./img/rectangle-6-10.svg);
-  background-size: 100% 100%;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .expand-arrow-3 {
-  width: 20px;
-  left: 171px;
-  position: absolute;
-  height: 13px;
-  top: 4px;
-}
-
-.input-page .text-wrapper-13 {
-  position: absolute;
-  top: 163px;
-  left: 212px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .text-wrapper-14 {
-  position: absolute;
-  top: 102px;
-  left: 330px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .rectangle-5 {
-  width: 225px;
-  top: 55px;
-  left: 486px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .text-wrapper-15 {
-  position: absolute;
-  top: 38px;
-  left: 760px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .rectangle-6 {
-  width: 225px;
-  top: 55px;
-  left: 760px;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .contact-number {
-  position: absolute;
-  width: 227px;
-  height: 39px;
-  top: 103px;
-  left: 669px;
-}
-
-.input-page .text-wrapper-16 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #1d2a49;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .rectangle-7 {
-  width: 225px;
-  top: 17px;
-  left: 0;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .health-status {
-  position: absolute;
-  width: 160px;
-  height: 39px;
-  top: 226px;
-  left: 212px;
-}
-
-.input-page .rectangle-8 {
-  width: 158px;
-  top: 17px;
-  left: 0;
-  position: absolute;
-  height: 22px;
-}
-
-.input-page .occupation {
-  position: absolute;
-  width: 227px;
-  height: 39px;
-  top: 164px;
-  left: 453px;
-}
-
-.input-page .monthly-income {
-  position: absolute;
-  width: 156px;
-  height: 39px;
-  top: 165px;
-  left: 718px;
-}
-
-.input-page .rectangle-9 {
-  position: absolute;
-  width: 154px;
-  height: 22px;
-  top: 17px;
-  left: 0;
-}
-
-.input-page .PWD-type {
-  position: absolute;
-  width: 156px;
-  height: 39px;
-  top: 228px;
-  left: 403px;
-}
-
-.input-page .line-break-2 {
-  top: 320px;
-  left: 50px;
-  position: absolute;
-  width: 1217px;
-  height: 1px;
-  object-fit: cover;
-}
-
-.input-page .line-break-3 {
-  top: 179px;
-  left: 51px;
-  position: absolute;
-  width: 1217px;
-  height: 1px;
-  object-fit: cover;
-}
-
-
-
-
-
-
-.input-page .back-to-menu-button {
-  position: absolute;
-  width: 139px;
-  height: 20px;
-  top: 149px;
-  left: 1130px;
-}
-
-.input-page .overlap-4 {
-  position: relative;
-  width: 137px;
-  height: 20px;
-  background-image: url(./img/rectangle-17-2.svg);
-  background-size: 100% 100%;
-}
-
-.input-page .text-wrapper-19 {
-  position: absolute;
-  width: 107px;
-  top: 1px;
-  left: 30px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .left-arrow {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 3px;
-}
-
-.input-page .add-a-member-button {
-  position: absolute;
-  width: 1096px;
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
   height: 30px;
-  top: 642px;
-  left: 103px;
-}
-
-.input-page .div-wrapper {
-  position: relative;
-  width: 1094px;
-  height: 30px;
-  background-color: #1d2a49d6;
+  background-color: #1d2a49;
+  opacity: 84%;
   border-radius: 5px;
+  margin: 10px 50px;
 }
 
-.input-page .p {
-  width: 327px;
-  left: 383px;
-  position: absolute;
-  top: 1px;
+.add-button span  {
   font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
+  font-weight: 200;
+  color: #fff;
   font-size: 24px;
   letter-spacing: 0;
-  line-height: normal;
 }
 
-.input-page .add-a-member-button-2 {
-  position: absolute;
-  width: 1096px;
-  height: 30px;
-  top: 687px;
-  left: 103px;
-}
 
-.input-page .text-wrapper-20 {
-  width: 269px;
-  left: 406px;
-  position: absolute;
-  top: 1px;
-  font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.input-page .submit-button {
-  all: unset;
-  box-sizing: border-box;
-  position: absolute;
-  width: 152px;
-  height: 30px;
-  top: 732px;
-  left: 1047px;
-}
-
-.input-page .overlap-5 {
-  position: relative;
+.submit-button {
+  display: flex;
+  float: right;
+  justify-content: center;
   width: 150px;
-  height: 30px;
-  background-color: #57804d;
+  background-color: #57804D;
   border-radius: 5px;
+  margin-right: 40px;
 }
 
-.input-page .text-wrapper-21 {
-  position: absolute;
-  width: 67px;
-  height: 18px;
-  top: 6px;
-  left: 42px;
+.submit-button input {
   font-family: "Inter", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
+  font-weight: 200;
+  background-color: transparent;
+  border: 1px solid #57804D;
+  color: #fff;
   font-size: 20px;
   letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
 }
+
