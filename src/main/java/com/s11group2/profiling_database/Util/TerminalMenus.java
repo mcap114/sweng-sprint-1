@@ -225,6 +225,7 @@ public class TerminalMenus {
         switch (choice){
             case 1:
                 try {
+                    System.out.println("Input Building Number: ");
                     int buildingNum = InputValidation.readIntFromScanner(scanner);
                     searchController.searchByBuilding(buildingNum);
                 } catch (Exception e) {
@@ -233,6 +234,7 @@ public class TerminalMenus {
                 break;
             case 2:
                 try {
+                    System.out.println("Input Unit Number: ");
                     int unitNum = InputValidation.readIntFromScanner(scanner);
                     searchController.searchByUnit(unitNum);
                 } catch (Exception e) {
