@@ -15,6 +15,7 @@ Integration of backend and frontend features.
 - **Frontend**
   - Frontend pages have been added
   - Index and Add Household functionality now working.
+  - Header/Navigation dropdown draft working
 
 - **Spring Boot**
   - Added controller classes and App classes for Spring Boot functionality.
