@@ -57,7 +57,7 @@ public class DatabaseManager {
      * @throws SQLException if a database access error occurs
      */
     private void createHouseholdTable() throws SQLException {
-        String createTableSQL = "CREATE TABLE Households (" +
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS Households (" +
                 "buildingNum integer not null, " +
                 "unitNum integer not null, " +
                 "monthlyExpenditure real, " +
@@ -75,7 +75,7 @@ public class DatabaseManager {
      * @throws SQLException if a database access error occurs
      */
     private void createMemberTable() throws SQLException {
-        String createTableSQL = "CREATE TABLE Members (" +
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS Members (" +
                 "lastName varchar(255), " +
                 "firstName varchar(255), " +
                 "middleName varchar(255), " +
@@ -97,6 +97,8 @@ public class DatabaseManager {
         Statement stmt = conn.createStatement();
         stmt.execute(createTableSQL);
     }
+
+
 
     /**
      * Inserts a record into the Household table.
@@ -140,8 +142,8 @@ public class DatabaseManager {
      * @param unitNum the unit number
      * @throws SQLException if a database access error occurs
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum) throws SQLException {
-        String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, String profileImagePath) throws SQLException {
+        String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
         pstmt.setString(1, lastName);
         pstmt.setString(2, firstName);
@@ -159,6 +161,7 @@ public class DatabaseManager {
         pstmt.setInt(14, isMainRespondent);
         pstmt.setInt(15, buildingNum);
         pstmt.setInt(16, unitNum);
+        pstmt.setString(17, profileImagePath);
         pstmt.executeUpdate();
     }
 
