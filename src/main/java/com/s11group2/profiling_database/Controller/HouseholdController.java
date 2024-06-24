@@ -1,6 +1,7 @@
 package com.s11group2.profiling_database.Controller;
 
 import com.s11group2.profiling_database.AppTerminal;
+import com.s11group2.profiling_database.Util.ImageService;
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Util.InputValidation;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,22 +16,32 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class HouseholdController {
+    
+    //@Autowired
+    //private ImageService imageService;
 
     @Value("${upload.path}")
     private String uploadPath;
 
-    private AppController appController;
+    private DatabaseManager dbManager;
 
     public HouseholdController() {
-        this.appController = new AppController();
+        try {
+            this.dbManager = new DatabaseManager();
+        } catch (SQLException e) {
+            Logger.getLogger(HouseholdController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     @GetMapping("/addhousehold")
     public String registerPage() {
-        return "addhouseholdpage";  // Mustache will look for addhouseholdpage.html in the templates folder
+        return "addhouseholdpage";
     }
 
     @PostMapping("/addhousehold")
@@ -57,11 +68,13 @@ public class HouseholdController {
 
         try {
             // Handle file upload
-            String fileName = profileImage.getOriginalFilename();
-            File dest = new File(uploadPath + "/" + fileName);
-            profileImage.transferTo(dest);
-            String profileImagePath = "/images/" + fileName;
-
+            String uploadDirectory = "src/main/resources/static/images/";
+            String adsImagesString = "";
+                
+            
+            // adsImagesString += imageService.saveImageToStorage(uploadDirectory, profileImage);
+        
+            
             // by default, the initial member added is the main respondent
             int isMainRespondent = 1;
 
@@ -71,18 +84,17 @@ public class HouseholdController {
             int isSeniorCitizen = InputValidation.isSeniorCitizen(age);
 
             // Insert member with profile image path
-            appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
-            appController.insertMember(
+            dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
+            dbManager.insertMember(
                     lastName, firstName, middleName, gender, birthDate, healthStatus, pwdType, isSeniorCitizen,
                     civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent,
-                    buildingNum, unitNum, profileImagePath
+                    buildingNum, unitNum, adsImagesString
             );
 
-            model.addAttribute("message", "Household registered successfully.");
-
-            return "redirect:/index";
-        } catch (IOException e) {
-            model.addAttribute("message", "Failed to register household: " + e.getMessage());
+           
+            return "index";
+        } catch (SQLException e) {
+            System.out.println("Failed to register household: " + e.getMessage());
             return "addhouseholdpage";
         }
 

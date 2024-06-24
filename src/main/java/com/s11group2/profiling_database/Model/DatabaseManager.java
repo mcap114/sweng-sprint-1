@@ -92,13 +92,12 @@ public class DatabaseManager {
                 "isMainRespondent integer, " +
                 "buildingNum integer, " +
                 "unitNum integer, " +
+                "profileImagePath varchar(255), " +
                 "constraint buildingUnitNum_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
         stmt.execute(createTableSQL);
     }
-
-
 
     /**
      * Inserts a record into the Household table.
@@ -165,6 +164,16 @@ public class DatabaseManager {
         pstmt.executeUpdate();
     }
 
+    public void dropTables(Connection conn) throws SQLException {
+    String dropSQL1 = "DROP TABLE IF EXISTS Members";
+    String dropSQL2 = "DROP TABLE IF EXISTS Households";
+    try (Statement stmt = conn.createStatement()) {
+        stmt.executeUpdate(dropSQL1);
+        stmt.executeUpdate(dropSQL2);
+    }
+}
+
+    
     /**
      * Displays the contents of a specified table ordered by a given condition.
      *

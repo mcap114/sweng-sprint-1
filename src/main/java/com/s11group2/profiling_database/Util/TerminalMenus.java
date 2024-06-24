@@ -24,6 +24,7 @@ public class TerminalMenus {
     public void createTablesMenu() throws SQLException {
         System.out.println("Create Tables Menu:");
         System.out.println("1. Create Tables");
+        System.out.println("2. DEBUG: DELETE ALL TABLES");
         System.out.println("3. Back to Main Menu");
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
@@ -35,7 +36,8 @@ public class TerminalMenus {
                 System.out.println("Tables created successfully.");
                 break;
             case 2:
-
+                appController.dropTables();
+                System.out.println("Tables dropped successfully.");
                 break;
             case 3:
                 return;
