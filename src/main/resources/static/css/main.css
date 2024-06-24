@@ -32,7 +32,7 @@ body {
 }
 /* header elements */
 .header{
-    position:fixed;
+    position: fixed;
     z-index: 100000;
     width: 100%;
 }

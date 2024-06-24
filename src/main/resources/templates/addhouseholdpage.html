@@ -15,7 +15,7 @@
         <p class="APOAMF-database">
             <span class="text-wrapper-APOAMF">APOAMF </span> <span class="text-wrapper-Database">Database</span>
         </p>
-    <img id="menu-btn" class="menu" src="/png/menu.png" />
+      <img id="menu-btn" class="menu" src="/png/menu.png" />
     </div>
     <nav class="navbar">
         <a href="/" class="home-link">
@@ -40,10 +40,8 @@
           </a>
 
     </nav>
-</div>
-
-
-
+  </div>
+  <br><br><br><br><br><br>
   <div class="input-page">
     <div id="heading-1" class="heading-1">
       <p>Add New Household</p>
@@ -191,10 +189,10 @@
       <div id="additional-fields">
 
       </div>
-      <div class="add-button">
+      <div class="add-button" onclick="addMember()">
         <span>+ Add a Household Member</span>
       </div>
-      <div class="add-button">
+      <div class="add-button" onclick="addPet()">
         <span>+ Add a Household Pet</span>
       </div>
       <div class="submit-button">
@@ -203,6 +201,7 @@
     </form>
   </div>
 </div>
+<script src="/js/addhousehold.js"></script>
 </body>
 <script>
   <!-- Will move to separate file later, placed here for testing-->
