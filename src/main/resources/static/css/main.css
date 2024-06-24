@@ -31,6 +31,11 @@ body {
     flex-direction: column;
 }
 /* header elements */
+.header{
+    position:fixed;
+    z-index: 100000;
+    width: 100%;
+}
 .header-bar{
     background-color: #ffffff;
     display: flex;
