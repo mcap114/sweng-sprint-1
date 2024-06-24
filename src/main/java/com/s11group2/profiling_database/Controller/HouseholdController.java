@@ -68,8 +68,9 @@ public class HouseholdController {
 
         try {
             // Handle file upload
-            String uploadDirectory = "src/main/resources/static/images/";
-            String adsImagesString = "";
+            // TODO: fix method of storing file path
+            // String uploadDirectory = "src/main/resources/static/images/";
+             String adsImagesString = "";
                 
             
             // adsImagesString += imageService.saveImageToStorage(uploadDirectory, profileImage);
