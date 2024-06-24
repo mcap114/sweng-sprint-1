@@ -7,6 +7,7 @@
     <title>Delete Units</title>
   </head>
   <body>
+    <script src="/js/main.js"></script>
     <div class="main-page">
       <div name="header">
         <div class="header-bar">
@@ -14,7 +15,7 @@
             <p class="APOAMF-database">
                 <span class="text-wrapper-APOAMF">APOAMF </span> <span class="text-wrapper-Database">Database</span>
             </p>
-        <img class="menu" src="/png/menu.png" />
+            <img id="menu-btn" class="menu" src="/png/menu.png" />
         </div>
         <nav class="navbar">
             <a href="/" class="home-link">
@@ -47,7 +48,7 @@
           <p>Select a Unit to View</p>
           <div class="back-button">
             <img class="back-button" src="png/left-arrow.png">
-            <span class="back-button">Back to Menu</span>
+            <span class="back-button" onclick="window.location.href='/'">Back to Menu</span>
           </div>
         </div>
         <hr>
