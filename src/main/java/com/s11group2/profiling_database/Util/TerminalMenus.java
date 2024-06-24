@@ -32,7 +32,7 @@ public class TerminalMenus {
         switch (choice) {
             case 1:
                 appController.createTables();
-                System.out.println("Household table created successfully.");
+                System.out.println("Tables created successfully.");
                 break;
             case 2:
 
@@ -149,8 +149,8 @@ public class TerminalMenus {
 
                     int isMainRespondent = 1;
 
-                    appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
-                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
+                    //appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
+                    //appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
                     System.out.println("Household record inserted successfully.");
                 } catch (Exception e) {
                     System.err.println("Error: " + e.getMessage());

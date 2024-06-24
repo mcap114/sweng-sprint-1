@@ -1,4 +1,4 @@
-package com.s11group2.profiling_database;
+package com.s11group2.profiling_database.Controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

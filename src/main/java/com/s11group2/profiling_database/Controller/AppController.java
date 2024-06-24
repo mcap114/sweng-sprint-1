@@ -2,14 +2,22 @@ package com.s11group2.profiling_database.Controller;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Util.ValidationException;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalDate;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * The AppController class manages the application's interaction with the database,
  * including creating tables, inserting records, and validating input.
  */
 public class AppController {
+    private static final String UPLOADED_FOLDER = "uploads/";
+
     private DatabaseManager dbManager;
 
     /**
@@ -24,9 +32,10 @@ public class AppController {
         }
     }
 
-    public DatabaseManager getDbManager(){
+    public DatabaseManager getDbManager() {
         return this.dbManager;
     }
+
     /**
      * Creates the necessary tables in the database.
      */
@@ -80,18 +89,37 @@ public class AppController {
      * @param isMainRespondent indicates if the person is the main respondent
      * @param buildingNum the building number
      * @param unitNum the unit number
+     * @param profileImagePath the path to the profile image
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum) {
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, String profileImagePath) {
         try {
             // Input validation
             validateMemberInput(lastName, firstName, gender, birthday, healthStatus, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
-            dbManager.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
+            dbManager.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
         } catch (ValidationException e) {
             System.err.println("Validation Error: " + e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error inserting member: " + e.getMessage());
         }
+    }
+
+    /**
+     * Handles the image upload and returns the file path.
+     *
+     * @param file the uploaded file
+     * @return the file path
+     * @throws IOException if an error occurs while saving the file
+     */
+    private String handleImageUpload(MultipartFile file) throws IOException {
+        if (file.isEmpty()) {
+            throw new IOException("File is empty");
+        }
+
+        byte[] bytes = file.getBytes();
+        Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+        Files.write(path, bytes);
+        return path.toString();
     }
 
     /**

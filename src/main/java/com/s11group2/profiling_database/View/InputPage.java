@@ -379,9 +379,9 @@ public class InputPage extends JPanel {
         double monthlyIncome = Double.parseDouble(monthlyIncomeField.getText());
         int isMainRespondent = 1; 
 
-        appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, 
-                                   civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, 
-                                   isMainRespondent, buildingNum, unitNum);
+        //appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen,
+                                   //civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome,
+                                   //isMainRespondent, buildingNum, unitNum);
     }//GEN-LAST:event_submitNewHouseholdActionPerformed
 
  
