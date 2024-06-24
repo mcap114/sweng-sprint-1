@@ -5,9 +5,9 @@ This document's format is based on [Axolo.co's Coding Style Template](https://ax
 
 ## I. Project Structure
 ### Background
-Java-based application connected to a SQLite database.
+This project is built with a Java-based backend for business logic with web-based frontend, integrated together with Spring Boot.
 ### Directory Layout and File Organization
-This project follows the MVC design pattern with the following folder structure:
+This project follows the MVC design pattern with the following folder structure for the main directory:
 - **Model**
   - Contains classes that directly manage database information.
 - **Controller**
@@ -18,6 +18,16 @@ This project follows the MVC design pattern with the following folder structure:
   - Contains utility classes as well as custom exception classes.
 - **Resources**
   - Contains any non-code resources used (i.e. images, fonts).
+
+Another folder called `resources` outside the main directory is where the frontend elements are stored:
+- **static**
+  - Contains `html`, `css`, and `javascript`.
+
+
+- **templates**
+  - Contains template files (`hbs`, etc.).
+
+
 
 Class names use Pascal Case (e.g. `DatabaseManager.java`), methods use Camel Case (e.g. `insertMember()`).
 
@@ -35,6 +45,7 @@ Include keywords like `fix`, `add`, `remove`, etc. at the beginning of commit me
 
 
 ## IV. Testing
+Follow provided `CSSWENG` test script format.
 
 ## V. Documentation
 This project uses the following documentation:
@@ -47,4 +58,3 @@ This project uses the following documentation:
 Be clear and informative as possible, use a friendly, neutral tone.
 Update said documents whenever most appropriate (i.e. major changes are listed in the `CHANGELOG`, new additions to the tech stack are added to the `CSD`, etc.).
 
-## VI. 
