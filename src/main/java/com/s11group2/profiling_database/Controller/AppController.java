@@ -47,6 +47,16 @@ public class AppController {
             System.err.println("Error creating tables: " + e.getMessage());
         }
     }
+    
+    public void dropTables() {
+        try {
+            dbManager.dropTables(dbManager.getConnection());
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error dropping tables: " + e.getMessage());
+        }
+    }
 
     /**
      * Inserts a household record into the database after validating the input.
