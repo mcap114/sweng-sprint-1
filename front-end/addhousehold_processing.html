@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Add Household Processing</title>
+        <link href="public/common/css/addhousehold_processing.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <%
+            int student_id = Integer.valueOf(request.getParameter("student_id"));
+            Student student = new Student();
+            student.student_id = student_id;
+            student.getStudent();
+            
+            Scholarship_Application scholarship_application = new Scholarship_Application();  
+            scholarship_application.student_id = student_id;   
+            
+            scholarship_application.scholarship_type = String.valueOf(request.getParameter("scholarship_type"));
+            scholarship_application.discount_provided = Integer.valueOf(request.getParameter("discount_provided"));
+            scholarship_application.term_granted = String.valueOf(request.getParameter("term_granted"));
+            scholarship_application.undertaking = Boolean.valueOf(request.getParameter("undertaking"));
+            scholarship_application.scholar_status = "FOR REVIEW";
+            scholarship_application.register_scholarship_application();
+            
+        %>
+        <div class="body-button">
+            <img class="check-mark" src="public/common/png/check-mark.png" />
+            <h1>Household Created Successfully!</h1>
+            <form class="back-button" action="index.html" method="post">
+                <button type="submit" class="back-button">Back to Main Menu</button>
+            </form>
+        </div>
+        
+    </body>
+</html>

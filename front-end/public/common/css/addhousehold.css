@@ -59,18 +59,19 @@ hr {
 
 form .fields{
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-content: left;
+  justify-content: left;
   flex-wrap: wrap;
 }
 
 form .input-field{
+  position: relative;
   display: flex;
-  width: calc(100% / 3 - 15px);
+  width: calc(100% / 3 - 10px);
   flex-direction: column;
-  margin: 10px 0;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 10px 10px;
+ 
 }
 
 
@@ -108,6 +109,7 @@ form .input-field{
 }
 
 .image-panel {
+  position: relative;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -116,6 +118,7 @@ form .input-field{
 }
 
 .text-panel {
+  position: relative;
   display: flex; 
   flex-direction: column;
   justify-content: space-evenly;
@@ -173,3 +176,54 @@ form .input-field{
   letter-spacing: 0;
 }
 
+.heading-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.heading-2 > p {
+  padding-bottom: 5px;
+  left: 50px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #1d2a49;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: left;
+  width: 80%;
+  
+  
+}
+
+.delete-button {
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  width: 120px;
+  height: 20px;
+  background-color: #B20000;
+  border-radius: 5px;
+}
+
+.back-button > img {
+  width: 20px;
+  height: 20px;
+  position: 17px 13px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.delete-button > span {
+  font-family: "Inter", Helvetica;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 5px;
+}

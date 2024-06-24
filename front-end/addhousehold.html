@@ -16,7 +16,7 @@
           <img class="menu" src="public/common/png/menu.png" />
       </div>
       <div class="input-page">
-        <div id="heading-1" class="heading-1">
+        <div class="heading-1">
           <p>Add New Household</p>
           <div class="back-button">
             <img class="back-button" src="public/common/png/left-arrow.png">
@@ -25,36 +25,39 @@
         </div>
         <hr>
         <!--add info of form to database-->
-        <form action="">
+        <form name="add-household-form" action="addhousehold_processing.jsp" method="post">
           <div class="fields">
-            <div class="form-row">
-              <div class="input-field">
-                <label>Building Number</label>
-                <input type="text" name="buildingNum" required/> 
+            <div class="text-panel">
+              <div class="form-row">
+                <div class="input-field">
+                  <label>Building Number</label>
+                  <input type="text" name="buildingNum" id="buildingNum" required/> 
+                </div>
+                
+                <div class="input-field">
+                  <label>Unit Number</label>
+                  <input type="text" name="unitNum" id="unitNum" required/>
+                </div>
               </div>
               
-              <div class="input-field">
-                <label>Unit Number</label>
-                <input type="text" name="unitNum" required/>
+              <div class="form-row">
+                <div class="input-field">
+                  <label>Monthly Household Expenditure</label>
+                  <input type="number" name="monthlyExpenditure" id="monthlyExpenditure" required/>
+                </div>
+    
+                <div class="input-field">
+                  <label>Monthly Unit Amortization</label>
+                  <input type="number" name="monthlyAmortization" id="monthlyAmortization" required/>
+                </div>
+    
+                <div class="input-field">
+                  <label>Year of Residence</label>
+                  <input type="number" name="yearOfResidence" id="yearOfResidence" min="1900" max="2099" step="1"/>
+                </div>
               </div>
             </div>
             
-            <div class="form-row">
-              <div class="input-field">
-                <label>Monthly Household Expenditure</label>
-                <input type="number" name="monthlyExpenditure" required/>
-              </div>
-  
-              <div class="input-field">
-                <label>Monthly Unit Amortization</label>
-                <input type="number" name="monthlyAmortization" required/>
-              </div>
-  
-              <div class="input-field">
-                <label>Year of Residence</label>
-                <input type="number" name="yearOfResidence" min="1900" max="2099" step="1"/>
-              </div>
-            </div>
           </div>
           <hr>
           <div class="fields">
@@ -62,8 +65,7 @@
             <div class="main-respondent-body">
               <div class="image-panel">
                 <div class="input-field">
-                  <label for="resPfp">Upload Picture</label>
-                  <img 
+                  <label for="resPfp">Profile Picture</label>
                   <input type="file" id="resPfp" name="resPfp" accept="image/jpeg, image/png" value="Upload Picture">
                 </div>
               </div>
@@ -72,7 +74,7 @@
                 <div class="form-row">
                   <div class="input-field">
                     <label>Last Name</label>
-                    <input type="text" name="resLastName"required/>
+                    <input type="text" id="resLastName" name="resLastName"required/>
                   </div>
                   
                   <div class="input-field">
@@ -142,6 +144,7 @@
                     <label>Monthly Income</label>
                     <input type="number" name="resMonthlyIncome" required/>
                   </div>
+
                 </div>
                 
                 <div class="form-row">
@@ -160,20 +163,125 @@
             <hr>
           </div>
           <div id="additional-fields">
+            <div class="fields">
+              <span>Household Member</span>
+              <div class="main-respondent-body">
+                <div class="image-panel">
+                  <div class="input-field">
+                    <label for="resPfp">Profile Picture</label>
+                    <input type="file" id="resPfp" name="resPfp" accept="image/jpeg, image/png" value="Upload Picture">
+                  </div>
+                </div>
+                
+                <div class="text-panel">
+                  <div class="form-row">
+                    <div class="input-field">
+                      <label>Last Name</label>
+                      <input type="text" name="resLastName"required/>
+                    </div>
+                    
+                    <div class="input-field">
+                      <label>First Name</label>
+                      <input type="text" name="resFirstName" required/>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>Middle Name</label>
+                      <input type="text" name="resMiddleName" required/>
+                    </div>
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="input-field">
+                      <label>Gender</label>
+                      <select id="resGender" name="resGender" required/>
+                        <option disabled selected value>---</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>Birthday</label>
+                      <input type="date" name="resBirthday" required/>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>Civil Status</label>
+                      <select id="resCivilStatus" name="resCivilStatus" required>
+                        <option disabled selected value>---</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="separated">Separated</option>
+                        <option value="widowed">Widowed</option>
+                      </select>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>Contact Number</label>
+                      <input type="tel" name="resContactNumber" placeholder="09XX XXX XXXX" pattern="09[0-9]{2} [0-9]{3} [0-9]{4}" required/>
+                    </div>
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="input-field">
+                      <label>Highest Educational Attainment</label>
+                      <select id="resHighestEducationalAttainment" name="resHighestEducationalAttainment" required>
+                        <option disabled selected value>---</option>
+                        <option value="noEducation"> No Education</option>
+                        <option value="elementaryUndergraduate">Elementary Undergraduate</option>
+                        <option value="elementaryGraduate">Elementary Graduate</option>
+                        <option value="highschoolUndergraduate">High School Undergraduate</option>
+                        <option value="highschoolGraduate">High School Graduate</option>
+                        <option value="collegeUndergraduate">College Undergraduate</option>
+                        <option value="collegeGraduateOrHigher">College Graduate or Higher</option>
+                      </select>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>Occupation</label>
+                      <input type="text" name="resOccupation" required/>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>Monthly Income</label>
+                      <input type="number" name="resMonthlyIncome" required/>
+                    </div>
 
+                    <div class="input-field">
+                      <label>Relationship to Main Respondent</label>
+                      <input type="text" name="memRelationToRespondent" required/>
+                    </div>
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="input-field">
+                      <label>Health Status</label>
+                      <input type="text" name="resHealthStatus" required/>
+                    </div>
+        
+                    <div class="input-field">
+                      <label>PWD Type</label>
+                      <input type="text" name="resPwdType" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
           </div>
-          <div class="add-button">
+          <button class="add-button" onclick="addMember()">
             <span>+ Add a Household Member</span>
-          </div>
-          <div class="add-button">
+          </button>
+          <button class="add-button">
             <span>+ Add a Household Pet</span>
-          </div>
+          </button>
           <div class="submit-button">
             <input type="submit" value="Submit">
           </div>
         </form>
       </div> 
     </div>
-  <script src="../js/addhousehold.js"></script>
+  <script src="public/common/js/addhousehold.js"></script>
   </body>
 </html>
