@@ -85,7 +85,7 @@ public class DatabaseManager {
                 "pwdType varchar(255), " +
                 "isSeniorCitizen integer, " +
                 "civilStatus varchar(255), " +
-                "contactNumber integer, " +
+                "contactNumber varchar(255), " +
                 "highestEducationalAttainment varchar(255), " +
                 "occupation varchar(255), " +
                 "monthlyIncome real, " +
