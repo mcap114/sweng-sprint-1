@@ -164,6 +164,50 @@ public class DatabaseManager {
         pstmt.executeUpdate();
     }
 
+    public void editHousehold(int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+        String query = "UPDATE Households SET " + field + " = ? WHERE buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setObject(1, newValue);
+            pstmt.setInt(2, buildingNum);
+            pstmt.setInt(3, unitNum);
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+        String query = "UPDATE Members SET " + field + " = ? WHERE lastName = ? AND firstName = ? AND middleName = ? AND buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setObject(1, newValue);
+            pstmt.setString(2, lastName);
+            pstmt.setString(3, firstName);
+            pstmt.setString(4, middleName);
+            pstmt.setInt(5, buildingNum);
+            pstmt.setInt(6, unitNum);
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void deleteHousehold(int buildingNum, int unitNum) throws SQLException {
+        String query = "DELETE FROM Households WHERE buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, buildingNum);
+            pstmt.setInt(2, unitNum);
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void deleteMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum) throws SQLException {
+        String query = "DELETE FROM Members WHERE lastName = ? AND firstName = ? AND middleName = ? AND buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, lastName);
+            pstmt.setString(2, firstName);
+            pstmt.setString(3, middleName);
+            pstmt.setInt(4, buildingNum);
+            pstmt.setInt(5, unitNum);
+            pstmt.executeUpdate();
+        }
+    }
+
     public void dropTables(Connection conn) throws SQLException {
     String dropSQL1 = "DROP TABLE IF EXISTS Members";
     String dropSQL2 = "DROP TABLE IF EXISTS Households";

@@ -151,8 +151,10 @@ public class TerminalMenus {
 
                     int isMainRespondent = 1;
 
-                    //appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
-                    //appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
+                    String profileImagePath = "/";
+
+                    appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
+                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
                     System.out.println("Household record inserted successfully.");
                 } catch (Exception e) {
                     System.err.println("Error: " + e.getMessage());
@@ -171,7 +173,11 @@ public class TerminalMenus {
     }
 
     public void editProfileMenu() throws SQLException {
-        System.out.println("Edit Profile Menu WIP:");
+
+        DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
+        DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
+
+        System.out.println("Edit Profile Menu:");
         System.out.println("1. Edit Household Record");
         System.out.println("2. Edit Member Record");
         System.out.println("3. Back to Main Menu");
@@ -181,10 +187,40 @@ public class TerminalMenus {
 
         switch (choice) {
             case 1:
-
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
+                System.out.print("Enter building number: ");
+                int buildingNum = scanner.nextInt();
+                System.out.print("Enter unit number: ");
+                int unitNum = scanner.nextInt();
+                scanner.nextLine(); // consume newline
+                System.out.print("Enter the field to edit (monthlyExpenditure, monthlyAmortization, yearOfResidence): ");
+                String householdField = scanner.nextLine();
+                System.out.print("Enter new value: ");
+                Object householdNewValue = getFieldNewValue(householdField);
+                appController.editHousehold(buildingNum, unitNum, householdField, householdNewValue);
+                System.out.println("Household record updated successfully.");
                 break;
             case 2:
-
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
+                System.out.print("Enter last name: ");
+                String lastName = scanner.nextLine();
+                System.out.print("Enter first name: ");
+                String firstName = scanner.nextLine();
+                System.out.print("Enter middle name: ");
+                String middleName = scanner.nextLine();
+                System.out.print("Enter building number: ");
+                buildingNum = scanner.nextInt();
+                System.out.print("Enter unit number: ");
+                unitNum = scanner.nextInt();
+                scanner.nextLine(); // consume newline
+                System.out.print("Enter the field to edit (gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent): ");
+                String memberField = scanner.nextLine();
+                System.out.print("Enter new value: ");
+                Object memberNewValue = getFieldNewValue(memberField);
+                appController.editMember(lastName, firstName, middleName, buildingNum, unitNum, memberField, memberNewValue);
+                System.out.println("Member record updated successfully.");
                 break;
             case 3:
                 return;
@@ -194,7 +230,11 @@ public class TerminalMenus {
     }
 
     public void deleteProfileMenu() throws SQLException {
-        System.out.println("Delete Profile Menu WIP:");
+
+        DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
+        DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
+
+        System.out.println("Delete Profile Menu:");
         System.out.println("1. Delete Household Record");
         System.out.println("2. Delete Member Record");
         System.out.println("3. Back to Main Menu");
@@ -204,10 +244,33 @@ public class TerminalMenus {
 
         switch (choice) {
             case 1:
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
 
+                System.out.print("Enter building number: ");
+                int buildingNum = scanner.nextInt();
+                System.out.print("Enter unit number: ");
+                int unitNum = scanner.nextInt();
+                appController.deleteHousehold(buildingNum, unitNum);
+                System.out.println("Household record deleted successfully.");
                 break;
             case 2:
 
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
+
+                System.out.print("Enter last name: ");
+                String lastName = scanner.nextLine();
+                System.out.print("Enter first name: ");
+                String firstName = scanner.nextLine();
+                System.out.print("Enter middle name: ");
+                String middleName = scanner.nextLine();
+                System.out.print("Enter building number: ");
+                buildingNum = scanner.nextInt();
+                System.out.print("Enter unit number: ");
+                unitNum = scanner.nextInt();
+                appController.deleteMember(lastName, firstName, middleName, buildingNum, unitNum);
+                System.out.println("Member record deleted successfully.");
                 break;
             case 3:
                 return;
@@ -247,6 +310,24 @@ public class TerminalMenus {
                 return;
             default:
                 System.out.println("Invalid choice. Please try again.");
+        }
+    }
+
+
+    private Object getFieldNewValue(String field) {
+        switch (field) {
+            case "monthlyExpenditure":
+            case "monthlyAmortization":
+            case "monthlyIncome":
+                return scanner.nextDouble();
+            case "yearOfResidence":
+            case "isSeniorCitizen":
+            case "isMainRespondent":
+                return scanner.nextInt();
+            case "birthday":
+                return LocalDate.parse(scanner.next());
+            default:
+                return scanner.next();
         }
     }
 

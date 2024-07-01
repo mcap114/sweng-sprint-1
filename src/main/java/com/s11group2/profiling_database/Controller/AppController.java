@@ -153,6 +153,22 @@ public class AppController {
         }
     }
 
+    public void editHousehold(int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+        dbManager.editHousehold(buildingNum, unitNum, field, newValue);
+    }
+
+    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+        dbManager.editMember(lastName, firstName, middleName, buildingNum, unitNum, field, newValue);
+    }
+
+    public void deleteHousehold(int buildingNum, int unitNum) throws SQLException {
+        dbManager.deleteHousehold(buildingNum, unitNum);
+    }
+
+    public void deleteMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum) throws SQLException {
+        dbManager.deleteMember(lastName, firstName, middleName, buildingNum, unitNum);
+    }
+
     /**
      * Validates the input for inserting a household record.
      *
