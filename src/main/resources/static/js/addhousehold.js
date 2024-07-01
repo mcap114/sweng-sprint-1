@@ -2,8 +2,8 @@ var memberCount = 0;
 var petCount = 0;
 function addMember() {
     memberCount++;
-    const divEle = document.getElementById("additional-fields")
-    divEle.innerHTML += `
+    var container = document.createElement("div");
+    container.innerHTML += `
         <div id="member-${memberCount}" class="fields">
             <div class="heading-2">
                 <p>Household Member</p>
@@ -118,12 +118,13 @@ function addMember() {
               <hr>
             </div>
     `;
+    document.getElementById("additional-fields").appendChild(container);
 }
 
 function addPet() {
     petCount++;
-    const divEle = document.getElementById("additional-fields")
-    divEle.innerHTML += `
+    var container = document.createElement("div");
+    container.innerHTML += `
         <div id="pet-${petCount}" class="fields">
             <div class="heading-2">
                 <p>Household Pet</p>
@@ -149,6 +150,8 @@ function addPet() {
               <hr>
         </div>
     `;
+    document.getElementById("additional-fields").appendChild(container);
+
 }
 
 function deleteMember(memberCount) {
