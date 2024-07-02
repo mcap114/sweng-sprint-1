@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/addhousehold.css}">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <title>View A Unit</title>
+</head>
+<body>
+<div class="main-page">
+    <header th:replace="partials/header :: header"></header>
+
+    <div class="input-page">
+        <div id="heading-1" class="heading-1">
+            <p>Select a Unit to View</p>
+            <div class="back-button">
+                <img class="back-button" src="../static/png/left-arrow.png">
+                <span class="back-button" onclick="window.location.href='/viewunits.html'">Back to units</span>
+            </div>
+        </div>
+        <hr>
+        <!-- add info of database -->
+        <div class="specific-unit">
+            <span class="big-letter">Building 3 Unit 103</span>
+            <div class="specific-deets">
+                <div class="section-deets">
+                    <div class="named-areas">
+                        <div class="named-area">
+                            Year of Residence
+                            <div class="detail">
+                                2022
+                            </div>
+                        </div>
+                        <div class="named-area">
+                            Monthly Household Expenditure
+                            <div class="detail">
+                                2022
+                            </div>
+                        </div>
+                        <div class="named-area">
+                            Monthly Unit Amortization
+                            <div class="detail">
+                                2022
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-deets">
+                    <div class="profile-pic">
+                        <div class="named-area">
+                            Main Respondent
+                            <div class="detail-img"><img src="../static/png/profile.png"></div>
+                        </div>
+                    </div>
+                    <div class="simple-flex">
+                        <div class="named-areas">
+                            <div class="named-area">
+                                Last Name
+                                <div class="detail">
+                                    Dela Cruz
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                First Name
+                                <div class="detail">
+                                    Juan
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Middle Name
+                                <div class="detail">
+                                    Villaflores
+                                </div>
+                            </div>
+                        </div>
+                        <div class="named-areas">
+                            <div class="named-area">
+                                Gender
+                                <div class="detail">
+                                    Male
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Birthday
+                                <div class="detail">
+                                    08/04/1985
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Civil Status
+                                <div class="detail">
+                                    Married
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Contact Number
+                                <div class="detail">
+                                    09163994501
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-deets">
+                    <div class="profile-pic">
+                        <div class="named-area">
+                            Household Member
+                            <div class="detail-img"><img src="../static/png/profile.png"></div>
+                        </div>
+                    </div>
+                    <div class="simple-flex">
+                        <div class="named-areas">
+                            <div class="named-area">
+                                Last Name
+                                <div class="detail">
+                                    Dela Cruz
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                First Name
+                                <div class="detail">
+                                    Julliete
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Middle Name
+                                <div class="detail">
+                                    Osmena
+                                </div>
+                            </div>
+                        </div>
+                        <div class="named-areas">
+                            <div class="named-area">
+                                Gender
+                                <div class="detail">
+                                    Female
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Birthday
+                                <div class="detail">
+                                    08/04/1985
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Civil Status
+                                <div class="detail">
+                                    Married
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Contact Number
+                                <div class="detail">
+                                    09273328928
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

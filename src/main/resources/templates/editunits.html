@@ -1,54 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/addhousehold.css" />
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/addhousehold.css}">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
     <title>Edit Units</title>
   </head>
   <body>
-    <script src="/js/main.js"></script>
     <div class="main-page">
-      <div name = "header" class = "header">
-        <div class="header-bar">
-            <img class="partner-logo" src="/svg/partner-logo-2.svg" />
-            <p class="APOAMF-database">
-                <span class="text-wrapper-APOAMF">APOAMF </span> <span class="text-wrapper-Database">Database</span>
-            </p>
-            <img id="menu-btn" class="menu" src="/png/menu.png" />
-        </div>
-        <nav class="navbar">
-            <a href="/" class="home-link">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/297f502085b0fa4a88d2922307c4965a97469e6a167bcf08b3e2619a75bfbcff?apiKey=c50568d0dfd94773ad78b769ecc545a9&" alt="Home icon" class="home-icon" />
-              <span class="home-text">HOME</span>
-            </a>
-            <a href="viewunits.html" class="view-link">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/66bdb959b9af79ba639cffe6ea0045ed787c768897306c018338c46a713cea7a?apiKey=c50568d0dfd94773ad78b769ecc545a9&" alt="view icon" class="home-icon" />
-                <span class="home-text">VIEW PROFILE</span>
-              </a>
-              <a href="/addhousehold" class="add-link">
-                <img src="png/add-icon-plus-icon-cross-white-text-symmetry-symbol-light-logo-png-clipart-removebg-preview.png" alt="add icon" class="home-icon" />
-                <span class="home-text">ADD PROFILE</span>
-              </a>
-              <a href="editunits.html" class="edit-link">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/94b50874c12726a9ac3c8487fd5ec00d2b2b0617390fb0523971866d7df68f1c?apiKey=c50568d0dfd94773ad78b769ecc545a9&" alt="edit icon" class="home-icon" />
-                <span class="home-text">EDIT PROFILE</span>
-              </a>
-              <a href="deleteunits.html" class="delete-link">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0f766ebf10c3c876b443914c03937b5a4339f8484a364179fb42f71b8acb99a2?apiKey=c50568d0dfd94773ad78b769ecc545a9&" alt="delete icon" class="home-icon" />
-                <span class="home-text">DELETE PROFILE</span>
-              </a>
-
-        </nav>
-      </div>
-
-
+      <header th:replace="partials/header :: header"></header>
 
       <div class="input-page">
         <div id="heading-1" class="heading-1">
           <p>Select a Unit to View</p>
           <div class="back-button">
-            <img class="back-button" src="png/left-arrow.png">
+            <img class="back-button" src="/png/left-arrow.png">
             <span class="back-button" onclick="window.location.href='/'">Back to Menu</span>
           </div>
         </div>
@@ -59,7 +27,7 @@
             <input class = "search" type="text" name="buildingNum"  placeholder="Type to Search"/> 
           </div>
           <div class="filter-button">
-            <img class="filter-button" src="png/sorting-options.png">
+            <img class="filter-button" src="/png/sorting-options.png">
             <span class="filter-button">Filter</span>
           </div>
          </div>

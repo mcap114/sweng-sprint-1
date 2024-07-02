@@ -193,12 +193,27 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Deletes a household and its associated members from the database.
+     *
+     * @param buildingNum the building number of the household to delete
+     * @param unitNum the unit number of the household to delete
+     * @throws SQLException if a database access error occurs
+     */
     public void deleteHousehold(int buildingNum, int unitNum) throws SQLException {
-        String query = "DELETE FROM Households WHERE buildingNum = ? AND unitNum = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setInt(1, buildingNum);
-            pstmt.setInt(2, unitNum);
-            pstmt.executeUpdate();
+        String deleteMembersSQL = "DELETE FROM Members WHERE buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmtMembers = conn.prepareStatement(deleteMembersSQL)) {
+            pstmtMembers.setInt(1, buildingNum);
+            pstmtMembers.setInt(2, unitNum);
+            pstmtMembers.executeUpdate();
+        }
+
+        //deletes associated members as well
+        String deleteHouseholdSQL = "DELETE FROM Households WHERE buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmtHousehold = conn.prepareStatement(deleteHouseholdSQL)) {
+            pstmtHousehold.setInt(1, buildingNum);
+            pstmtHousehold.setInt(2, unitNum);
+            pstmtHousehold.executeUpdate();
         }
     }
 

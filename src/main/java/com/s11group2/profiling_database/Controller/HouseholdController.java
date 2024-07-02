@@ -1,7 +1,5 @@
 package com.s11group2.profiling_database.Controller;
 
-import com.s11group2.profiling_database.AppTerminal;
-import com.s11group2.profiling_database.Util.ImageService;
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Util.InputValidation;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,13 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class HouseholdController {

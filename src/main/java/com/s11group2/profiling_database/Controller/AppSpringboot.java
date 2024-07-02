@@ -20,7 +20,7 @@ public class AppSpringboot {
             new Thread(() -> {
                 try {
                     System.out.println("Waiting for the server to start...");
-                    Thread.sleep(5000); // Adjust the delay as necessary
+                    Thread.sleep(1000); // Adjust the delay as necessary
                     openHomePage();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -32,7 +32,7 @@ public class AppSpringboot {
     private void openHomePage() {
         try {
             System.out.println("Opening browser...");
-            String url = "http://localhost:8080";
+            String url = "http://localhost:8080/";
             if (System.getProperty("os.name").toLowerCase().contains("win")) {
                 Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
             } else if (System.getProperty("os.name").toLowerCase().contains("mac")) {

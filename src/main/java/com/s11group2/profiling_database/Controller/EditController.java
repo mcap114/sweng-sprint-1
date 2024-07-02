@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ViewSearchController {
+public class EditController {
 
-    @GetMapping("/viewunits")
-    public String view(){
-        return "viewunits";
+    @GetMapping("/editunits")
+    public String edit() {
+        return "editunits";
     }
 }
