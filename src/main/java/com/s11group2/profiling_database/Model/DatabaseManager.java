@@ -100,7 +100,7 @@ public class DatabaseManager {
     }
 
     /**
-     * Inserts a record into the Household table.
+     * Inserts a record into the Household table if it doesn't already exist.
      *
      * @param buildingNum the building number
      * @param unitNum the unit number
@@ -108,16 +108,22 @@ public class DatabaseManager {
      * @param monthlyAmortization the monthly amortization
      * @param yearOfResidence the year of residence
      * @throws SQLException if a database access error occurs
+     * @throws IllegalArgumentException if the household already exists
      */
     public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence) throws SQLException {
+        if (householdExists(buildingNum, unitNum)) {
+            throw new IllegalArgumentException("Household with building number " + buildingNum + " and unit number " + unitNum + " already exists.");
+        }
+
         String insertSQL = "INSERT INTO Households (buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = conn.prepareStatement(insertSQL);
-        pstmt.setInt(1, buildingNum);
-        pstmt.setInt(2, unitNum);
-        pstmt.setDouble(3, monthlyExpenditure);
-        pstmt.setDouble(4, monthlyAmortization);
-        pstmt.setInt(5, yearOfResidence);
-        pstmt.executeUpdate();
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setInt(1, buildingNum);
+            pstmt.setInt(2, unitNum);
+            pstmt.setDouble(3, monthlyExpenditure);
+            pstmt.setDouble(4, monthlyAmortization);
+            pstmt.setInt(5, yearOfResidence);
+            pstmt.executeUpdate();
+        }
     }
 
     /**
@@ -216,6 +222,29 @@ public class DatabaseManager {
         stmt.executeUpdate(dropSQL2);
     }
 }
+
+    /**
+     * Checks if a household with the given building number and unit number already exists.
+     *
+     * @param buildingNum the building number to check
+     * @param unitNum the unit number to check
+     * @return true if the household already exists, false otherwise
+     * @throws SQLException if a database access error occurs
+     */
+    public boolean householdExists(int buildingNum, int unitNum) throws SQLException {
+        String query = "SELECT COUNT(*) AS count FROM Households WHERE buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, buildingNum);
+            pstmt.setInt(2, unitNum);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt("count");
+                return count > 0;
+            }
+        }
+        return false;
+    }
+
 
     
     /**

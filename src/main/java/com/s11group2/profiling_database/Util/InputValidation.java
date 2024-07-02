@@ -1,5 +1,8 @@
 package com.s11group2.profiling_database.Util;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -121,6 +124,17 @@ public class InputValidation {
             throw new ValidationException("Invalid date format: " + input);
         }
     }
+
+    /**
+     * Checks if a household with the given building number and unit number already exists.
+     *
+     * @param buildingNum the building number to check
+     * @param unitNum the unit number to check
+     * @return true if the household already exists, false otherwise
+     * @throws SQLException if a database access error occurs
+     */
+
+
 
     /**
      * Calculates the age based on the given birthday.

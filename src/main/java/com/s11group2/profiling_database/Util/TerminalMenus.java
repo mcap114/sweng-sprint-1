@@ -91,6 +91,8 @@ public class TerminalMenus {
                     System.out.print("Enter unit number: ");
                     int unitNum = InputValidation.readIntFromScanner(scanner);
 
+
+
                     System.out.print("Enter monthly expenditure: ");
                     double monthlyExpenditure = InputValidation.readDoubleFromScanner(scanner);
 
