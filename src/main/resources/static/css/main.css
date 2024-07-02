@@ -147,8 +147,20 @@ body {
     letter-spacing: 0;
     line-height: normal;
 }
-
 .units{
+    background-color: #00000023;
+    border-radius: 2px;
+    margin: 4px, 4px;
+    padding: 4px;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+}
+.units-row>span{
+    font-weight: bold;
+}
+.units-row{
 
     padding: 10px;
     display: flex;
@@ -252,22 +264,22 @@ body {
     display:flex;
 
 }
-
+.profile-pic{
+    padding-right: 5%;
+}
 .named-areas{
     display: flex;
     flex-direction: row;
     align-content: center;
-    width: 100%;
-
 }
 
 .named-area{
     display: flex;
     flex-direction: column;
+    padding-right: 3%;
+    width: 225px;
     align-content: center;
-    width: 60%;
-    margin-right: 3%;
-
+    
 }
 
 .detail{
