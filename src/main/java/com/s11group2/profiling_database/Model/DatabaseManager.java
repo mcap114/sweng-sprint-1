@@ -3,6 +3,7 @@ package com.s11group2.profiling_database.Model;
 import java.sql.*;
 import java.time.LocalDate;
 
+
 /**
  * The DatabaseManager class provides methods to manage the SQLite database,
  * including creating tables, inserting records, and displaying data.
@@ -85,6 +86,7 @@ public class DatabaseManager {
                 "pwdType varchar(255), " +
                 "isSeniorCitizen integer, " +
                 "civilStatus varchar(255), " +
+                "contactNumber varchar(255), " +
                 "contactNumber varchar(255), " +
                 "highestEducationalAttainment varchar(255), " +
                 "occupation varchar(255), " +
