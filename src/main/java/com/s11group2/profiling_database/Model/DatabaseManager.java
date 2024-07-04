@@ -49,6 +49,7 @@ public class DatabaseManager {
     public void createTables() throws SQLException {
         createHouseholdTable();
         createMemberTable();
+        createPetsTable();
         conn.createStatement().execute("PRAGMA foreign_keys = ON");
     }
 
@@ -95,7 +96,24 @@ public class DatabaseManager {
                 "buildingNum integer, " +
                 "unitNum integer, " +
                 "profileImagePath varchar(255), " +
-                "constraint buildingUnitNum_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
+                "constraint buildingUnitNumMembers_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
+                ");";
+        Statement stmt = conn.createStatement();
+        stmt.execute(createTableSQL);
+    }
+
+    /**
+     * Creates the Pets table in the database.
+     *
+     * @throws SQLException if a database access error occurs
+     */
+    private void createPetsTable() throws SQLException {
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS Pets (" +
+                "petName varchar(255), " +
+                "petBreed varchar(255), " +
+                "buildingNum integer, " +
+                "unitNum integer, " +
+                "constraint buildingUnitNumPets_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
         stmt.execute(createTableSQL);
@@ -168,7 +186,31 @@ public class DatabaseManager {
         pstmt.setInt(14, isMainRespondent);
         pstmt.setInt(15, buildingNum);
         pstmt.setInt(16, unitNum);
+
+        //add image to /resources with new name
+        //get imagepath
+        //assign to profileImagePath
+
         pstmt.setString(17, profileImagePath);
+        pstmt.executeUpdate();
+    }
+
+    /**
+     * Inserts a record into the Pets table.
+     *
+     * @param petName the pet's name
+     * @param petBreed the pet's breed
+     * @param buildingNum the building number
+     * @param unitNum the unit number
+     * @throws SQLException if a database access error occurs
+     */
+    public void insertPet(String petName, String petBreed, String middleName, Integer buildingNum, Integer unitNum) throws SQLException {
+        String insertSQL = "INSERT INTO Pets (petName, petBreed, buildingNum, unitNum) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+        pstmt.setString(1, petName);
+        pstmt.setString(2, petBreed);
+        pstmt.setInt(3, buildingNum);
+        pstmt.setInt(4, unitNum);
         pstmt.executeUpdate();
     }
 
