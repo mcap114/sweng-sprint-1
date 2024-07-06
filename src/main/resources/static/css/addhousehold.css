@@ -132,15 +132,20 @@ form .image-field{
   transition: all 0.3s ease;
 }
 
+
 .input-field input::placeholder {
   color: #aaa;
 }
 
-.input-field input:focus {
+.input-field input:focus:invalid {
   border-color: #e60023;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+.input-field input:focus:valid {
+  border-color: green;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 .search-div {
   display: flex;
   justify-content: center;
