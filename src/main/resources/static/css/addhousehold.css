@@ -36,6 +36,7 @@
   width: 150px;
   background-color: #b25600;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .back-button > img {
