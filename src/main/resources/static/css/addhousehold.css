@@ -101,7 +101,7 @@ form .image-field{
 
 }
 
-.input-field input, select, ::placeholder {
+.input-field input, select {
   outline: none;
   font-size: 14px;
   font-weight: 400;
@@ -113,6 +113,11 @@ form .image-field{
   margin: 8px 0;
   background-color: #1d2a49;
   opacity: 84%;
+}
+
+.input-field::placeholder {
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .image-display {
