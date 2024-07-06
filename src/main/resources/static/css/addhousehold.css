@@ -75,6 +75,14 @@ form .input-field{
  
 }
 
+form .image-field{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+ 
+}
+
 
 .input-field label{
   font-family: "Inter", Helvetica;
@@ -82,6 +90,15 @@ form .input-field{
   color: #1d2a49;
   font-size: 12px;
   letter-spacing: 0;
+}
+
+.image-field label{
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #1d2a49;
+  font-size: 12px;
+  letter-spacing: 0;
+
 }
 
 .input-field input, select, ::placeholder {
@@ -98,6 +115,19 @@ form .input-field{
   opacity: 84%;
 }
 
+.image-display {
+  height: 260px;
+  width: 260px;
+}
+
+.image-display img {
+  margin-top: 10px;
+  max-width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+
 .form-row{
   display: flex;
   flex-direction: row;
@@ -110,16 +140,13 @@ form .input-field{
 }
 
 .image-panel {
-  position: relative;
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 20%;
 
 }
 
 .text-panel {
-  position: relative;
   display: flex; 
   flex-direction: column;
   justify-content: space-evenly;
@@ -146,6 +173,8 @@ form .input-field{
   opacity: 84%;
   border-radius: 5px;
   margin: 10px 50px;
+  cursor:pointer;
+
 }
 
 .add-button span  {
@@ -165,6 +194,7 @@ form .input-field{
   background-color: #57804D;
   border-radius: 5px;
   margin-right: 40px;
+  cursor:pointer;
 }
 
 .submit-button input {
@@ -209,6 +239,8 @@ form .input-field{
   height: 20px;
   background-color: #B20000;
   border-radius: 5px;
+  cursor:pointer;
+
 }
 
 .delete-button > img {
@@ -227,3 +259,4 @@ form .input-field{
   letter-spacing: 0;
   line-height: normal;
 }
+
