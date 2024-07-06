@@ -1,10 +1,11 @@
+
 /* content */
 .input-page{
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0px 50px;
-  padding-top: 7%;
+  padding-top: 2%;
 }
 
 .heading-1 {
@@ -22,7 +23,7 @@
   font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #1d2a49;
-  font-size: 24px;
+  font-size: 28px;
   letter-spacing: 0;
   line-height: normal;
   text-align: left;
@@ -32,7 +33,7 @@
 .back-button {
   display: flex;
   flex-direction: row;
-  width: 137px;
+  width: 150px;
   background-color: #b25600;
   border-radius: 5px;
 }
@@ -66,6 +67,14 @@ form .fields{
   flex-wrap: wrap;
 }
 
+.input-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin: 10px 0;
+}
+
 form .input-field{
   position: relative;
   display: flex;
@@ -75,8 +84,16 @@ form .input-field{
  
 }
 
+form .image-field{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+ 
+}
 
-.input-field label{
+
+.input-field label {
   font-family: "Inter", Helvetica;
   font-weight: 400;
   color: #1d2a49;
@@ -84,19 +101,59 @@ form .input-field{
   letter-spacing: 0;
 }
 
-.input-field input, select, ::placeholder {
+.input-field input {
   outline: none;
   font-size: 14px;
   font-weight: 400;
-  color: #fff;
-  border-radius: 7px;
-  border: 1px solid #1d2a49;
-  padding: 0 10px;
-  height: 28px;
+  color: #333;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  height: 40px;
   margin: 8px 0;
-  background-color: #1d2a49;
-  opacity: 84%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
+
+.input-field input::placeholder {
+  color: #aaa;
+}
+
+.input-field input:focus {
+  border-color: #e60023;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.search-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.image-field label{
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #1d2a49;
+  font-size: 12px;
+  letter-spacing: 0;
+
+}
+
+
+.image-display {
+  height: 260px;
+  width: 260px;
+}
+
+.image-display img {
+  margin-top: 10px;
+  max-width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
 
 .form-row{
   display: flex;
@@ -110,16 +167,13 @@ form .input-field{
 }
 
 .image-panel {
-  position: relative;
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 20%;
 
 }
 
 .text-panel {
-  position: relative;
   display: flex; 
   flex-direction: column;
   justify-content: space-evenly;
@@ -146,6 +200,8 @@ form .input-field{
   opacity: 84%;
   border-radius: 5px;
   margin: 10px 50px;
+  cursor:pointer;
+
 }
 
 .add-button span  {
@@ -165,6 +221,7 @@ form .input-field{
   background-color: #57804D;
   border-radius: 5px;
   margin-right: 40px;
+  cursor:pointer;
 }
 
 .submit-button input {
@@ -209,6 +266,8 @@ form .input-field{
   height: 20px;
   background-color: #B20000;
   border-radius: 5px;
+  cursor:pointer;
+
 }
 
 .delete-button > img {
@@ -227,3 +286,5 @@ form .input-field{
   letter-spacing: 0;
   line-height: normal;
 }
+
+

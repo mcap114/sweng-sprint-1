@@ -9,7 +9,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class AppSpringboot {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(AppSpringboot.class, args);
     }
 

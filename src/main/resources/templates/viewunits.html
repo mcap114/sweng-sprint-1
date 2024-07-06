@@ -17,24 +17,36 @@
       <p>Select a Unit to View</p>
       <div class="back-button">
         <img class="back-button" src="/png/left-arrow.png">
-        <span class="back-button" onclick="window.location.href='/menu.html'">Back to Menu</span>
+        <span class="back-button" onclick="window.location.href='/'">Back to Menu</span>
       </div>
     </div>
     <hr>
+
     <!-- add info of database -->
     <div class="search-div">
       <div class="input-field">
         <input class="search" type="text" name="buildingNum" placeholder="Type to Search"/>
       </div>
-      <div class="filter-button">
-        <img class="filter-button" src="/png/sorting-options.png">
-        <span class="filter-button">Filter</span>
+    
+
+
+      <div class="filter-container">
+        <div class="filter-button" onclick="toggleDropdown()">
+          <img class="filter-icon" src="/png/sorting-options.png">
+          <span class="filter-text">Filter</span>
+        </div>
+        <div id="dropdown-menu" class="dropdown-content">
+          <a href="#">Sort by Building Number</a>
+          <a href="#">Sort by Unit Number</a>
+        </div>
       </div>
+      
     </div>
     <div class="units">
       <div class="units-row">
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -44,6 +56,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -53,6 +66,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -62,6 +76,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -71,53 +86,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
-          <div class="deets">
-            Number of Members: 2
-            <br><br>
-            Main Respondent:<br>
-            Juan Dela Cruz
-          </div>
-        </div>
-      </div>
-      <div class="units-row">
-        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
-          <span>Building 1<br> Unit 103</span>
-          <div class="deets">
-            Number of Members: 2
-            <br><br>
-            Main Respondent:<br>
-            Juan Dela Cruz
-          </div>
-        </div>
-        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
-          <span>Building 1<br> Unit 103</span>
-          <div class="deets">
-            Number of Members: 2
-            <br><br>
-            Main Respondent:<br>
-            Juan Dela Cruz
-          </div>
-        </div>
-        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
-          <span>Building 1<br> Unit 103</span>
-          <div class="deets">
-            Number of Members: 2
-            <br><br>
-            Main Respondent:<br>
-            Juan Dela Cruz
-          </div>
-        </div>
-        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
-          <span>Building 1<br> Unit 103</span>
-          <div class="deets">
-            Number of Members: 2
-            <br><br>
-            Main Respondent:<br>
-            Juan Dela Cruz
-          </div>
-        </div>
-        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
-          <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -129,6 +98,7 @@
       <div class="units-row">
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -138,6 +108,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -147,6 +118,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -156,6 +128,7 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -165,6 +138,59 @@
         </div>
         <div class="summary-units" onclick="window.location.href='viewaunit.html'">
           <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <hr class="custom-hr">
           <div class="deets">
             Number of Members: 2
             <br><br>
@@ -179,3 +205,4 @@
 
 </body>
 </html>
+

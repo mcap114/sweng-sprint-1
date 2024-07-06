@@ -13,13 +13,19 @@ function addMember() {
                 </div>
             </div>
               
-              <div class="main-respondent-body">
-                <div class="image-panel">
-                  <div class="input-field">
-                    <label for="resPfp">Upload Picture</label>
-                    <input type="file" id="resPfp" name="resPfp" accept="image/jpeg, image/png" value="Upload Picture">
-                  </div>
+            <div class="main-respondent-body">
+              <div class="image-panel">
+                <div class="image-field">
+                  <label>Upload Picture</label>
+                  <div id="preview" class="image-display"> 
+                      <img class="image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-${memberCount}">
+                    </div>
+                  <div class="image-field">
+                    <input type="file" id="resPfp-${memberCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${memberCount}')" required/>
+
                 </div>
+              </div>
+              </div>
                 
                 <div class="text-panel">
                   <div class="form-row">
@@ -152,6 +158,23 @@ function addPet() {
     `;
     document.getElementById("additional-fields").appendChild(container);
 
+}
+
+// upload image 
+function upload(event, memberId) {
+  const fileInput = event.target;
+  const member = document.getElementById(memberId);
+
+  const file = fileInput.files[0];
+  if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+          member.src = e.target.result;
+      }
+
+      reader.readAsDataURL(file);
+  }
 }
 
 function deleteMember(memberCount) {
