@@ -9,7 +9,6 @@ function toggleDropdown() {
     document.getElementById("dropdown-menu").classList.toggle("show");
   }
   
-
   window.onclick = function(event) {
     if (!event.target.matches('.filter-button') && !event.target.matches('.filter-icon') && !event.target.matches('.filter-text')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");

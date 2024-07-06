@@ -9,7 +9,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class AppSpringboot {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(AppSpringboot.class, args);
     }
 
@@ -20,7 +20,7 @@ public class AppSpringboot {
             new Thread(() -> {
                 try {
                     System.out.println("Waiting for the server to start...");
-                    Thread.sleep(1000); // Adjust the delay as necessary
+                    Thread.sleep(1000);
                     openHomePage();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

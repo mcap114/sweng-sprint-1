@@ -370,6 +370,8 @@ body {
     display: flex;
     flex-direction: row;
     color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease; 
 }
 
 .navbar.show {
@@ -424,13 +426,13 @@ body {
     aspect-ratio: 1;
     object-fit: auto;
     object-position: center;
-    width: 57px;
-    padding: 2px;
+    width: 40px;
+    padding: 5px;
 }
 
 .home-text {
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: Inter, sans-serif;
-    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
 }
 
