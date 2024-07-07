@@ -1,6 +1,7 @@
 package com.s11group2.profiling_database.Controller;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
+import com.s11group2.profiling_database.Model.Household;
 import com.s11group2.profiling_database.Util.ValidationException;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -185,6 +188,10 @@ public class AppController {
         if (monthlyExpenditure <= 0) throw new ValidationException("Monthly expenditure must be positive.");
         if (monthlyAmortization <= 0) throw new ValidationException("Monthly amortization must be positive.");
         if (yearOfResidence <= 0) throw new ValidationException("Year of residence must be positive.");
+    }
+
+    public List<Household> getAllHousehoulds() throws SQLException {
+        return dbManager.getAllHouseholds();
     }
 
     /**
