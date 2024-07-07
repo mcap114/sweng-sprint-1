@@ -120,6 +120,7 @@ body {
 .filter-container {
     position: relative;
     display: inline-block;
+    padding-left: 15px;
   }
 
 .filter-button {
@@ -175,6 +176,42 @@ body {
   .dropdown-content a:hover {
     background-color: #f1f1f1;
   }
+  .sort-container {
+    position: relative;
+    display: inline-block;
+    padding-left: 15px;
+  }
+
+.sort-button {
+    display: flex;
+    flex-direction: row;
+    width: 85px;
+    background-color: #7FCCD1;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    padding: 5px;
+}
+
+.sort-button:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.sort-button > img {
+    width: 20px;
+    height: 20px;
+    position: 17px 13px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.sort-button > span {
+    font-family: "Inter", Helvetica;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+}
   
   .show {
     display: block;
