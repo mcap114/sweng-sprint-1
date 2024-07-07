@@ -1,10 +1,19 @@
+
 /* content */
 .input-page{
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0px 50px;
-  padding-top: 7%;
+  padding-top: 8%;
+}
+
+.input-addpage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px 100px;
+  padding-top: 8%;
 }
 
 .heading-1 {
@@ -22,7 +31,7 @@
   font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #1d2a49;
-  font-size: 24px;
+  font-size: 28px;
   letter-spacing: 0;
   line-height: normal;
   text-align: left;
@@ -32,9 +41,12 @@
 .back-button {
   display: flex;
   flex-direction: row;
-  width: 137px;
+  width: 150px;
   background-color: #b25600;
   border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  opacity: 84%;
 }
 
 .back-button > img {
@@ -53,6 +65,11 @@
   line-height: normal;
 }
 
+.back-button:hover {
+  background-color: #b25600;
+  opacity: 100%;
+}
+
 hr {
   border: 1px solid #000000;
   width: 100%;
@@ -66,6 +83,14 @@ form .fields{
   flex-wrap: wrap;
 }
 
+.input-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin: 10px 0;
+}
+
 form .input-field{
   position: relative;
   display: flex;
@@ -75,8 +100,16 @@ form .input-field{
  
 }
 
+form .image-field{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+ 
+}
 
-.input-field label{
+
+.input-field label {
   font-family: "Inter", Helvetica;
   font-weight: 400;
   color: #1d2a49;
@@ -84,19 +117,79 @@ form .input-field{
   letter-spacing: 0;
 }
 
-.input-field input, select, ::placeholder {
+.search-field input {
   outline: none;
   font-size: 14px;
   font-weight: 400;
-  color: #fff;
-  border-radius: 7px;
-  border: 1px solid #1d2a49;
-  padding: 0 10px;
+  color: #333;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  height: 40px;
+  margin: 8px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.input-field input, select {
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0px 20px;
   height: 28px;
   margin: 8px 0;
-  background-color: #1d2a49;
-  opacity: 84%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
+
+
+.input-field input::placeholder {
+  color: #aaa;
+}
+
+.input-field input:focus:invalid {
+  border-color: #e60023;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.input-field input:focus:valid {
+  border-color: green;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.search-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.image-field label{
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #1d2a49;
+  font-size: 12px;
+  letter-spacing: 0;
+
+}
+
+
+.image-display {
+  height: 260px;
+  width: 260px;
+}
+
+.image-display img {
+  margin-top: 10px;
+  max-width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
 
 .form-row{
   display: flex;
@@ -110,16 +203,13 @@ form .input-field{
 }
 
 .image-panel {
-  position: relative;
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 20%;
 
 }
 
 .text-panel {
-  position: relative;
   display: flex; 
   flex-direction: column;
   justify-content: space-evenly;
@@ -136,45 +226,90 @@ form .input-field{
   width: 100%
 }
 
+.additional {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 2%;
+}
+
+.empty-panel {
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+}
+
+.additional-panel {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-panel {
+  width: 16%;
+  display: flex;
+  flex-direction: row;
+}
+
 .add-button {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 95%;
-  height: 30px;
+  width: 100%;
+  height: 39px;
   background-color: #1d2a49;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   opacity: 84%;
-  border-radius: 5px;
-  margin: 10px 50px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor:pointer;
+
 }
 
 .add-button span  {
   font-family: "Inter", Helvetica;
   font-weight: 200;
-  color: #fff;
-  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
   letter-spacing: 0;
+  float: left;
+  margin: 15px;
+  width: 85%;
 }
 
+.add-button img {
+  color: #1d2a49;
+  float: right;
+  height: 20px;
+  margin: 15px;
+  width: 15%;
+}
+
+.add-button:hover {
+  background-color: #E0A03F;
+  opacity: 100%;
+}
 
 .submit-button {
-  display: flex;
-  float: right;
-  justify-content: center;
-  width: 150px;
-  background-color: #57804D;
-  border-radius: 5px;
-  margin-right: 40px;
+  margin: 10px 50px;
 }
 
 .submit-button input {
   font-family: "Inter", Helvetica;
   font-weight: 200;
-  background-color: transparent;
-  border: 1px solid #57804D;
-  color: #fff;
-  font-size: 20px;
+  font-weight: bold;
+  background-color: #57804D;
+  color: white;
+  height: 35px;
+  font-size: 16px;
   letter-spacing: 0;
+  border-radius: 20px;
+  width: 150px;
+  cursor:pointer;
 }
 
 .heading-2 {
@@ -201,25 +336,26 @@ form .input-field{
 }
 
 .delete-button {
-  position:relative;
   display: flex;
   flex-direction: row;
-  right: 0;
-  width: 137px;
-  height: 20px;
+  width: 150px;
   background-color: #B20000;
   border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  opacity: 84%;
+
 }
 
 .delete-button > img {
   width: 17px;
   height: 17px;
   position: 17px 13px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 5px;
 }
 
 .delete-button > span {
+  margin: 5px;
   font-family: "Inter", Helvetica;
   color: #ffffff;
   font-weight: 400;
@@ -227,3 +363,10 @@ form .input-field{
   letter-spacing: 0;
   line-height: normal;
 }
+
+.delete-button:hover {
+  background-color: #B20000;
+  opacity: 100%;
+}
+
+
