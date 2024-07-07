@@ -54,18 +54,19 @@
     </div>
     <div class="units">
       <div class="units-row" th:each="household : ${households}">
-        <div class="summary-units" th:onclick="/">
-          <span th:utext="'Building ' + ${household.buildingNum} + '<br/> Unit ' + ${household.unitNum}"></span>
+
+        <div class="summary-units" th:onclick="'window.location.href=\'/viewaunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
+        <span th:utext="'Building ' + ${household.buildingNum} + '<br/> Unit ' + ${household.unitNum}"></span>
           <div class="custom-hr"></div>
           <div class="deets">
-            <p th:text="'Number of Members: '"></p>
+            <p th:text="'Number of Members: ' + ${household.members.size()}"></p>
             <p>Main Respondent:</p>
-            <p th:text="'John Doe'"></p>
+            <p th:each="member : ${household.members}" th:if="${member.isMainRespondent == 1}" th:text="${member.firstName} + ' ' + ${member.lastName}"></p>
           </div>
         </div>
+        </a>
       </div>
     </div>
-
   </div>
 </div>
 

@@ -270,20 +270,56 @@ public class DatabaseManager {
      */
     public List<Household> getAllHouseholds() throws SQLException {
         List<Household> households = new ArrayList<>();
-        String selectSQL = "SELECT * FROM Households";
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(selectSQL)) {
-            while (rs.next()) {
-                Household household = new Household();
-                household.setBuildingNum(rs.getInt("buildingNum"));
-                household.setUnitNum(rs.getInt("unitNum"));
-                household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
-                household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
-                household.setYearOfResidence(rs.getInt("yearOfResidence"));
-                households.add(household);
-            }
+        String query = "SELECT * FROM Households";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            Household household = new Household();
+            household.setBuildingNum(rs.getInt("buildingNum"));
+            household.setUnitNum(rs.getInt("unitNum"));
+            household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
+            household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
+            household.setYearOfResidence(rs.getInt("yearOfResidence"));
+
+            household.setMembers(getMembersByHousehold(household.getBuildingNum(), household.getUnitNum()));
+
+            households.add(household);
         }
         return households;
+    }
+
+    public List<Member> getMembersByHousehold(int buildingNum, int unitNum) throws SQLException {
+        List<Member> members = new ArrayList<>();
+        String query = "SELECT * FROM Members WHERE buildingNum = ? AND unitNum = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, buildingNum);
+        pstmt.setInt(2, unitNum);
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            Member member = new Member();
+            member.setLastName(rs.getString("lastName"));
+            member.setFirstName(rs.getString("firstName"));
+            member.setMiddleName(rs.getString("middleName"));
+            member.setGender(rs.getString("gender"));
+            member.setBirthday(LocalDate.parse(rs.getString("birthday")));
+            member.setHealthStatus(rs.getString("healthStatus"));
+            member.setPwdType(rs.getString("pwdType"));
+            member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
+            member.setCivilStatus(rs.getString("civilStatus"));
+            member.setContactNumber(rs.getString("contactNumber"));
+            member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
+            member.setOccupation(rs.getString("occupation"));
+            member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
+            member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setBuildingNum(rs.getInt("buildingNum"));
+            member.setUnitNum(rs.getInt("unitNum"));
+            member.setProfileImagePath(rs.getString("profileImagePath"));
+
+            members.add(member);
+        }
+        return members;
     }
 
     /**
@@ -294,7 +330,7 @@ public class DatabaseManager {
      */
     public List<Member> getAllMembers() throws SQLException {
         List<Member> members = new ArrayList<>();
-        String query = "SELECT * FROM Members";
+        String query = "SELECT * FROM Members WHERE isMainRespondent = 0";
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
@@ -323,6 +359,39 @@ public class DatabaseManager {
         return members;
     }
 
+    public Member getMainRespondent(int buildingNum, int unitNum) throws SQLException {
+        String query = "SELECT * FROM Members WHERE buildingNum = ? AND unitNum = ? AND isMainRespondent = 1";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, buildingNum);
+        pstmt.setInt(2, unitNum);
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            Member member = new Member();
+            member.setLastName(rs.getString("lastName"));
+            member.setFirstName(rs.getString("firstName"));
+            member.setMiddleName(rs.getString("middleName"));
+            member.setGender(rs.getString("gender"));
+            member.setBirthday(LocalDate.parse(rs.getString("birthday")));
+            member.setHealthStatus(rs.getString("healthStatus"));
+            member.setPwdType(rs.getString("pwdType"));
+            member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
+            member.setCivilStatus(rs.getString("civilStatus"));
+            member.setContactNumber(rs.getString("contactNumber"));
+            member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
+            member.setOccupation(rs.getString("occupation"));
+            member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
+            member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setBuildingNum(rs.getInt("buildingNum"));
+            member.setUnitNum(rs.getInt("unitNum"));
+            member.setProfileImagePath(rs.getString("profileImagePath"));
+
+            return member;
+        }
+
+        return null;
+    }
+
     
     /**
      * Displays the contents of a specified table ordered by a given condition.
@@ -345,4 +414,26 @@ public class DatabaseManager {
 
     }
 
+    public Household getHousehold(int buildingNum, int unitNum) throws SQLException {
+        Household household = null;
+        String query = "SELECT * FROM Households WHERE buildingNum = ? AND unitNum = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, buildingNum);
+        pstmt.setInt(2, unitNum);
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            household = new Household();
+            household.setBuildingNum(rs.getInt("buildingNum"));
+            household.setUnitNum(rs.getInt("unitNum"));
+            household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
+            household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
+            household.setYearOfResidence(rs.getInt("yearOfResidence"));
+        }
+
+        rs.close();
+        pstmt.close();
+
+        return household;
+    }
 }

@@ -1,5 +1,7 @@
 package com.s11group2.profiling_database.Model;
 
+import java.util.List;
+
 public class Household {
     //@EmbeddedId
     //private HouseholdId id;
@@ -9,6 +11,7 @@ public class Household {
     private double monthlyExpenditure;
     private double monthlyAmortization;
     private int yearOfResidence;
+    private List<Member> members;
 
 
     public int getBuildingNum(){
@@ -49,6 +52,25 @@ public class Household {
 
     public void setYearOfResidence(int yearOfResidence) {
         this.yearOfResidence = yearOfResidence;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
+
+    public Member getMainRespondent() {
+        if (members != null) {
+            for (Member member : members) {
+                if (member.getIsMainRespondent() != null && member.getIsMainRespondent() == 1) {
+                    return member;
+                }
+            }
+        }
+        return null;
     }
     /*
     @Override
