@@ -240,7 +240,10 @@ body {
     display: block;
   }
 
-.units{
+  .units {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 units per row */
+    gap: 10px; /* Adjust the gap between units as needed */
     background-color: #00000023;
     border-radius: 5px;
     margin: 4px, 4px;
@@ -249,30 +252,35 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     text-align: justify;
+    justify-content: center;
 }
+
 .units-row>span{
     font-weight: bold;
 }
-.units-row{
+.units-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center; /* Center the units horizontally */
     padding: 10px;
     width: 100%;
+    gap: 10px; /* Add gap between units */
 }
 
-.summary-units{
+.summary-units {
+    flex: 1 1 calc(33.33% - 10px); /* Adjust width to 3 units per row */
+    max-width: 80%;/* Ensure max-width also follows the same logic */
     background-color: #4DA9AF;
-    width: 280px;
     height: 245px;
     border-radius: 15px;
     margin: 5px;
-    padding: 2% ;
+    padding: 5%;
     font-family: "Inter", Helvetica;
     color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: box-shadow 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
+
 
 .summary-units > span {
     letter-spacing: 0;
