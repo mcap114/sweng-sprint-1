@@ -2,6 +2,8 @@ package com.s11group2.profiling_database.Model;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The DatabaseManager class provides methods to manage the SQLite database,
@@ -260,6 +262,66 @@ public class DatabaseManager {
         return false;
     }
 
+    /**
+     * Retrieves all households from the database.
+     *
+     * @return List of Household objects
+     * @throws SQLException if a database access error occurs
+     */
+    public List<Household> getAllHouseholds() throws SQLException {
+        List<Household> households = new ArrayList<>();
+        String selectSQL = "SELECT * FROM Households";
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(selectSQL)) {
+            while (rs.next()) {
+                Household household = new Household();
+                household.setBuildingNum(rs.getInt("buildingNum"));
+                household.setUnitNum(rs.getInt("unitNum"));
+                household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
+                household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
+                household.setYearOfResidence(rs.getInt("yearOfResidence"));
+                households.add(household);
+            }
+        }
+        return households;
+    }
+
+    /**
+     * Retrieves all members from the Members table.
+     *
+     * @return a list of Member objects representing all members in the database
+     * @throws SQLException if a database access error occurs
+     */
+    public List<Member> getAllMembers() throws SQLException {
+        List<Member> members = new ArrayList<>();
+        String query = "SELECT * FROM Members";
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Member member = new Member();
+                member.setLastName(rs.getString("lastName"));
+                member.setFirstName(rs.getString("firstName"));
+                member.setMiddleName(rs.getString("middleName"));
+                member.setGender(rs.getString("gender"));
+                member.setBirthday(rs.getObject("birthday", LocalDate.class));
+                member.setHealthStatus(rs.getString("healthStatus"));
+                member.setPwdType(rs.getString("pwdType"));
+                member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
+                member.setCivilStatus(rs.getString("civilStatus"));
+                member.setContactNumber(rs.getString("contactNumber"));
+                member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
+                member.setOccupation(rs.getString("occupation"));
+                member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
+                member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+                member.setBuildingNum(rs.getInt("buildingNum"));
+                member.setUnitNum(rs.getInt("unitNum"));
+                member.setProfileImagePath(rs.getString("profileImagePath"));
+
+                members.add(member);
+            }
+        }
+        return members;
+    }
 
     
     /**

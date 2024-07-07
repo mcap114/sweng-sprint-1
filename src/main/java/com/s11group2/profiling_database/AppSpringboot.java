@@ -1,4 +1,4 @@
-package com.s11group2.profiling_database.Controller;
+package com.s11group2.profiling_database;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

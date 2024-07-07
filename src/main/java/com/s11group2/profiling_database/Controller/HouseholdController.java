@@ -2,7 +2,6 @@ package com.s11group2.profiling_database.Controller;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Util.InputValidation;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +16,6 @@ import java.util.logging.Logger;
 
 @Controller
 public class HouseholdController {
-    
-    //@Autowired
-    //private ImageService imageService;
-
-    @Value("${upload.path}")
-    private String uploadPath;
 
     private DatabaseManager dbManager;
 
