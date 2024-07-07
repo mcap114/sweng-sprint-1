@@ -174,7 +174,7 @@ public class DatabaseManager {
      * @param unitNum the unit number
      * @throws SQLException if a database access error occurs
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, File profileImage) throws SQLException {
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, File profileImage) throws SQLException, IOException {
         String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
         pstmt.setString(1, lastName);
@@ -197,7 +197,7 @@ public class DatabaseManager {
         String inputPath = profileImage.getCanonicalPath();
 
         try {
-            File temp = File.createTempFile("img", ".jpg", new File("../../../../Javadoc/resources/"));
+            File temp = File.createTempFile("img", ".jpg", new File("../../../../main/resources/"));
             String profileImagePath = temp.getCanonicalPath();
 
             convertImage(inputPath, profileImagePath);
