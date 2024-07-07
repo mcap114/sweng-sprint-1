@@ -2,8 +2,14 @@ package com.s11group2.profiling_database.Model;
 
 import java.sql.*;
 import java.time.LocalDate;
+
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * The DatabaseManager class provides methods to manage the SQLite database,
@@ -50,6 +56,7 @@ public class DatabaseManager {
     public void createTables() throws SQLException {
         createHouseholdTable();
         createMemberTable();
+        createPetsTable();
         conn.createStatement().execute("PRAGMA foreign_keys = ON");
     }
 
@@ -62,9 +69,9 @@ public class DatabaseManager {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS Households (" +
                 "buildingNum integer not null, " +
                 "unitNum integer not null, " +
-                "monthlyExpenditure real, " +
-                "monthlyAmortization real, " +
-                "yearOfResidence integer, " +
+                "monthlyExpenditure real not null, " +
+                "monthlyAmortization real not null, " +
+                "yearOfResidence integer not null, " +
                 "constraint pk_building_unit primary key (buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
@@ -78,24 +85,42 @@ public class DatabaseManager {
      */
     private void createMemberTable() throws SQLException {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS Members (" +
-                "lastName varchar(255), " +
-                "firstName varchar(255), " +
-                "middleName varchar(255), " +
-                "gender varchar(255), " +
-                "birthday date, " +
-                "healthStatus varchar(255), " +
-                "pwdType varchar(255), " +
-                "isSeniorCitizen integer, " +
-                "civilStatus varchar(255), " +
-                "contactNumber varchar(255), " +
-                "highestEducationalAttainment varchar(255), " +
-                "occupation varchar(255), " +
-                "monthlyIncome real, " +
-                "isMainRespondent integer, " +
-                "buildingNum integer, " +
-                "unitNum integer, " +
-                "profileImagePath varchar(255), " +
-                "constraint buildingUnitNum_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
+                "lastName varchar(255) not null, " +
+                "firstName varchar(255) not null, " +
+                "middleName varchar(255) not null, " +
+                "gender varchar(255) not null, " +
+                "birthday date not null, " +
+                "healthStatus varchar(255) not null, " +
+                "pwdType varchar(255) not null, " +
+                "isSeniorCitizen integer not null, " +
+                "civilStatus varchar(255) not null, " +
+                "contactNumber varchar(255) not null, " +
+                "contactNumber varchar(255) not null, " +
+                "highestEducationalAttainment varchar(255) not null, " +
+                "occupation varchar(255) not null, " +
+                "monthlyIncome real not null, " +
+                "isMainRespondent integer not null, " +
+                "buildingNum integer not null, " +
+                "unitNum integer not null, " +
+                "profileImagePath varchar(255) not null, " +
+                "constraint buildingUnitNumMembers_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
+                ");";
+        Statement stmt = conn.createStatement();
+        stmt.execute(createTableSQL);
+    }
+
+    /**
+     * Creates the Pets table in the database.
+     *
+     * @throws SQLException if a database access error occurs
+     */
+    private void createPetsTable() throws SQLException {
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS Pets (" +
+                "petName varchar(255) not null, " +
+                "petBreed varchar(255) not null, " +
+                "buildingNum integer not null, " +
+                "unitNum integer not null, " +
+                "constraint buildingUnitNumPets_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
         stmt.execute(createTableSQL);
@@ -149,7 +174,7 @@ public class DatabaseManager {
      * @param unitNum the unit number
      * @throws SQLException if a database access error occurs
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, String profileImagePath) throws SQLException {
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, File profileImage) throws SQLException {
         String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
         pstmt.setString(1, lastName);
@@ -168,7 +193,45 @@ public class DatabaseManager {
         pstmt.setInt(14, isMainRespondent);
         pstmt.setInt(15, buildingNum);
         pstmt.setInt(16, unitNum);
+
+        String inputPath = profileImage.getCanonicalPath();
+
+        try {
+            File temp = File.createTempFile("img", ".jpg", new File("../../../../Javadoc/resources/"));
+            String profileImagePath = temp.getCanonicalPath();
+
+            convertImage(inputPath, profileImagePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         pstmt.setString(17, profileImagePath);
+        pstmt.executeUpdate();
+    }
+
+    public void convertImage(String inputPath, String outputPath) throws IOException {
+        BufferedImage image = ImageIO.read(new File(inputPath));
+		BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), image.TYPE_INT_RGB);
+		newImage.createGraphics().drawImage(image, 0, 0, Color.white, null);
+		ImageIO.write(newImage, "jpg", new File(outputPath));
+    }
+
+    /**
+     * Inserts a record into the Pets table.
+     *
+     * @param petName the pet's name
+     * @param petBreed the pet's breed
+     * @param buildingNum the building number
+     * @param unitNum the unit number
+     * @throws SQLException if a database access error occurs
+     */
+    public void insertPet(String petName, String petBreed, String middleName, Integer buildingNum, Integer unitNum) throws SQLException {
+        String insertSQL = "INSERT INTO Pets (petName, petBreed, buildingNum, unitNum) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+        pstmt.setString(1, petName);
+        pstmt.setString(2, petBreed);
+        pstmt.setInt(3, buildingNum);
+        pstmt.setInt(4, unitNum);
         pstmt.executeUpdate();
     }
 
