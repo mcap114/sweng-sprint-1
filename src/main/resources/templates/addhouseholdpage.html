@@ -12,7 +12,8 @@
 
 <div class="main-page">
   <header th:replace="partials/header :: header"></header>
-  <div class="input-addpage">
+  <br><br><br><br><br><br>
+  <div class="input-page">
     <div id="heading-1" class="heading-1">
       <p>Add New Household</p>
       <div class="back-button">
@@ -59,15 +60,10 @@
         <span>Main Respondent</span>
         <div class="main-respondent-body">
           <div class="image-panel">
-            <div class="image-field">
-              <label>Upload Picture</label>
-              <div id="preview" class="image-display"> 
-                <img class="image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-${memberCount}">
-              </div>
-              <div class="image-field">
-                <input type="file" id="resPfp-${memberCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${memberCount}')" required/>
-              </div>
-          </div>
+            <div class="input-field">
+              <label for="resPfp">Upload Picture</label>
+              <input type="file" id="resPfp" name="resPfp" accept="image/jpeg, image/png" required/>
+            </div>
           </div>
 
           <div class="text-panel">
@@ -164,28 +160,14 @@
       <div id="additional-fields">
 
       </div>
-
-      <div class="additional">
-        <div class="empty-panel">
-        </div>
-        <div class="additional-panel">
-          <div class="add-button" onclick="addMember()">
-            <img src="svg/add-group.svg">
-            <span>Add Member</span>
-          </div>
-          <div class="add-button" onclick="addPet()">
-            <img src="svg/plus.svg">
-            <span>Add Pet</span>
-          </div>
-        </div>
-        <div class="submit-panel">
-          <div class="submit-button">
-            <input type="submit" value="Submit">
-          </div>
-        </div>
-
+      <div class="add-button" onclick="addMember()">
+        <span>+ Add a Household Member</span>
       </div>
-      <div class="footer">
+      <div class="add-button" onclick="addPet()">
+        <span>+ Add a Household Pet</span>
+      </div>
+      <div class="submit-button">
+        <input type="submit" value="Submit">
       </div>
     </form>
   </div>

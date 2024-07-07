@@ -16,28 +16,34 @@
         <div id="heading-1" class="heading-1">
             <p>Select a Unit to View</p>
             <div class="back-button">
-                <img class="back-button" src="/png/left-arrow.png">
-                <span class="back-button" th:href="@{/viewunits.html}">Back to units</span>
+                <img class="back-button" src="../static/png/left-arrow.png">
+                <span class="back-button" onclick="window.location.href='/viewunits.html'">Back to units</span>
             </div>
         </div>
         <hr>
         <!-- add info of database -->
         <div class="specific-unit">
-            <span class="big-letter" th:text="'Building ' + ${household.buildingNum} + ' Unit ' + ${household.unitNum}"></span>
+            <span class="big-letter">Building 3 Unit 103</span>
             <div class="specific-deets">
                 <div class="section-deets">
                     <div class="named-areas">
                         <div class="named-area">
                             Year of Residence
-                            <div class="detail" th:text="${household.yearOfResidence}"></div>
+                            <div class="detail">
+                                2022
+                            </div>
                         </div>
                         <div class="named-area">
                             Monthly Household Expenditure
-                            <div class="detail" th:text="${household.monthlyExpenditure}"></div>
+                            <div class="detail">
+                                2022
+                            </div>
                         </div>
                         <div class="named-area">
                             Monthly Unit Amortization
-                            <div class="detail" th:text="${household.monthlyAmortization}"></div>
+                            <div class="detail">
+                                2022
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,84 +51,109 @@
                     <div class="profile-pic">
                         <div class="named-area">
                             Main Respondent
-                            <div class="detail-img"><img src="/png/profile.png"></div>
+                            <div class="detail-img"><img src="../static/png/profile.png"></div>
                         </div>
                     </div>
                     <div class="simple-flex">
                         <div class="named-areas">
                             <div class="named-area">
                                 Last Name
-                                <div class="detail" th:text="${mainRespondent.lastName}"></div>
+                                <div class="detail">
+                                    Dela Cruz
+                                </div>
                             </div>
                             <div class="named-area">
                                 First Name
-                                <div class="detail" th:text="${mainRespondent.firstName}"></div>
+                                <div class="detail">
+                                    Juan
+                                </div>
                             </div>
                             <div class="named-area">
                                 Middle Name
-                                <div class="detail" th:text="${mainRespondent.middleName}"></div>
+                                <div class="detail">
+                                    Villaflores
+                                </div>
                             </div>
                         </div>
                         <div class="named-areas">
                             <div class="named-area">
                                 Gender
-                                <div class="detail" th:text="${mainRespondent.gender}"></div>
+                                <div class="detail">
+                                    Male
+                                </div>
                             </div>
                             <div class="named-area">
                                 Birthday
-                                <div class="detail" th:text="${mainRespondent.birthday}"></div>
+                                <div class="detail">
+                                    08/04/1985
+                                </div>
                             </div>
                             <div class="named-area">
                                 Civil Status
-                                <div class="detail" th:text="${mainRespondent.civilStatus}"></div>
+                                <div class="detail">
+                                    Married
+                                </div>
                             </div>
                             <div class="named-area">
                                 Contact Number
-                                <div class="detail" th:text="${mainRespondent.contactNumber}"></div>
+                                <div class="detail">
+                                    09163994501
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Additional household members loop -->
-                <div th:each="member : ${otherMembers}">
-                    <div class="section-deets">
-                        <div class="profile-pic">
+                <div class="section-deets">
+                    <div class="profile-pic">
+                        <div class="named-area">
+                            Household Member
+                            <div class="detail-img"><img src="../static/png/profile.png"></div>
+                        </div>
+                    </div>
+                    <div class="simple-flex">
+                        <div class="named-areas">
                             <div class="named-area">
-                                Household Member
-                                <div class="detail-img"><img src="/png/profile.png"></div>
+                                Last Name
+                                <div class="detail">
+                                    Dela Cruz
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                First Name
+                                <div class="detail">
+                                    Julliete
+                                </div>
+                            </div>
+                            <div class="named-area">
+                                Middle Name
+                                <div class="detail">
+                                    Osmena
+                                </div>
                             </div>
                         </div>
-                        <div class="simple-flex">
-                            <div class="named-areas">
-                                <div class="named-area">
-                                    Last Name
-                                    <div class="detail" th:text="${member.lastName}"></div>
-                                </div>
-                                <div class="named-area">
-                                    First Name
-                                    <div class="detail" th:text="${member.firstName}"></div>
-                                </div>
-                                <div class="named-area">
-                                    Middle Name
-                                    <div class="detail" th:text="${member.middleName}"></div>
+                        <div class="named-areas">
+                            <div class="named-area">
+                                Gender
+                                <div class="detail">
+                                    Female
                                 </div>
                             </div>
-                            <div class="named-areas">
-                                <div class="named-area">
-                                    Gender
-                                    <div class="detail" th:text="${member.gender}"></div>
+                            <div class="named-area">
+                                Birthday
+                                <div class="detail">
+                                    08/04/1985
                                 </div>
-                                <div class="named-area">
-                                    Birthday
-                                    <div class="detail" th:text="${member.birthday}"></div>
+                            </div>
+                            <div class="named-area">
+                                Civil Status
+                                <div class="detail">
+                                    Married
                                 </div>
-                                <div class="named-area">
-                                    Civil Status
-                                    <div class="detail" th:text="${member.civilStatus}"></div>
-                                </div>
-                                <div class="named-area">
-                                    Contact Number
-                                    <div class="detail" th:text="${member.contactNumber}"></div>
+                            </div>
+                            <div class="named-area">
+                                Contact Number
+                                <div class="detail">
+                                    09273328928
                                 </div>
                             </div>
                         </div>

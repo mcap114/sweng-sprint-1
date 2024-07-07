@@ -17,55 +17,161 @@
       <p>Select a Unit to View</p>
       <div class="back-button">
         <img class="back-button" src="/png/left-arrow.png">
-        <span class="back-button" onclick="window.location.href='/'">Back to Menu</span>
+        <span class="back-button" onclick="window.location.href='/menu.html'">Back to Menu</span>
       </div>
     </div>
     <hr>
-
     <!-- add info of database -->
     <div class="search-div">
-      <div class="search-field">
+      <div class="input-field">
         <input class="search" type="text" name="buildingNum" placeholder="Type to Search"/>
       </div>
-
-      <div class="filter-container">
-        <div class="filter-button" onclick="toggleDropdownSort()">
-          <img class="filter-icon" src="/png/sorting-options.png">
-          <span class="filter-text">Sort</span>
-        </div>
-        <div id="dropdown-menu" class="dropdown-content">
-          <a href="#">Numerical (Ascending)</a>
-          <a href="#">Alphabetical (A-Z)</a>
-          <a href="#">Recently Added</a>
-        </div>
+      <div class="filter-button">
+        <img class="filter-button" src="/png/sorting-options.png">
+        <span class="filter-button">Filter</span>
       </div>
-
-      <div class="filter2-container">
-        <div class="filter2-button" onclick="toggleDropdownFilter()">
-          <img class="filter2-icon" src="/png/sorting-options.png">
-          <span class="filter2-text">Filter</span>
-        </div>
-        <div id="dropdown-menu-filter2" class="dropdown-content-filter2">
-          <a href="#">By Building Number</a>
-          <a href="#">By Unit Number</a>
-          <a href="#">By Respondent Name</a>
-        </div>
-      </div>
-      
     </div>
     <div class="units">
-      <div class="units-row" th:each="household : ${households}">
-
-        <div class="summary-units" th:onclick="'window.location.href=\'/viewaunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
-        <span th:utext="'Building ' + ${household.buildingNum} + '<br/> Unit ' + ${household.unitNum}"></span>
-          <div class="custom-hr"></div>
+      <div class="units-row">
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
           <div class="deets">
-            <p th:text="'Number of Members: ' + ${household.members.size()}"></p>
-            <p>Main Respondent:</p>
-            <p th:each="member : ${household.members}" th:if="${member.isMainRespondent == 1}" th:text="${member.firstName} + ' ' + ${member.lastName}"></p>
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
           </div>
         </div>
-        </a>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
+        <div class="summary-units" onclick="window.location.href='viewaunit.html'">
+          <span>Building 1<br> Unit 103</span>
+          <div class="deets">
+            Number of Members: 2
+            <br><br>
+            Main Respondent:<br>
+            Juan Dela Cruz
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -73,4 +179,3 @@
 
 </body>
 </html>
-
