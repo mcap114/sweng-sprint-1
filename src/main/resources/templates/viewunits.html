@@ -55,6 +55,7 @@
       <div class="units-row" th:each="household : ${households}">
         <div class="summary-units" th:onclick="/">
           <span th:utext="'Building ' + ${household.buildingNum} + '<br/> Unit ' + ${household.unitNum}"></span>
+          <div class="custom-hr"></div>
           <div class="deets">
             <p th:text="'Number of Members: '"></p>
             <p>Main Respondent:</p>
