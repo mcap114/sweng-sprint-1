@@ -34,3 +34,7 @@ window.onclick = function(event) {
   }
 }
 
+function clearSearch() {
+    document.getElementById('searchInput').value = '';
+  }
+

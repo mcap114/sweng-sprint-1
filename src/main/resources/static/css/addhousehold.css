@@ -117,21 +117,6 @@ form .image-field{
   letter-spacing: 0;
 }
 
-.search-field input {
-  outline: none;
-  font-size: 14px;
-  font-weight: 400;
-  color: #333;
-  border-radius: 50px;
-  border: 1px solid #ccc;
-  padding: 10px 20px;
-  height: 40px;
-  margin: 8px 0;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
 .input-field input, select {
   outline: none;
   font-size: 14px;
@@ -160,12 +145,6 @@ form .image-field{
 .input-field input:focus:valid {
   border-color: green;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-.search-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
 }
 
 .image-field label{
