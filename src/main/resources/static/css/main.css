@@ -7,7 +7,7 @@
 
 body {
     margin: 0px;
-    background-color: #fff0d6;
+    background-color: #E7F0DC;
     overflow: auto;
 }
 
@@ -116,41 +116,41 @@ body {
     width: 100%;
 }
 .header-bar{
-    background-color: #ffffff;
+    background-color: #405D4C;
     display: flex;
     flex-direction: row;
     height: 103px;
     z-index: 10;
+    border-bottom: 1px solid #000000;
 }
 
 .partner-logo {
     position: absolute;
-    width: 97px;
-    height: 97px;
-    top: 3px;
-    left: 100px;
+    width: 80px;
+    height: 80px;
+    top: 10px;
+    left: 110px;
 }
 
 .APOAMF-database {
     position: absolute;
     width: 163px;
-    top: 23px;
+    top: 20px;
     left: 203px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
     font-size: 28px;
     letter-spacing: 0;
-    line-height: normal;
+    line-height: 1.2;
 }
 
 .text-wrapper-APOAMF {
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .text-wrapper-Database {
-    font-style: italic;
     font-size: 22px;
+    display: block;
 }
 
 .menu {
@@ -185,7 +185,7 @@ body {
     width: 35%;
     top: 75%; 
     left: 25%;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     transform: translate(-50%, -50%); 
     color: white; 
     font-size: 2em; 
@@ -197,7 +197,7 @@ body {
     width: 45%;
     top: 85%; 
     left: 30%;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     transform: translate(-50%, -50%); 
     color: white; 
     font-size: 1.2em; 
@@ -233,7 +233,7 @@ body {
 }
 
 .filter-button > span {
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-size: 14px;
     letter-spacing: 0;
@@ -256,7 +256,7 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .dropdown-content a:hover {
@@ -279,7 +279,7 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .dropdown-content-filter2 a:hover {
@@ -315,7 +315,7 @@ body {
 }
 
 .filter2-button > span {
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-size: 14px;
     letter-spacing: 0;
@@ -328,8 +328,8 @@ body {
 
 .units {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 3 units per row */
-    gap: 5px; /* Adjust the gap between units as needed */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px; 
     background-color: #00000023;
     border-radius: 5px;
     margin: 4px;
@@ -347,7 +347,7 @@ body {
 .units-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the units horizontally */
+    justify-content: center;
     padding: 0;
     width: 100%;
     gap: 5px; /* Add gap between units */
@@ -361,7 +361,7 @@ body {
     border-radius: 20px;
     margin: 10px;
     padding: 25px;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
@@ -397,7 +397,7 @@ body {
     border-radius: 5px;
     margin: 5px;
     padding: 2% ;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
 }
 
@@ -415,7 +415,7 @@ body {
     border-radius: 5px;
     margin: 5px;
     padding: 2% ;
-    font-family: "Inter", Helvetica;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
 }
 
@@ -432,61 +432,62 @@ body {
 
 
 .specific-unit{
-    background-color: #57804D;
+    background-color: #ffffff;
     width: 99%;
     height: auto;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 2% ;
-    font-family: "Inter", Helvetica;
-    color: #ffffff;
+    border-radius: 20px;
+    margin: 10px;
+    margin-top: 40px;
+    padding: 20px ;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .specific-deets{
-    background-color: #8AB380;
-    width: 99%;
-    height: 90%;
-    border-radius: 5px;
-    margin: 5px;
+    background-color: #f5f6f7;
+    width: 100%;
+    height: auto;
     margin-top: 15px;
-    padding: 2% ;
-    font-family: "Inter", Helvetica;
-    color: #ffffff;
+    padding: 15px;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
 
 }
 
 .big-letter{
-    font-size: 60px;
+    font-size: 32px;
     font-weight:bold;
+    color: #4a4a4a;
 }
 
 .section-deets{
-    border-bottom:#000000 thin;
-    padding: 1%;
-    border-style: solid;
+    border-bottom:1px solid #000000 ;
+    padding: 10px 0;
     display:flex;
+    justify-content: space-between;
 
 }
 .profile-pic{
-    padding-right: 5%;
+    padding-right: 20px;
 }
 .named-areas{
     display: flex;
     flex-direction: row;
-    align-content: center;
 }
 
 .named-area{
     display: flex;
     flex-direction: column;
-    padding-right: 3%;
-    width: 225px;
-    align-content: center;
+    padding-bottom: 10px;
+    margin: 30px;
+    width: auto;
     
 }
 
 .detail{
-    background-color: #1D2A49;
+    background-color: #ffffff;
     opacity: 0.84;
     padding: 5px;
     margin-top: 10px;
@@ -497,18 +498,21 @@ body {
 }
 
 .detail-img{
-    background-color: #1D2A49;
+    background-color: #ffffff;
     opacity: 0.84;
-    padding: 5px;
+    padding: 10px;
     width: 250px;
     height:250px;
     margin: 5px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 100%;
+    border: 1px solid #000000;
 }
 
 .detail-img>img{
     width:100%;
+    border-radius: 90%;
+    padding: 10px;
 }
 
 .simple-flex{
@@ -585,7 +589,7 @@ body {
 }
 
 .home-text {
-    font-family: Inter, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 20px;
 }

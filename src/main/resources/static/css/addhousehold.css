@@ -28,7 +28,7 @@
 .heading-1 > p {
   padding-bottom: 5px;
   left: 50px;
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: #1d2a49;
   font-size: 28px;
@@ -58,7 +58,7 @@
 }
 
 .back-button > span {
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   color: #ffffff;
   font-size: 14px;
   letter-spacing: 0;
@@ -110,7 +110,7 @@ form .image-field{
 
 
 .input-field label {
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: #1d2a49;
   font-size: 12px;
@@ -148,7 +148,7 @@ form .image-field{
 }
 
 .image-field label{
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: #1d2a49;
   font-size: 12px;
@@ -197,7 +197,7 @@ form .image-field{
 }
 
 .fields span {
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   color: #1d2a49;
   font-size: 20px;
@@ -249,7 +249,7 @@ form .image-field{
 }
 
 .add-button span  {
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   font-weight: bold;
   color: white;
@@ -278,7 +278,7 @@ form .image-field{
 }
 
 .submit-button input {
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   font-weight: bold;
   background-color: #57804D;
@@ -302,7 +302,7 @@ form .image-field{
 .heading-2 > p {
   padding-bottom: 5px;
   left: 50px;
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: #1d2a49;
   font-size: 20px;
@@ -335,7 +335,7 @@ form .image-field{
 
 .delete-button > span {
   margin: 5px;
-  font-family: "Inter", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   color: #ffffff;
   font-weight: 400;
   font-size: 14px;
