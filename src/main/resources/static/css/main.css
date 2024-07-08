@@ -213,7 +213,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 85px;
-    background-color: #7FCCD1;
+    background-color: #78ABA8;
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
@@ -295,7 +295,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 85px;
-    background-color: #7FCCD1;
+    background-color: #78ABA8;
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
@@ -356,7 +356,7 @@ body {
 .summary-units {
     flex: 1 1 calc(25% - 10px); 
     max-width: 100%;
-    background-color: #4DA9AF;
+    background-color: #78ABA8;
     height: 245px;
     border-radius: 20px;
     margin: 10px;
@@ -432,8 +432,8 @@ body {
 
 
 .specific-unit{
-    background-color: #ffffff;
-    width: 99%;
+    background-color: #f4f4f4;
+    width: 75%;
     height: auto;
     border-radius: 20px;
     margin: 10px;
@@ -445,12 +445,12 @@ body {
 }
 
 .specific-deets{
-    background-color: #f5f6f7;
+    background-color: #e7e7e7;
     width: 100%;
     height: auto;
     margin-top: 15px;
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 20px;
     font-family: 'Montserrat', sans-serif;
     color: #000000;
 
@@ -472,6 +472,7 @@ body {
 .profile-pic{
     padding-right: 20px;
 }
+
 .named-areas{
     display: flex;
     flex-direction: row;
