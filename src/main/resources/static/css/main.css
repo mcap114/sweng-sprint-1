@@ -126,20 +126,20 @@ body {
 
 .partner-logo {
     position: absolute;
-    width: 80px;
-    height: 80px;
-    top: 10px;
-    left: 110px;
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    left: 140px;
 }
 
 .APOAMF-database {
     position: absolute;
     width: 163px;
-    top: 20px;
-    left: 203px;
+    top: 28px;
+    left: 213px;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
-    font-size: 28px;
+    font-size: 20px;
     letter-spacing: 0;
     line-height: 1.2;
 }
@@ -149,7 +149,7 @@ body {
 }
 
 .text-wrapper-Database {
-    font-size: 22px;
+    font-size: 20px;
     display: block;
 }
 
@@ -159,6 +159,12 @@ body {
     height: 50px;
     top: 27px;
     left: 19px;
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.menu:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    filter: brightness(0.8); /* Darken the image slightly */
 }
 
 .home-page {
@@ -586,26 +592,56 @@ body {
 .home-link {
     background-color: #57804d;
     gap: 20px;
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.home-link:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    filter: brightness(0.8); /* Darken the image slightly */
 }
 
 .view-link {
     background-color: #4DA9AF;
     gap: 20px;
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.view-link:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    filter: brightness(0.8); /* Darken the image slightly */
 }
 
 .add-link {
     background-color: #70A563;
     gap: 20px;
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.add-link:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    filter: brightness(0.8); /* Darken the image slightly */
 }
 
 .edit-link {
     background-color: #7972D0;
     gap: 20px;
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.edit-link:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    filter: brightness(0.8); /* Darken the image slightly */
 }
 
 .delete-link {
     background-color: #C14747;
     gap: 20px;
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.delete-link:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    filter: brightness(0.8); /* Darken the image slightly */
 }
 
 .home-icon {
