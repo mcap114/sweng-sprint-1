@@ -78,9 +78,9 @@ public class HouseholdController {
                     lastName, firstName, middleName, gender, birthDate, healthStatus, pwdType, isSeniorCitizen,
                     civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent,
                     buildingNum, unitNum, adsImagesString
+
             );
 
-           
             return "index";
         } catch (SQLException e) {
             System.out.println("Failed to register household: " + e.getMessage());
