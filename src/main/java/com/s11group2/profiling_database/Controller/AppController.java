@@ -117,6 +117,19 @@ public class AppController {
         }
     }
 
+    public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum) {
+        try {
+            // Input validation
+            validatePetInput(petName, petSpecies, buildingNum, unitNum);
+            dbManager.insertPet(petName, petSpecies, buildingNum, unitNum);
+        } catch (ValidationException e) {
+            System.err.println("Validation Error: " + e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error inserting pet: " + e.getMessage());
+        }
+    }
+
     /**
      * Handles the image upload and returns the file path.
      *
@@ -224,6 +237,13 @@ public class AppController {
         if (occupation == null || occupation.isEmpty()) throw new ValidationException("Occupation cannot be empty.");
         if (monthlyIncome == null || monthlyIncome <= 0) throw new ValidationException("Monthly income must be positive.");
         if (isMainRespondent == null) throw new ValidationException("Main respondent status cannot be null.");
+        if (buildingNum == null || buildingNum <= 0) throw new ValidationException("Building number must be positive.");
+        if (unitNum == null || unitNum <= 0) throw new ValidationException("Unit number must be positive.");
+    }
+
+    private void validatePetInput(String petName, String petSpecies, Integer buildingNum, Integer unitNum) throws ValidationException {
+        if (petName == null || petName.isEmpty()) throw new ValidationException("Pet name cannot be empty.");
+        if (petSpecies == null || petSpecies.isEmpty()) throw new ValidationException("Pet species cannot be empty.");
         if (buildingNum == null || buildingNum <= 0) throw new ValidationException("Building number must be positive.");
         if (unitNum == null || unitNum <= 0) throw new ValidationException("Unit number must be positive.");
     }

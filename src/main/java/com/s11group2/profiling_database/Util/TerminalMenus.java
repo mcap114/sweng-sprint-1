@@ -50,8 +50,9 @@ public class TerminalMenus {
         System.out.println("View Profile Menu:");
         System.out.println("1. View Household Profiles");
         System.out.println("2. View Member Profiles");
-        System.out.println("3. Search");
-        System.out.println("4. Back to Main Menu");
+        System.out.println("3. View Pet Profiles");
+        System.out.println("4. Search");
+        System.out.println("5. Back to Main Menu");
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -64,9 +65,12 @@ public class TerminalMenus {
                 DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
                 break;
             case 3:
-                searchHouseholdsMenu();
+                DisplayUtil.displayTableContents(appController.fetchConnection(), "Pets");
                 break;
             case 4:
+                searchHouseholdsMenu();
+                break;
+            case 5:
                 return;
             default:
                 System.out.println("Invalid choice. Please try again.");
@@ -76,8 +80,9 @@ public class TerminalMenus {
     public void addHouseholdMenu() throws SQLException {
         System.out.println("Add Household Menu:");
         System.out.println("1. Add New Household Record");
-        System.out.println("2. Add Member to Household WIP");
-        System.out.println("3. Back to Main Menu");
+        System.out.println("2. Add Member to Household");
+        System.out.println("3. Add Pet to Household");
+        System.out.println("4. Back to Main Menu");
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -229,6 +234,30 @@ public class TerminalMenus {
                 }
                 break;
             case 3:
+
+            try {
+                System.out.print("Enter building number: ");
+                int buildingNum = InputValidation.readIntFromScanner(scanner);
+
+                System.out.print("Enter unit number: ");
+                int unitNum = InputValidation.readIntFromScanner(scanner);
+
+                System.out.print("Enter pet name: ");
+                String petName = scanner.nextLine().trim();
+                InputValidation.validateStringInput(petName);
+
+                System.out.print("Enter pet species: ");
+                String petSpecies = scanner.nextLine().trim();
+                InputValidation.validateStringInput(petSpecies);
+
+                appController.insertPet(petName, petSpecies, buildingNum, unitNum);
+                System.out.println("Pet record inserted successfully.");
+            } catch (Exception e) {
+                System.err.println("Error: " + e.getMessage());
+            }
+            break;
+
+            case 4:
                 return;
             default:
                 System.out.println("Invalid choice. Please try again.");
