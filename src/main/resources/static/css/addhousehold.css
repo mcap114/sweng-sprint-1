@@ -47,6 +47,7 @@
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   opacity: 84%;
+  text-decoration: none;
 }
 
 .back-button > img {
@@ -58,6 +59,13 @@
 }
 
 .back-button > span {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+.back-button > a {
   font-family: 'Montserrat', sans-serif;
   color: #ffffff;
   font-size: 14px;
