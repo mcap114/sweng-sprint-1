@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -41,6 +42,19 @@ public class ViewSearchController {
             model.addAttribute("errorMessage", "Failed to retrieve households from database.");
         }
         return "viewunits";
+    }
+
+    @GetMapping("/search")
+    public String searchHouseholds(@RequestParam String searchTerm, Model model) {
+        try {
+            List<Household> households = databaseManager.searchHouseholds(searchTerm);
+            model.addAttribute("households", households);
+            return "viewunits";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            model.addAttribute("errorMessage", "Failed to retrieve households.");
+            return "error";
+        }
     }
 
     @GetMapping("/viewaunit/{buildingNum}/{unitNum}")

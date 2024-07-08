@@ -298,9 +298,54 @@ public class DatabaseManager {
         List<Household> households = new ArrayList<>();
         String query = "SELECT * FROM Households";
 
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
 
+        while (rs.next()) {
+            Household household = new Household();
+            household.setBuildingNum(rs.getInt("buildingNum"));
+            household.setUnitNum(rs.getInt("unitNum"));
+            household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
+            household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
+            household.setYearOfResidence(rs.getInt("yearOfResidence"));
+
+            household.setMembers(getMembersByHousehold(household.getBuildingNum(), household.getUnitNum()));
+
+            households.add(household);
+        }
+
+        return households;
+    }
+
+    /**
+     * Retrieves all households from the database.
+     *
+     * @return List of Household objects
+     * @throws SQLException if a database access error occurs
+     */
+    public List<Household> searchHouseholds(String searchTerm) throws SQLException {
+        List<Household> households = new ArrayList<>();
+
+
+        String query = "SELECT h.*, m.* FROM Households h " +
+                "LEFT JOIN Members m ON h.buildingNum = m.buildingNum AND h.unitNum = m.unitNum " +
+                "WHERE h.buildingNum = ? OR h.unitNum = ? OR m.firstName LIKE ? OR m.lastName LIKE ?";
+
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        int buildingOrUnitNum;
+        try {
+            buildingOrUnitNum = Integer.parseInt(searchTerm);
+        } catch (NumberFormatException e) {
+            buildingOrUnitNum = -1; // Invalid number, won't match any building or unit
+        }
+
+        pstmt.setInt(1, buildingOrUnitNum);
+        pstmt.setInt(2, buildingOrUnitNum);
+        pstmt.setString(3, "%" + searchTerm + "%");
+        pstmt.setString(4, "%" + searchTerm + "%");
+
+        try (ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 Household household = new Household();
                 household.setBuildingNum(rs.getInt("buildingNum"));
@@ -314,43 +359,50 @@ public class DatabaseManager {
                 households.add(household);
             }
         }
+
         return households;
     }
+
 
     public List<Member> getMembersByHousehold(int buildingNum, int unitNum) throws SQLException {
         List<Member> members = new ArrayList<>();
         String query = "SELECT * FROM Members WHERE buildingNum = ? AND unitNum = ?";
 
-        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setInt(1, buildingNum);
-            pstmt.setInt(2, unitNum);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    Member member = new Member();
-                    member.setLastName(rs.getString("lastName"));
-                    member.setFirstName(rs.getString("firstName"));
-                    member.setMiddleName(rs.getString("middleName"));
-                    member.setGender(rs.getString("gender"));
-                    member.setBirthday(LocalDate.parse(rs.getString("birthday")));
-                    member.setHealthStatus(rs.getString("healthStatus"));
-                    member.setPwdType(rs.getString("pwdType"));
-                    member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
-                    member.setCivilStatus(rs.getString("civilStatus"));
-                    member.setContactNumber(rs.getString("contactNumber"));
-                    member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
-                    member.setOccupation(rs.getString("occupation"));
-                    member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
-                    member.setIsMainRespondent(rs.getInt("isMainRespondent"));
-                    member.setBuildingNum(rs.getInt("buildingNum"));
-                    member.setUnitNum(rs.getInt("unitNum"));
-                    member.setProfileImagePath(rs.getString("profileImagePath"));
+        PreparedStatement pstmt;
+        ResultSet rs;
 
-                    members.add(member);
-                }
-            }
+        pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, buildingNum);
+        pstmt.setInt(2, unitNum);
+
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            Member member = new Member();
+            member.setLastName(rs.getString("lastName"));
+            member.setFirstName(rs.getString("firstName"));
+            member.setMiddleName(rs.getString("middleName"));
+            member.setGender(rs.getString("gender"));
+            member.setBirthday(LocalDate.parse(rs.getString("birthday")));
+            member.setHealthStatus(rs.getString("healthStatus"));
+            member.setPwdType(rs.getString("pwdType"));
+            member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
+            member.setCivilStatus(rs.getString("civilStatus"));
+            member.setContactNumber(rs.getString("contactNumber"));
+            member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
+            member.setOccupation(rs.getString("occupation"));
+            member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
+            member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setBuildingNum(rs.getInt("buildingNum"));
+            member.setUnitNum(rs.getInt("unitNum"));
+            member.setProfileImagePath(rs.getString("profileImagePath"));
+
+            members.add(member);
         }
+
         return members;
     }
+
 
     /**
      * Retrieves all members from the Members table.
@@ -362,67 +414,84 @@ public class DatabaseManager {
         List<Member> members = new ArrayList<>();
         String query = "SELECT * FROM Members WHERE isMainRespondent = 0";
 
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            while (rs.next()) {
-                Member member = new Member();
-                member.setLastName(rs.getString("lastName"));
-                member.setFirstName(rs.getString("firstName"));
-                member.setMiddleName(rs.getString("middleName"));
-                member.setGender(rs.getString("gender"));
-                member.setBirthday(rs.getObject("birthday", LocalDate.class));
-                member.setHealthStatus(rs.getString("healthStatus"));
-                member.setPwdType(rs.getString("pwdType"));
-                member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
-                member.setCivilStatus(rs.getString("civilStatus"));
-                member.setContactNumber(rs.getString("contactNumber"));
-                member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
-                member.setOccupation(rs.getString("occupation"));
-                member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
-                member.setIsMainRespondent(rs.getInt("isMainRespondent"));
-                member.setBuildingNum(rs.getInt("buildingNum"));
-                member.setUnitNum(rs.getInt("unitNum"));
-                member.setProfileImagePath(rs.getString("profileImagePath"));
+        Statement stmt = null;
+        ResultSet rs = null;
 
-                members.add(member);
-            }
+        stmt = conn.createStatement();
+        rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            Member member = new Member();
+            member.setLastName(rs.getString("lastName"));
+            member.setFirstName(rs.getString("firstName"));
+            member.setMiddleName(rs.getString("middleName"));
+            member.setGender(rs.getString("gender"));
+            member.setBirthday(rs.getObject("birthday", LocalDate.class));
+            member.setHealthStatus(rs.getString("healthStatus"));
+            member.setPwdType(rs.getString("pwdType"));
+            member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
+            member.setCivilStatus(rs.getString("civilStatus"));
+            member.setContactNumber(rs.getString("contactNumber"));
+            member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
+            member.setOccupation(rs.getString("occupation"));
+            member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
+            member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setBuildingNum(rs.getInt("buildingNum"));
+            member.setUnitNum(rs.getInt("unitNum"));
+            member.setProfileImagePath(rs.getString("profileImagePath"));
+
+            members.add(member);
         }
+
+        // Close resources (if not using try-with-resources)
+        if (rs != null) {
+            rs.close();
+        }
+        if (stmt != null) {
+            stmt.close();
+        }
+
         return members;
     }
+
 
     public Member getMainRespondent(int buildingNum, int unitNum) throws SQLException {
         String query = "SELECT * FROM Members WHERE buildingNum = ? AND unitNum = ? AND isMainRespondent = 1";
 
-        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setInt(1, buildingNum);
-            pstmt.setInt(2, unitNum);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    Member member = new Member();
-                    member.setLastName(rs.getString("lastName"));
-                    member.setFirstName(rs.getString("firstName"));
-                    member.setMiddleName(rs.getString("middleName"));
-                    member.setGender(rs.getString("gender"));
-                    member.setBirthday(LocalDate.parse(rs.getString("birthday")));
-                    member.setHealthStatus(rs.getString("healthStatus"));
-                    member.setPwdType(rs.getString("pwdType"));
-                    member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
-                    member.setCivilStatus(rs.getString("civilStatus"));
-                    member.setContactNumber(rs.getString("contactNumber"));
-                    member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
-                    member.setOccupation(rs.getString("occupation"));
-                    member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
-                    member.setIsMainRespondent(rs.getInt("isMainRespondent"));
-                    member.setBuildingNum(rs.getInt("buildingNum"));
-                    member.setUnitNum(rs.getInt("unitNum"));
-                    member.setProfileImagePath(rs.getString("profileImagePath"));
+        PreparedStatement pstmt;
+        ResultSet rs;
+        Member member = null;
 
-                    return member;
-                }
-            }
+        pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, buildingNum);
+        pstmt.setInt(2, unitNum);
+        rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            member = new Member();
+            member.setLastName(rs.getString("lastName"));
+            member.setFirstName(rs.getString("firstName"));
+            member.setMiddleName(rs.getString("middleName"));
+            member.setGender(rs.getString("gender"));
+            member.setBirthday(LocalDate.parse(rs.getString("birthday")));
+            member.setHealthStatus(rs.getString("healthStatus"));
+            member.setPwdType(rs.getString("pwdType"));
+            member.setIsSeniorCitizen(rs.getInt("isSeniorCitizen"));
+            member.setCivilStatus(rs.getString("civilStatus"));
+            member.setContactNumber(rs.getString("contactNumber"));
+            member.setHighestEducationalAttainment(rs.getString("highestEducationalAttainment"));
+            member.setOccupation(rs.getString("occupation"));
+            member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
+            member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setBuildingNum(rs.getInt("buildingNum"));
+            member.setUnitNum(rs.getInt("unitNum"));
+            member.setProfileImagePath(rs.getString("profileImagePath"));
         }
-        return null;
+
+
+        return member;
     }
+
 
 
 
