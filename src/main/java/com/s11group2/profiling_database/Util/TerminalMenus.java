@@ -91,8 +91,6 @@ public class TerminalMenus {
                     System.out.print("Enter unit number: ");
                     int unitNum = InputValidation.readIntFromScanner(scanner);
 
-
-
                     System.out.print("Enter monthly expenditure: ");
                     double monthlyExpenditure = InputValidation.readDoubleFromScanner(scanner);
 
@@ -164,8 +162,71 @@ public class TerminalMenus {
                 break;
             case 2:
 
-                //TODO: put search functionality here
+                try {
+                    System.out.print("Enter building number: ");
+                    int buildingNum = InputValidation.readIntFromScanner(scanner);
 
+                    System.out.print("Enter unit number: ");
+                    int unitNum = InputValidation.readIntFromScanner(scanner);
+
+                    System.out.print("Enter last name: ");
+                    String lastName = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(lastName);
+
+                    System.out.print("Enter first name: ");
+                    String firstName = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(firstName);
+
+                    System.out.print("Enter middle name: ");
+                    String middleName = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(middleName);
+
+                    System.out.print("Enter gender: ");
+                    String gender = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(gender);
+
+                    System.out.print("Enter birthday (YYYY-MM-DD): ");
+                    LocalDate birthday = InputValidation.readDateFromScanner(scanner);
+                    InputValidation.validateDateInput(birthday.toString());
+
+                    System.out.print("Enter health status: ");
+                    String healthStatus = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(healthStatus);
+
+                    System.out.print("Is PWD or Not: ");
+                    String pwdType = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(pwdType);
+
+                    int isSeniorCitizen = InputValidation.isSeniorCitizen(InputValidation.calculateAge(birthday));
+
+                    System.out.print("Enter civil status: ");
+                    String civilStatus = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(civilStatus);
+
+                    System.out.print("Enter contact number: ");
+                    String contactNumber = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(contactNumber);
+
+                    System.out.print("Enter highest educational attainment: ");
+                    String highestEducationalAttainment = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(highestEducationalAttainment);
+
+                    System.out.print("Enter occupation: ");
+                    String occupation = scanner.nextLine().trim();
+                    InputValidation.validateStringInput(occupation);
+
+                    System.out.print("Enter monthly income: ");
+                    double monthlyIncome = InputValidation.readDoubleFromScanner(scanner);
+
+                    int isMainRespondent = 1;
+
+                    String profileImagePath = "/";
+
+                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
+                    System.out.println("Member record inserted successfully.");
+                } catch (Exception e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
                 break;
             case 3:
                 return;
