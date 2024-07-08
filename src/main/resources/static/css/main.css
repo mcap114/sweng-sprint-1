@@ -433,10 +433,11 @@ body {
 
 .specific-unit{
     background-color: #f4f4f4;
-    width: 75%;
+    width: 65%;
+    margin-left: 17.5%;
+    margin-right: 17.5%;
     height: auto;
     border-radius: 20px;
-    margin: 10px;
     margin-top: 40px;
     padding: 20px ;
     font-family: 'Montserrat', sans-serif;
@@ -473,6 +474,10 @@ body {
     padding-right: 20px;
 }
 
+.profile-pic > p{
+    text-align: center;
+}
+
 .named-areas{
     display: flex;
     flex-direction: row;
@@ -481,7 +486,7 @@ body {
 .named-area{
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     margin: 30px;
     width: auto;
     
@@ -489,11 +494,11 @@ body {
 
 .detail{
     background-color: #ffffff;
+    font-size: 12px;
     opacity: 0.84;
     padding: 5px;
     margin-top: 10px;
     width: auto;
-    margin: 5px;
     text-align: center;
     border-radius: 5px;
 }
@@ -502,9 +507,11 @@ body {
     background-color: #ffffff;
     opacity: 0.84;
     padding: 10px;
-    width: 250px;
-    height:250px;
-    margin: 5px;
+    width: 200px;
+    height:200px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 0px;
     text-align: center;
     border-radius: 100%;
     border: 1px solid #000000;
@@ -519,6 +526,7 @@ body {
 .simple-flex{
     display: flex;
     flex-direction: column;
+    margin: 10px;
 }
 
 /* Navigation Elements */
