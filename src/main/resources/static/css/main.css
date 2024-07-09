@@ -20,7 +20,7 @@ body {
     border: 1px solid #ccc;
     padding: 10px 50px 10px 20px;
     height: 40px;
-    width: 100%;
+    width: 500px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     background-color: #fff;
@@ -31,11 +31,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: auto;
   }
 
   .clear-btn {
     position: absolute;
+    margin-top: 7px;
+    margin-left: 15px;
     right: 45px;
     background-color: transparent;
     border: none;
@@ -52,7 +54,8 @@ body {
 }
 
   .search-btn {
-    position: absolute;
+    margin-top: 7px;
+    margin-left: 15px;    position: absolute;
     right: 10px;
     background-color: transparent;
     border: none;
