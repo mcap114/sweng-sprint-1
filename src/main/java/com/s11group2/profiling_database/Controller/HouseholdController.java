@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -58,7 +59,6 @@ public class HouseholdController {
             // Handle file upload
             // TODO: fix method of storing file path
             // String uploadDirectory = "src/main/resources/static/images/";
-             String adsImagesString = "";
                 
             
             // adsImagesString += imageService.saveImageToStorage(uploadDirectory, profileImage);
@@ -77,12 +77,15 @@ public class HouseholdController {
             dbManager.insertMember(
                     lastName, firstName, middleName, gender, birthDate, healthStatus, pwdType, isSeniorCitizen,
                     civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent,
-                    buildingNum, unitNum, adsImagesString
+                    buildingNum, unitNum, profileImage
 
             );
 
             return "index";
         } catch (SQLException e) {
+            System.out.println("Failed to register household: " + e.getMessage());
+            return "addhouseholdpage";
+        } catch (IOException e) {
             System.out.println("Failed to register household: " + e.getMessage());
             return "addhouseholdpage";
         }

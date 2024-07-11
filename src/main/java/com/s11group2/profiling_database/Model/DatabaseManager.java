@@ -1,9 +1,19 @@
 package com.s11group2.profiling_database.Model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * The DatabaseManager class provides methods to manage the SQLite database,
@@ -163,7 +173,7 @@ public class DatabaseManager {
      * @param profileImagePath the profile image path
      * @throws SQLException if a database access error occurs
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, String profileImagePath) throws SQLException {
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImage) throws SQLException, IOException {
         String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, lastName);
@@ -182,7 +192,17 @@ public class DatabaseManager {
             pstmt.setInt(14, isMainRespondent);
             pstmt.setInt(15, buildingNum);
             pstmt.setInt(16, unitNum);
-            pstmt.setString(17, profileImagePath);
+
+            String tempPath = null;
+
+            File temp = File.createTempFile("image", ".jpg", new File("./res"));
+            tempPath = temp.getCanonicalPath();
+
+            try (OutputStream os = new FileOutputStream(temp)) {
+                os.write(profileImage.getBytes());
+            }
+
+            pstmt.setString(17, tempPath);
             pstmt.executeUpdate();
         }
     }
