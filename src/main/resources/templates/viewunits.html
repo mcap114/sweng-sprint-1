@@ -64,19 +64,28 @@
       
     
     <div class="units">
-      <div class="units-row" th:each="household : ${households}">
-
-        <div class="summary-units" th:onclick="'window.location.href=\'/viewaunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
-        <span th:utext="'Building ' + ${household.buildingNum} + '<br/> Unit ' + ${household.unitNum}"></span>
-          <div class="custom-hr"></div>
-          <div class="deets">
-            <p th:text="'Number of Members: ' + ${household.members.size()}"></p>
-            <p>Main Respondent:</p>
-            <p th:each="member : ${household.members}" th:if="${member.isMainRespondent == 1}" th:text="${member.firstName} + ' ' + ${member.lastName}"></p>
-          </div>
-        </div>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Building Number</th>
+            <th>Unit Number</th>
+            <th>Number of Members</th>
+            <th>Main Respondent</th>
+          </tr>
+        </thead>
+        <tbody th:each="household : ${households}">
+          <tr th:onclick="'window.location.href=\'/viewaunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
+            <td th:text="${household.buildingNum}"></td>
+            <td th:text="${household.unitNum}"></td>
+            <td th:text="${household.members.size()}"></td>
+            <td>
+              <span th:each="member : ${household.members}" th:if="${member.isMainRespondent == 1}" th:text="${member.firstName} + ' ' + ${member.lastName}"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    
   </div>
 </div>
 

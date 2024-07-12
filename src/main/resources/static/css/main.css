@@ -336,36 +336,62 @@ body {
 }
 
 .units {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px; 
-    background-color: #00000023;
-    border-radius: 5px;
-    margin: 4px;
-    padding: 10px;
-    height: 600px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: justify;
-    justify-content: center;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    overflow-x: auto;
+    font-family: 'Montserrat', sans-serif;
+    color: #333; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
+
+.units table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.units th, .units td {
+    border: 1px solid #e0e0e0; 
+    padding: 15px;
+    text-align: center;
+    font-size: 16px; 
+}
+
+.units tr:hover td {
+    background-color: #f1f1f1; 
+}
+
+.units th {
+    background-color: #78ABA8; 
+    color: #ffffff; 
+    font-weight: bold;
+    text-transform: uppercase; 
+}
+
+.units td {
+    background-color: #ffffff; 
+    color: #333; 
+    transition: background-color 0.3s ease; 
+}
+
 
 /* Media query for smaller screens */
 @media (max-width: 1200px) {
-    .units {
-        grid-template-columns: repeat(3, 1fr);
+    .units table {
+        font-size: 14px;
     }
 }
 
 @media (max-width: 900px) {
-    .units {
-        grid-template-columns: repeat(2, 1fr);
+    .units table {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 600px) {
-    .units {
-        grid-template-columns: 1fr;
+    .units table {
+        font-size: 10px;
     }
 }
 
@@ -378,7 +404,7 @@ body {
     justify-content: center;
     padding: 0;
     width: 100%;
-    gap: 5px; /* Add gap between units */
+    gap: 5px; 
 }
 
 .summary-units {
@@ -599,8 +625,8 @@ body {
 }
 
 .home-link:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
-    filter: brightness(0.8); /* Darken the image slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    filter: brightness(0.8); 
 }
 
 .view-link {
@@ -610,8 +636,8 @@ body {
 }
 
 .view-link:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
-    filter: brightness(0.8); /* Darken the image slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    filter: brightness(0.8);
 }
 
 .add-link {
@@ -621,8 +647,8 @@ body {
 }
 
 .add-link:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
-    filter: brightness(0.8); /* Darken the image slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    filter: brightness(0.8); 
 }
 
 .edit-link {
@@ -632,8 +658,8 @@ body {
 }
 
 .edit-link:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
-    filter: brightness(0.8); /* Darken the image slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    filter: brightness(0.8); 
 }
 
 .delete-link {
@@ -643,8 +669,8 @@ body {
 }
 
 .delete-link:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
-    filter: brightness(0.8); /* Darken the image slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    filter: brightness(0.8); 
 }
 
 .home-icon {
