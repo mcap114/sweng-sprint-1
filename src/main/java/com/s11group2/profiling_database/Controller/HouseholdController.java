@@ -35,24 +35,26 @@ public class HouseholdController {
 
     @PostMapping("/addhousehold")
     public String registerMember(
-            @RequestParam("resLastName") String lastName,
-            @RequestParam("resFirstName") String firstName,
-            @RequestParam("resMiddleName") String middleName,
-            @RequestParam("resGender") String gender,
-            @RequestParam("resBirthday") String birthday,
-            @RequestParam("resHealthStatus") String healthStatus,
-            @RequestParam("resPwdType") String pwdType,
-            @RequestParam("resCivilStatus") String civilStatus,
-            @RequestParam("resContactNumber") String contactNumber,
-            @RequestParam("resHighestEducationalAttainment") String highestEducationalAttainment,
-            @RequestParam("resOccupation") String occupation,
-            @RequestParam("resMonthlyIncome") Double monthlyIncome,
+            @RequestParam("resLastName") String[] lastName,
+            @RequestParam("resFirstName") String[] firstName,
+            @RequestParam("resMiddleName") String[] middleName,
+            @RequestParam("resGender") String[] gender,
+            @RequestParam("resBirthday") String[] birthday,
+            @RequestParam("resHealthStatus") String[] healthStatus,
+            @RequestParam("resPwdType") String[] pwdType,
+            @RequestParam("resCivilStatus") String[] civilStatus,
+            @RequestParam("resContactNumber") String[] contactNumber,
+            @RequestParam("resHighestEducationalAttainment") String[] highestEducationalAttainment,
+            @RequestParam("resOccupation") String[] occupation,
+            @RequestParam("resMonthlyIncome") Double[] monthlyIncome,
             @RequestParam("buildingNum") Integer buildingNum,
             @RequestParam("unitNum") Integer unitNum,
             @RequestParam("monthlyExpenditure") Double monthlyExpenditure,
             @RequestParam("monthlyAmortization") Double monthlyAmortization,
             @RequestParam("yearOfResidence") Integer yearOfResidence,
-            @RequestParam("resPfp") MultipartFile profileImage,
+            @RequestParam("resPfp") MultipartFile[] profileImage,
+            @RequestParam("petName") String[] petName,
+            @RequestParam("petAnimalType") String[] petSpecies,
             Model model) {
 
         try {
@@ -68,18 +70,37 @@ public class HouseholdController {
             int isMainRespondent = 1;
 
             // Parse birthday
-            LocalDate birthDate = LocalDate.parse(birthday);
+            LocalDate birthDate = LocalDate.parse(birthday[0]);
             int age = InputValidation.calculateAge(birthDate);
             int isSeniorCitizen = InputValidation.isSeniorCitizen(age);
 
             // Insert member with profile image path
             dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
             dbManager.insertMember(
-                    lastName, firstName, middleName, gender, birthDate, healthStatus, pwdType, isSeniorCitizen,
-                    civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent,
-                    buildingNum, unitNum, profileImage
-
+                    lastName[0], firstName[0], middleName[0], gender[0], birthDate, healthStatus[0], pwdType[0], isSeniorCitizen,
+                    civilStatus[0], contactNumber[0], highestEducationalAttainment[0], occupation[0], monthlyIncome[0], isMainRespondent,
+                    buildingNum, unitNum, profileImage[0]
             );
+
+            isMainRespondent = 0;
+
+            for (int i = 1; i < lastName.length; i++) {
+                // Parse birthday
+                birthDate = LocalDate.parse(birthday[i]);
+                age = InputValidation.calculateAge(birthDate);
+                isSeniorCitizen = InputValidation.isSeniorCitizen(age);
+
+                // Insert member with profile image path
+                dbManager.insertMember(
+                        lastName[i], firstName[i], middleName[i], gender[i], birthDate, healthStatus[i], pwdType[i], isSeniorCitizen,
+                        civilStatus[i], contactNumber[i], highestEducationalAttainment[i], occupation[i], monthlyIncome[i], isMainRespondent,
+                        buildingNum, unitNum, profileImage[i]
+                );
+            }
+
+            for (int i = 0; i < petName.length; i++) {
+                dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum);
+            }
 
             return "index";
         } catch (SQLException e) {
