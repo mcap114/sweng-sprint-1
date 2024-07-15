@@ -141,6 +141,18 @@ function addPet() {
             </div>
               
               <div class="main-respondent-body">
+                <div class="image-panel">
+                  <div class="image-field">
+                    <label>Upload Picture</label>
+                    <div id="preview"> 
+                        <img class="pet-image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-${memberCount}">
+                      </div>
+                    <div class="image-field">
+                      <input type="file" id="resPfp-${memberCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${memberCount}')" required/>
+
+                  </div>
+                </div>
+                </div>
                   <div class="form-row">
                     <div class="input-field">
                       <label>Pet Name</label>

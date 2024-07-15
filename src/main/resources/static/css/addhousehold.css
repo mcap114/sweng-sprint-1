@@ -170,6 +170,12 @@ form .image-field{
   width: 260px;
 }
 
+.pet-image-display {
+  margin-top: 10px;
+  height: 260px;
+  width: 260px;
+}
+
 .image-display img {
   margin-top: 10px;
   max-width: 250px;
