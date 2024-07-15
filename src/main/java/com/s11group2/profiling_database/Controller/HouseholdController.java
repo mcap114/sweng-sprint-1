@@ -35,26 +35,26 @@ public class HouseholdController {
 
     @PostMapping("/addhousehold")
     public String registerMember(
-            @RequestParam("resLastName") String[] lastName,
-            @RequestParam("resFirstName") String[] firstName,
-            @RequestParam("resMiddleName") String[] middleName,
-            @RequestParam("resGender") String[] gender,
-            @RequestParam("resBirthday") String[] birthday,
-            @RequestParam("resHealthStatus") String[] healthStatus,
-            @RequestParam("resPwdType") String[] pwdType,
-            @RequestParam("resCivilStatus") String[] civilStatus,
-            @RequestParam("resContactNumber") String[] contactNumber,
-            @RequestParam("resHighestEducationalAttainment") String[] highestEducationalAttainment,
-            @RequestParam("resOccupation") String[] occupation,
-            @RequestParam("resMonthlyIncome") Double[] monthlyIncome,
-            @RequestParam("buildingNum") Integer buildingNum,
-            @RequestParam("unitNum") Integer unitNum,
-            @RequestParam("monthlyExpenditure") Double monthlyExpenditure,
-            @RequestParam("monthlyAmortization") Double monthlyAmortization,
-            @RequestParam("yearOfResidence") Integer yearOfResidence,
-            @RequestParam("resPfp") MultipartFile[] profileImage,
-            @RequestParam("petName") String[] petName,
-            @RequestParam("petAnimalType") String[] petSpecies,
+            @RequestParam(value="resLastName") String[] lastName,
+            @RequestParam(value="resFirstName") String[] firstName,
+            @RequestParam(value="resMiddleName") String[] middleName,
+            @RequestParam(value="resGender") String[] gender,
+            @RequestParam(value="resBirthday") String[] birthday,
+            @RequestParam(value="resHealthStatus") String[] healthStatus,
+            @RequestParam(value="resPwdType") String[] pwdType,
+            @RequestParam(value="resCivilStatus") String[] civilStatus,
+            @RequestParam(value="resContactNumber") String[] contactNumber,
+            @RequestParam(value="resHighestEducationalAttainment") String[] highestEducationalAttainment,
+            @RequestParam(value="resOccupation") String[] occupation,
+            @RequestParam(value="resMonthlyIncome") Double[] monthlyIncome,
+            @RequestParam(value="buildingNum") Integer buildingNum,
+            @RequestParam(value="unitNum") Integer unitNum,
+            @RequestParam(value="monthlyExpenditure") Double monthlyExpenditure,
+            @RequestParam(value="monthlyAmortization") Double monthlyAmortization,
+            @RequestParam(value="yearOfResidence") Integer yearOfResidence,
+            @RequestParam(value="resPfp") MultipartFile[] profileImage,
+            @RequestParam(value="petName", required=false) String[] petName,
+            @RequestParam(value="petAnimalType", required=false) String[] petSpecies,
             Model model) {
 
         try {
@@ -98,8 +98,10 @@ public class HouseholdController {
                 );
             }
 
-            for (int i = 0; i < petName.length; i++) {
-                dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum);
+            if (petName != null) {
+                for (int i = 0; i < petName.length; i++) {
+                    dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum);
+                }
             }
 
             return "index";
