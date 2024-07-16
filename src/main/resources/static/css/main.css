@@ -424,6 +424,13 @@ body {
 
 }
 
+.result-count {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
 .units-row>span{
     font-weight: bold;
 }
