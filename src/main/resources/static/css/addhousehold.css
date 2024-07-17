@@ -108,12 +108,45 @@ form .input-field{
  
 }
 
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  width: 120px;
+  cursor: pointer;
+  background-color: #F0F0F0;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+
+.custom-file-upload:hover {
+  background-color: #ccc;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
 form .image-field{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+ 
+}
+
+form .file-field{
   position: relative;
   display: flex;
   flex-direction: column;
   margin: 10px 10px;
  
+}
+
+input.custom-file-upload[type="file"] {
+  display: none; /* Hide the default file input */
 }
 
 
@@ -155,6 +188,15 @@ form .image-field{
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+.file-field label{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #1d2a49;
+  font-size: 12px;
+  letter-spacing: 0;
+
+}
+
 .image-field label{
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -164,22 +206,16 @@ form .image-field{
 
 }
 
-
-.image-display {
-  height: 260px;
-  width: 260px;
-}
-
 .pet-image-display {
   margin-top: 10px;
-  height: 260px;
-  width: 260px;
+  height: 100px;
+  width: 100px;
 }
 
 .image-display img {
   margin-top: 10px;
-  max-width: 250px;
-  height: 250px;
+  max-width: 100px;
+  height: 100px;
   border-radius: 10px;
 }
 
@@ -362,4 +398,102 @@ form .image-field{
   opacity: 100%;
 }
 
+.btcd-f-input {
+  display: inline-block;
+  width: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btcd-f-input > div > input::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.btcd-f-wrp > button {
+  cursor: pointer;
+  padding: 0px 20px;
+  height: 28px;
+  margin: 6px 0;
+  border-radius: 9px;
+  border: none;
+}
+
+.btcd-f-wrp > button > img {
+  width: 18px;
+}
+
+.btcd-f-wrp > button > span,
+.btcd-f-wrp > span,
+.btcd-f-wrp > small {
+  vertical-align: super;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.btcd-f-input > .btcd-f-wrp > input {
+  z-index: 100;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  height: 37px;
+  cursor: pointer;
+}
+
+.btcd-files > div {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  border-radius: 10px;
+  width: 91%;
+  margin-top: 10px;
+  height: 40px;
+}
+
+.btcd-files > div > div {
+  display: inline-block;
+  width: 73%;
+}
+
+.btcd-files > div > div > small {
+  color: rgb(164, 164, 164);
+  font-size: 12px;
+}
+
+.btcd-files > div > img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.btcd-files > div > div > span {
+  display: inline-block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.btcd-files > div > button {
+  background: #e8e8e8;
+  border: none;
+  border-radius: 50px;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  margin-right: 6px;
+  padding: 0;
+}
+
+.btcd-files > div > button:hover {
+  background: #bbbbbb;
+  cursor: pointer;
+
+}
 
