@@ -1,11 +1,11 @@
 package com.s11group2.profiling_database;
 
+import java.io.IOException;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.io.IOException;
 
 @SpringBootApplication
 public class AppSpringboot {

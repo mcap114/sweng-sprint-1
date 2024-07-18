@@ -208,14 +208,14 @@ input.custom-file-upload[type="file"] {
 
 .pet-image-display {
   margin-top: 10px;
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
 }
 
 .image-display img {
   margin-top: 10px;
-  max-width: 100px;
-  height: 100px;
+  width: 250px;
+  height: 250px;
   border-radius: 10px;
 }
 
