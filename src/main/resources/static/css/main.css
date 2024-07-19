@@ -666,7 +666,8 @@ body {
 }
 
 .unit-buttons{
-    padding-left: 70%;
+    position: relative;
+    padding-left: 69%;
 }
 
 /* Navigation Elements */
