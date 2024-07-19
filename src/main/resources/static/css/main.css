@@ -611,9 +611,21 @@ body {
     padding-bottom: 5px;
     margin: 10px;
     width: auto;
-    font-weight: bold;
+    font-weight: 500;
     color: #4a4a4a;
+    flex: 1; /* Allow each named area to grow and fill space */
+    min-width: 150px; /* Minimum width to prevent shrinking too much */
     
+}
+
+.adjust-named-area {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+    margin: 10px;
+    width: auto;
+    font-weight: 500;
+    color: #4a4a4a; 
 }
 
 .detail{
