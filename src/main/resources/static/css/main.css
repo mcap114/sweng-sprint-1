@@ -424,6 +424,29 @@ body {
 
 }
 
+.edit-buttons {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.confirm-btn, .cancel-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #f44336; /* Red */
+}
+
+.confirm-btn:hover, .cancel-btn:hover {
+    opacity: 0.8;
+}
+
 .result-count {
     text-align: right;
     margin-top: 10px;
@@ -558,7 +581,13 @@ body {
     padding: 10px 0;
     display:flex;
     justify-content: space-between;
+    flex-direction: column;
 
+}
+
+.section-1{
+    display: flex;
+    flex-direction: row;
 }
 .profile-pic{
     padding-right: 20px;
@@ -584,11 +613,18 @@ body {
 
 .detail{
     background-color: #ffffff;
+    border: none;
+    /* You might want to add a subtle bottom border for some visual indication */
+    border-bottom: 1px solid #ccc; /* Optional */
+    outline: none;
     font-size: 12px;
     opacity: 0.84;
-    padding: 5px;
     margin-top: 10px;
-    width: auto;
+    width: 100%;
+    max-width: 300px; /* Adjust this as necessary */
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 10px;
     text-align: center;
     border-radius: 5px;
 }
@@ -617,6 +653,15 @@ body {
     display: flex;
     flex-direction: column;
     margin: 10px;
+}
+.simple-row{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.unit-buttons{
+    padding-left: 55%;
 }
 
 /* Navigation Elements */

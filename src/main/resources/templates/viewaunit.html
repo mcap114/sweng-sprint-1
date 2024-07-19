@@ -24,112 +24,224 @@
         <hr>
         <!-- add info of database -->
         <div class="specific-unit">
+            <div class ="simple-row">
             <span class="big-letter" th:text="'Building ' + ${household.buildingNum} + ' Unit ' + ${household.unitNum}"></span>
+            <div class = "unit-buttons">
+                    <button id="edit-btn" class="edit-btn">
+                      <img src="/png/edit-icon.png" alt="Edit">
+                    </button>
+                    <button class="delete-btn">
+                      <img src="/png/delete-icon.png" alt="Delete">
+                    </button>
+            </div>
+            </div>
             <div class="specific-deets">
                 <div class="section-deets">
                     <div class="named-areas">
                         <div class="named-area">
                             Year of Residence
-                            <div class="detail" th:text="${household.yearOfResidence}"></div>
+                            <input type="text" class="detail" th:value="${household.yearOfResidence}"/>
                         </div>
                         <div class="named-area">
                             Monthly Household Expenditure
-                            <div class="detail" th:text="${household.monthlyExpenditure}"></div>
+                            <input type="text" class="detail" th:value="${household.monthlyExpenditure}"/>
                         </div>
                         <div class="named-area">
                             Monthly Unit Amortization
-                            <div class="detail" th:text="${household.monthlyAmortization}"></div>
+                            <input type="text" class="detail" th:value="${household.monthlyAmortization}"/>
                         </div>
                     </div>
                 </div>
                 <div class="section-deets">
-                    <div class="profile-pic">
-                        <p>Main Respondent</p>
-                        <div class="detail-img"><img src="/png/profile.png"></div>
-                    </div>
-                    <div class="simple-flex">
-                        <div class="named-areas">
-                            <div class="named-area">
-                                Last Name
-                                <div class="detail" th:text="${mainRespondent.lastName}"></div>
-                            </div>
-                            <div class="named-area">
-                                First Name
-                                <div class="detail" th:text="${mainRespondent.firstName}"></div>
-                            </div>
-                            <div class="named-area">
-                                Middle Name
-                                <div class="detail" th:text="${mainRespondent.middleName}"></div>
-                            </div>
+                    <div class = "section-1">
+                        <div class="profile-pic">
+                            <p>Main Respondent</p>
+                            <div class="detail-img"><img src="/png/profile.png"></div>
                         </div>
-                        <div class="named-areas">
-                            <div class="named-area">
-                                Gender
-                                <div class="detail" th:text="${mainRespondent.gender}"></div>
+                        <div class="simple-flex">
+                            <div class="named-areas">
+                                <div class="named-area">
+                                    Last Name
+                                    <input type="text" class="detail" th:value="${mainRespondent.lastName}"/>
+                                </div>
+                                <div class="named-area">
+                                    First Name
+                                    <input type="text" class="detail" th:value="${mainRespondent.firstName}"/>
+                                </div>
+                                <div class="named-area">
+                                    Middle Name
+                                    <input type="text" class="detail" th:value="${mainRespondent.middleName}"/>
+                                </div>
                             </div>
-                            <div class="named-area">
-                                Birthday
-                                <div class="detail" th:text="${mainRespondent.birthday}"></div>
+                            <div class="named-areas">
+                                <div class="named-area">
+                                    Gender
+                                    <input type="text" class="detail" th:value="${mainRespondent.gender}"/>
+                                </div>
+                                <div class="named-area">
+                                    Birthday
+                                    <input type="text" class="detail" th:value="${mainRespondent.birthday}"/>
+                                </div>
+                                <div class="named-area">
+                                    Civil Status
+                                    <input type="text" class="detail" th:value="${mainRespondent.civilStatus}"/>
+                                </div>
+                                <div class="named-area">
+                                    Contact Number
+                                    <input type="text" class="detail" th:value="${mainRespondent.contactNumber}"/>
+                                </div>
                             </div>
-                            <div class="named-area">
-                                Civil Status
-                                <div class="detail" th:text="${mainRespondent.civilStatus}"></div>
-                            </div>
-                            <div class="named-area">
-                                Contact Number
-                                <div class="detail" th:text="${mainRespondent.contactNumber}"></div>
-                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="named-areas">
+                        <div class="named-area">
+                            Health Status
+                            <input type="text" class="detail" th:value="${mainRespondent.healthStatus}"/>
+                        </div>
+                        <div class="named-area">
+                            PWD Type
+                            <input type="text" class="detail" th:value="${mainRespondent.pwdType}"/>
+                        </div>
+                        <div class="named-area">
+                            Highest Educational Attainement
+                            <input type="text" class="detail" th:value="${mainRespondent.highestEducationalAttainment}"/>
+                        </div>
+                        <div class="named-area">
+                            Occupation
+                            <input type="text" class="detail" th:value="${mainRespondent.occupation}"/>
                         </div>
                     </div>
                 </div>
                 <!-- Additional household members loop -->
                 <div th:each="member : ${otherMembers}">
                     <div class="section-deets">
-                        <div class="profile-pic">
-                            <div class="named-area">
-                                Household Member
+                        <div class = "section-1">
+                            <div class="profile-pic">
+                                <p>Member</p>
                                 <div class="detail-img"><img src="/png/profile.png"></div>
                             </div>
-                        </div>
-                        <div class="simple-flex">
-                            <div class="named-areas">
-                                <div class="named-area">
-                                    Last Name
-                                    <div class="detail" th:text="${member.lastName}"></div>
+                            <div class="simple-flex">
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        Last Name
+                                        <input type="text" class="detail" th:value="${member.lastName}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        First Name
+                                        <input type="text" class="detail" th:value="${member.firstName}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        Middle Name
+                                        <input type="text" class="detail" th:value="${member.middleName}"/>
+                                    </div>
                                 </div>
-                                <div class="named-area">
-                                    First Name
-                                    <div class="detail" th:text="${member.firstName}"></div>
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        Gender
+                                        <input type="text" class="detail" th:value="${member.gender}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        Birthday
+                                        <input type="text" class="detail" th:value="${member.birthday}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        Civil Status
+                                        <input type="text" class="detail" th:value="${member.civilStatus}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        Contact Number
+                                        <input type="text" class="detail" th:value="${member.contactNumber}"/>
+                                    </div>
                                 </div>
-                                <div class="named-area">
-                                    Middle Name
-                                    <div class="detail" th:text="${member.middleName}"></div>
-                                </div>
+                                
                             </div>
-                            <div class="named-areas">
-                                <div class="named-area">
-                                    Gender
-                                    <div class="detail" th:text="${member.gender}"></div>
-                                </div>
-                                <div class="named-area">
-                                    Birthday
-                                    <div class="detail" th:text="${member.birthday}"></div>
-                                </div>
-                                <div class="named-area">
-                                    Civil Status
-                                    <div class="detail" th:text="${member.civilStatus}"></div>
-                                </div>
-                                <div class="named-area">
-                                    Contact Number
-                                    <div class="detail" th:text="${member.contactNumber}"></div>
-                                </div>
+                        </div>
+                        <div class="named-areas">
+                            <div class="named-area">
+                                Health Status
+                                <input type="text" class="detail" th:value="${member.healthStatus}"/>
+                            </div>
+                            <div class="named-area">
+                                PWD Type
+                                <input type="text" class="detail" th:value="${member.pwdType}"/>
+                            </div>
+                            <div class="named-area">
+                                Highest Educational Attainement
+                                <input type="text" class="detail" th:value="${member.highestEducationalAttainment}"/>
+                            </div>
+                            <div class="named-area">
+                                Occupation
+                                <input type="text" class="detail" th:value="${member.occupation}"/>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Confirm and Cancel buttons -->
+                <div class="edit-buttons" style="display: none;">
+                    <button id="confirm-btn" class="confirm-btn">Confirm</button>
+                    <button id="cancel-btn" class="cancel-btn">Cancel</button>
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editButton = document.getElementById('edit-btn');
+        const confirmButton = document.getElementById('confirm-btn');
+        const cancelButton = document.getElementById('cancel-btn');
+        const editButtonsDiv = document.querySelector('.edit-buttons');
+        const inputs = document.querySelectorAll('.detail');
+        let isEditMode = false;
+        let originalValues = [];
+
+        // Function to toggle readonly attribute and button visibility
+        function toggleEdit() {
+            isEditMode = !isEditMode;
+            inputs.forEach((input, index) => {
+                if (isEditMode) {
+                    // Store the original value when entering edit mode
+                    if (!originalValues[index]) {
+                        originalValues[index] = input.value;
+                    }
+                    input.readOnly = false;
+                } else {
+                    input.readOnly = true;
+                }
+            });
+            editButtonsDiv.style.display = isEditMode ? 'block' : 'none';
+        }
+
+        // Initially set all inputs to readonly
+        inputs.forEach(input => {
+            input.readOnly = true;
+        });
+
+        // Add event listener to edit button
+        editButton.addEventListener('click', toggleEdit);
+
+        // Add event listeners to confirm and cancel buttons
+        confirmButton.addEventListener('click', function() {
+            // Handle the confirm action (e.g., save changes)
+            toggleEdit();
+        });
+
+        cancelButton.addEventListener('click', function() {
+            // Handle the cancel action (e.g., revert changes)
+            inputs.forEach((input, index) => {
+                if (originalValues[index] !== undefined) {
+                    input.value = originalValues[index];
+                }
+            });
+            originalValues = []; // Clear stored values
+            toggleEdit();
+        });
+    });
+</script>
+
 </body>
 </html>
