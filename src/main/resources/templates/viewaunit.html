@@ -54,9 +54,13 @@
                 </div>
                 <div class="section-deets">
                     <div class = "section-1">
-                        <div class="profile-pic">
-                            <p>Main Respondent</p>
-                            <div class="detail-img"><img src="/png/profile.png"></div>
+                        <div class="simple-flex">
+                            <div class="named-areas">
+                                <div class="named-area">
+                                    <center> Main Respondent</center>
+                                    <div class="detail-img"><img src="/png/profile.png"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="simple-flex">
                             <div class="named-areas">
@@ -91,25 +95,25 @@
                                     <input type="text" class="detail" th:value="${mainRespondent.contactNumber}"/>
                                 </div>
                             </div>
+                            <div class="named-areas">
+                                <div class="named-area">
+                                    Health Status
+                                    <input type="text" class="detail" th:value="${mainRespondent.healthStatus}"/>
+                                </div>
+                                <div class="named-area">
+                                    PWD Type
+                                    <input type="text" class="detail" th:value="${mainRespondent.pwdType}"/>
+                                </div>
+                                <div class="named-area">
+                                    Highest Educational Attainement
+                                    <input type="text" class="detail" th:value="${mainRespondent.highestEducationalAttainment}"/>
+                                </div>
+                                <div class="named-area">
+                                    Occupation
+                                    <input type="text" class="detail" th:value="${mainRespondent.occupation}"/>
+                                </div>
+                            </div>
                             
-                        </div>
-                    </div>
-                    <div class="named-areas">
-                        <div class="named-area">
-                            Health Status
-                            <input type="text" class="detail" th:value="${mainRespondent.healthStatus}"/>
-                        </div>
-                        <div class="named-area">
-                            PWD Type
-                            <input type="text" class="detail" th:value="${mainRespondent.pwdType}"/>
-                        </div>
-                        <div class="named-area">
-                            Highest Educational Attainement
-                            <input type="text" class="detail" th:value="${mainRespondent.highestEducationalAttainment}"/>
-                        </div>
-                        <div class="named-area">
-                            Occupation
-                            <input type="text" class="detail" th:value="${mainRespondent.occupation}"/>
                         </div>
                     </div>
                 </div>

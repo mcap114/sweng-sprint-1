@@ -545,9 +545,9 @@ body {
 
 .specific-unit{
     background-color: #f4f4f4;
-    width: 65%;
-    margin-left: 17.5%;
-    margin-right: 17.5%;
+    width: 85%;
+    margin-left: 9.5%;
+    margin-right: 9.5%;
     height: auto;
     border-radius: 20px;
     margin-top: 40px;
@@ -582,12 +582,15 @@ body {
     display:flex;
     justify-content: space-between;
     flex-direction: column;
+    align-items: center;
+
 
 }
 
 .section-1{
     display: flex;
     flex-direction: row;
+    margin: 10px;
 }
 .profile-pic{
     padding-right: 20px;
@@ -606,8 +609,10 @@ body {
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
-    margin: 30px;
+    margin: 10px;
     width: auto;
+    font-weight: bold;
+    color: #4a4a4a;
     
 }
 
@@ -633,8 +638,8 @@ body {
     background-color: #ffffff;
     opacity: 0.84;
     padding: 10px;
-    width: 200px;
-    height:200px;
+    width: 180px;
+    height:180px;
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 0px;
@@ -661,7 +666,7 @@ body {
 }
 
 .unit-buttons{
-    padding-left: 55%;
+    padding-left: 70%;
 }
 
 /* Navigation Elements */
