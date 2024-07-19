@@ -158,8 +158,10 @@ public class TerminalMenus {
 
                     String profileImagePath = "/";
 
+                    String relationToMainRespondent = "";
+
                     appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
-                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
+                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, relationToMainRespondent, buildingNum, unitNum, profileImagePath);
                     System.out.println("Household record inserted successfully.");
                 } catch (Exception e) {
                     System.err.println("Error: " + e.getMessage());
@@ -227,7 +229,9 @@ public class TerminalMenus {
 
                     String profileImagePath = "/";
 
-                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
+                    String relationToMainResponent = "";
+
+                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, relationToMainResponent, buildingNum, unitNum, profileImagePath);
                     System.out.println("Member record inserted successfully.");
                 } catch (Exception e) {
                     System.err.println("Error: " + e.getMessage());
