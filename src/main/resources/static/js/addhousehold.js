@@ -24,18 +24,6 @@ function addMember() {
                     <label for="resPfp-${memberCount}" class="custom-file-upload">Choose File</label>
                     <input class="custom-file-upload" type="file" id="resPfp-${memberCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${memberCount}')" required/>
                 </div>
-              
-                <div class="file-field">
-                    <div class="btcd-f-input">
-                        <label>Upload Files</label>
-                        <div class="btcd-f-wrp">
-                            <button class="btcd-inpBtn" type="button"><img src="/svg/attach-file.svg"><span> Attach File</span></button>
-                            <span class="btcd-f-title">No File Chosen</span>
-                            <input multiple type="file" name="files" id="files-${memberCount}" class="files-input"/>
-                        </div>
-                        <div class="btcd-files"></div>
-                    </div>
-                </div>
             </div>
             <div class="text-panel">
                 <div class="form-row">
@@ -202,85 +190,86 @@ function deletePet(petCount) {
     elem.parentNode.removeChild(elem);
     return false;
 }
-const fInputs = document.querySelectorAll('.btcd-f-input>div>input');
-let fileList = { files: [] };
-let fName = null;
-let mxSiz = null;
 
-const getFileSize = (size) => {
-    const units = ['Bytes', 'KB', 'MB', 'GB'];
-    let unitIndex = 0;
-    while (size > 900) { size /= 1024; unitIndex++; }
-    return `${(Math.round(size * 100) / 100)} ${units[unitIndex]}`;
-}
+// const fInputs = document.querySelectorAll('.btcd-f-input>div>input');
+// let fileList = { files: [] };
+// let fName = null;
+// let mxSiz = null;
 
-const setPrevData = (e) => {
-    if (e.target.hasAttribute('multiple') && fName !== e.target.name) {
-        console.log('multiple');
-        fName = e.target.name;
-        fileList.files = [...e.target.files];
-    }
-}
+// const getFileSize = (size) => {
+//     const units = ['Bytes', 'KB', 'MB', 'GB'];
+//     let unitIndex = 0;
+//     while (size > 900) { size /= 1024; unitIndex++; }
+//     return `${(Math.round(size * 100) / 100)} ${units[unitIndex]}`;
+// }
 
-const handleFile = (e) => {
-    const err = [];
-    mxSiz = e.target.closest('.btcd-f-input').querySelector('.f-max');
-    mxSiz = mxSiz ? Number(mxSiz.innerHTML.replace(/\D/g, '')) * Math.pow(1024, 2) : null;
+// const setPrevData = (e) => {
+//     if (e.target.hasAttribute('multiple') && fName !== e.target.name) {
+//         console.log('multiple');
+//         fName = e.target.name;
+//         fileList.files = [...e.target.files];
+//     }
+// }
+
+// const handleFile = (e) => {
+//     const err = [];
+//     mxSiz = e.target.closest('.btcd-f-input').querySelector('.f-max');
+//     mxSiz = mxSiz ? Number(mxSiz.innerHTML.replace(/\D/g, '')) * Math.pow(1024, 2) : null;
     
-    const newFiles = [...e.target.files];
-    if (e.target.hasAttribute('multiple')) {
-        fileList.files.push(...newFiles);
-    } else {
-        fileList.files = [newFiles[0]];
-    }
+//     const newFiles = [...e.target.files];
+//     if (e.target.hasAttribute('multiple')) {
+//         fileList.files.push(...newFiles);
+//     } else {
+//         fileList.files = [newFiles[0]];
+//     }
 
-    if (mxSiz > 0) {
-        fileList.files = fileList.files.filter(file => {
-            if (file.size < mxSiz) {
-                mxSiz -= file.size;
-                return true;
-            } else {
-                console.log('rejected', file.size);
-                err.push('Max Upload Size Exceeded');
-                return false;
-            }
-        });
-    }
+//     if (mxSiz > 0) {
+//         fileList.files = fileList.files.filter(file => {
+//             if (file.size < mxSiz) {
+//                 mxSiz -= file.size;
+//                 return true;
+//             } else {
+//                 console.log('rejected', file.size);
+//                 err.push('Max Upload Size Exceeded');
+//                 return false;
+//             }
+//         });
+//     }
 
-    e.target.files = createFileList(...fileList.files);
-    updateFileListView(e.target);
-}
+//     e.target.files = createFileList(...fileList.files);
+//     updateFileListView(e.target);
+// }
 
-const updateFileListView = (inputElement) => {
-    const fileCount = inputElement.files.length;
-    const fileTitle = fileCount > 0 ? `${fileCount} File Selected` : 'No File Chosen';
-    inputElement.closest('.btcd-f-input').querySelector('.btcd-f-title').innerText = fileTitle;
+// const updateFileListView = (inputElement) => {
+//     const fileCount = inputElement.files.length;
+//     const fileTitle = fileCount > 0 ? `${fileCount} File Selected` : 'No File Chosen';
+//     inputElement.closest('.btcd-f-input').querySelector('.btcd-f-title').innerText = fileTitle;
 
-    const fileContainer = inputElement.closest('.btcd-f-input').querySelector('.btcd-files');
-    fileContainer.innerHTML = '';
-    for (let i = 0; i < fileCount; i++) {
-        const file = inputElement.files[i];
-        const fileTypeIcon = file.type.match(/image-*/) ? window.URL.createObjectURL(file) : "/svg/add-file.svg";
-        fileContainer.insertAdjacentHTML('beforeend', `
-            <div>
-                <img src="${fileTypeIcon}" alt="img" title="${file.name}">
-                <div>
-                    <span title="${file.name}">${file.name}</span>
-                    <br/>
-                    <small>${getFileSize(file.size)}</small>
-                </div>
-            </div>
-        `);
-    }
-}
+//     const fileContainer = inputElement.closest('.btcd-f-input').querySelector('.btcd-files');
+//     fileContainer.innerHTML = '';
+//     for (let i = 0; i < fileCount; i++) {
+//         const file = inputElement.files[i];
+//         const fileTypeIcon = file.type.match(/image-*/) ? window.URL.createObjectURL(file) : "/svg/add-file.svg";
+//         fileContainer.insertAdjacentHTML('beforeend', `
+//             <div>
+//                 <img src="${fileTypeIcon}" alt="img" title="${file.name}">
+//                 <div>
+//                     <span title="${file.name}">${file.name}</span>
+//                     <br/>
+//                     <small>${getFileSize(file.size)}</small>
+//                 </div>
+//             </div>
+//         `);
+//     }
+// }
 
-const createFileList = (...files) => {
-    const dataTransfer = new DataTransfer();
-    files.forEach(file => dataTransfer.items.add(file));
-    return dataTransfer.files;
-}
+// const createFileList = (...files) => {
+//     const dataTransfer = new DataTransfer();
+//     files.forEach(file => dataTransfer.items.add(file));
+//     return dataTransfer.files;
+// }
 
-fInputs.forEach(input => {
-    input.addEventListener('mousedown', setPrevData);
-    input.addEventListener('change', handleFile);
-});
+// fInputs.forEach(input => {
+//     input.addEventListener('mousedown', setPrevData);
+//     input.addEventListener('change', handleFile);
+// });
