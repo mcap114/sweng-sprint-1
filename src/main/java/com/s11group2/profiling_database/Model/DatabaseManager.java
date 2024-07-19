@@ -57,7 +57,9 @@ public class DatabaseManager {
      */
     public void createTables() throws SQLException {
         // Statement stmt = conn.createStatement();
-        // stmt.execute("DROP TABLE Households; DROP TABLE Members; DROP TABLE Pets;");  uncomment to clear tables on springboot run, recomment after cleared
+        // stmt.execute("DROP TABLE Pets;"); // uncomment to clear tables on springboot run, recomment after cleared
+        // stmt.execute("DROP TABLE Members;");
+        // stmt.execute("DROP TABLE Households;");
         createHouseholdTable();
         createMemberTable();
         createPetTable();
