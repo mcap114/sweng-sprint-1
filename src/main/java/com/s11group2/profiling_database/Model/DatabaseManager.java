@@ -312,9 +312,11 @@ public class DatabaseManager {
     public void dropTables(Connection conn) throws SQLException {
     String dropSQL1 = "DROP TABLE IF EXISTS Members";
     String dropSQL2 = "DROP TABLE IF EXISTS Households";
+    String dropSQL3 = "DROP TABLE IF EXISTS Pets";
     Statement stmt = conn.createStatement() ;
         stmt.executeUpdate(dropSQL1);
         stmt.executeUpdate(dropSQL2);
+        stmt.executeUpdate(dropSQL3);
 }
 
     /**
