@@ -109,20 +109,24 @@ public class AppController {
         try {
             // Input validation
             validateMemberInput(lastName, firstName, gender, birthday, healthStatus, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
-            dbManager.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
+            MultipartFile profileImage = null;
+            dbManager.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, relationToMainRespondent, buildingNum, unitNum, profileImage);
         } catch (ValidationException e) {
             System.err.println("Validation Error: " + e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error inserting member: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum) {
+    public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum) throws IOException {
         try {
             // Input validation
             validatePetInput(petName, petSpecies, buildingNum, unitNum);
-            dbManager.insertPet(petName, petSpecies, buildingNum, unitNum);
+            MultipartFile petImage = null;
+            dbManager.insertPet(petName, petSpecies, buildingNum, unitNum, petImage);
         } catch (ValidationException e) {
             System.err.println("Validation Error: " + e.getMessage());
         } catch (SQLException e) {

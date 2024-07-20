@@ -1,5 +1,6 @@
 package com.s11group2.profiling_database;
 
+import com.s11group2.profiling_database.Model.DatabaseManager;
 import java.io.IOException;
 
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,10 @@ public class AppSpringboot {
     public CommandLineRunner openBrowser() {
         return args -> {
             System.out.println("CommandLineRunner executed");
+
+            DatabaseManager initialize = new DatabaseManager();
+            initialize.createTables();
+
             new Thread(() -> {
                 try {
                     System.out.println("Waiting for the server to start...");

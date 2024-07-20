@@ -47,6 +47,7 @@ public class HouseholdController {
             @RequestParam(value="resHighestEducationalAttainment") String[] highestEducationalAttainment,
             @RequestParam(value="resOccupation") String[] occupation,
             @RequestParam(value="resMonthlyIncome") Double[] monthlyIncome,
+            @RequestParam(value="resRelationToRespondent", required=false) String[] relationToMainRespondent,
             @RequestParam(value="buildingNum") Integer buildingNum,
             @RequestParam(value="unitNum") Integer unitNum,
             @RequestParam(value="monthlyExpenditure") Double monthlyExpenditure,
@@ -55,6 +56,7 @@ public class HouseholdController {
             @RequestParam(value="resPfp") MultipartFile[] profileImage,
             @RequestParam(value="petName", required=false) String[] petName,
             @RequestParam(value="petAnimalType", required=false) String[] petSpecies,
+            @RequestParam(value="resPfp", required=false) MultipartFile[] petImage,
             Model model) {
 
         try {
@@ -68,6 +70,7 @@ public class HouseholdController {
             
             // by default, the initial member added is the main respondent
             int isMainRespondent = 1;
+            String nullString = "";
 
             // Parse birthday
             LocalDate birthDate = LocalDate.parse(birthday[0]);
@@ -78,7 +81,7 @@ public class HouseholdController {
             dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
             dbManager.insertMember(
                     lastName[0], firstName[0], middleName[0], gender[0], birthDate, healthStatus[0], pwdType[0], isSeniorCitizen,
-                    civilStatus[0], contactNumber[0], highestEducationalAttainment[0], occupation[0], monthlyIncome[0], isMainRespondent,
+                    civilStatus[0], contactNumber[0], highestEducationalAttainment[0], occupation[0], monthlyIncome[0], isMainRespondent, nullString,
                     buildingNum, unitNum, profileImage[0]
             );
 
@@ -93,14 +96,14 @@ public class HouseholdController {
                 // Insert member with profile image path
                 dbManager.insertMember(
                         lastName[i], firstName[i], middleName[i], gender[i], birthDate, healthStatus[i], pwdType[i], isSeniorCitizen,
-                        civilStatus[i], contactNumber[i], highestEducationalAttainment[i], occupation[i], monthlyIncome[i], isMainRespondent,
+                        civilStatus[i], contactNumber[i], highestEducationalAttainment[i], occupation[i], monthlyIncome[i], isMainRespondent, relationToMainRespondent[i-1],
                         buildingNum, unitNum, profileImage[i]
                 );
             }
 
             if (petName != null) {
                 for (int i = 0; i < petName.length; i++) {
-                    dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum);
+                    dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum, petImage[i]);
                 }
             }
 

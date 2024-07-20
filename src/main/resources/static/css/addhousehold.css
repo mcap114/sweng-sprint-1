@@ -119,6 +119,8 @@ form .input-field{
   border-radius: 10px;
   border: none;
   margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
 }
 
 
@@ -214,8 +216,8 @@ input.custom-file-upload[type="file"] {
 
 .image-display img {
   margin-top: 10px;
-  width: 250px;
-  height: 250px;
+  width: 210px;
+  height: 210px;
   border-radius: 10px;
 }
 

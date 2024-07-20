@@ -1,7 +1,6 @@
 package com.s11group2.profiling_database.Model;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,10 +9,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-
 import org.springframework.web.multipart.MultipartFile;
+
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * The DatabaseManager class provides methods to manage the SQLite database,
@@ -58,6 +56,10 @@ public class DatabaseManager {
      * @throws SQLException if a database access error occurs
      */
     public void createTables() throws SQLException {
+        // Statement stmt = conn.createStatement();
+        // stmt.execute("DROP TABLE Pets;"); // uncomment to clear tables on springboot run, recomment after cleared
+        // stmt.execute("DROP TABLE Members;");
+        // stmt.execute("DROP TABLE Households;");
         createHouseholdTable();
         createMemberTable();
         createPetTable();
@@ -103,6 +105,7 @@ public class DatabaseManager {
                 "occupation varchar(255), " +
                 "monthlyIncome real, " +
                 "isMainRespondent integer, " +
+                "relationToMainRespondent varchar(255), " +
                 "buildingNum integer, " +
                 "unitNum integer, " +
                 "profileImagePath varchar(255), " +
@@ -118,6 +121,7 @@ public class DatabaseManager {
                 "petSpecies varchar(255), " +
                 "buildingNum integer, " +
                 "unitNum integer, " +
+                "petImagePath varchar(255), " +
                 "constraint buildingUnitNumPets_fk foreign key (buildingNum, unitNum) references Households(buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
@@ -173,8 +177,8 @@ public class DatabaseManager {
      * @param profileImagePath the profile image path
      * @throws SQLException if a database access error occurs
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImage) throws SQLException, IOException {
-        String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, String relationToMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImage) throws SQLException, IOException {
+        String insertSQL = "INSERT INTO Members (lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, relationToMainRespondent, buildingNum, unitNum, profileImagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, lastName);
             pstmt.setString(2, firstName);
@@ -190,30 +194,44 @@ public class DatabaseManager {
             pstmt.setString(12, occupation);
             pstmt.setDouble(13, monthlyIncome);
             pstmt.setInt(14, isMainRespondent);
-            pstmt.setInt(15, buildingNum);
-            pstmt.setInt(16, unitNum);
+            pstmt.setString(15, relationToMainRespondent);
+            pstmt.setInt(16, buildingNum);
+            pstmt.setInt(17, unitNum);
 
             String tempPath = null;
+            String extension = "." + FilenameUtils.getExtension(profileImage.getOriginalFilename());
 
-            File temp = File.createTempFile("image", ".jpg", new File("./res"));
+            File temp = File.createTempFile("image", extension, new File("./res"));
             tempPath = temp.getCanonicalPath();
 
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(profileImage.getBytes());
             }
 
-            pstmt.setString(17, tempPath);
+            pstmt.setString(18, tempPath);
             pstmt.executeUpdate();
         }
     }
 
-    public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum) throws SQLException {
-        String insertSQL = "INSERT INTO Pets (petName, petSpecies, buildingNum, unitNum) VALUES (?, ?, ?, ?)";
+    public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum, MultipartFile petImage) throws SQLException, IOException {
+        String insertSQL = "INSERT INTO Pets (petName, petSpecies, buildingNum, unitNum) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, petName);
             pstmt.setString(2, petSpecies);
             pstmt.setInt(3, buildingNum);
             pstmt.setInt(4, unitNum);
+
+            String tempPath = null;
+            String extension = "." + FilenameUtils.getExtension(petImage.getOriginalFilename());
+
+            File temp = File.createTempFile("image", extension, new File("./res"));
+            tempPath = temp.getCanonicalPath();
+
+            try (OutputStream os = new FileOutputStream(temp)) {
+                os.write(petImage.getBytes());
+            }
+
+            pstmt.setString(5, tempPath);
             pstmt.executeUpdate();
         }
     }
