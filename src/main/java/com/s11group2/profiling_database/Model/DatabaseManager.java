@@ -22,7 +22,7 @@ public class DatabaseManager {
     private Connection conn;
 
     private DatabaseManager() throws SQLException {
-        String url = "jdbc:sqlite:your-database.db";
+        String url = "jdbc:sqlite:units.db";
         this.conn = DriverManager.getConnection(url);
     }
 
