@@ -200,13 +200,13 @@ public class DatabaseManager {
             String extension = "." + FilenameUtils.getExtension(profileImage.getOriginalFilename());
     
             // Ensure the directory exists
-            File dir = new File("./res");
+            File dir = new File("./src/main/resources/static/user");
             if (!dir.exists()) {
                 dir.mkdirs(); // Create the directory if it does not exist
             }
     
             File temp = File.createTempFile("image", extension, dir);
-            tempPath = temp.getCanonicalPath();
+            tempPath = "/user/" + temp.getName();
     
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(profileImage.getBytes());
@@ -232,13 +232,13 @@ public class DatabaseManager {
             String extension = "." + FilenameUtils.getExtension(petImage.getOriginalFilename());
     
             // Ensure the directory exists
-            File dir = new File("./res");
+            File dir = new File("./src/main/resources/static/user");
             if (!dir.exists()) {
                 dir.mkdirs(); // Create the directory if it does not exist
             }
     
             File temp = File.createTempFile("image", extension, dir);
-            tempPath = temp.getCanonicalPath();
+            tempPath = "/user/" + temp.getName();
     
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(petImage.getBytes());
