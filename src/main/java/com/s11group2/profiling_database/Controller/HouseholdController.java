@@ -2,6 +2,7 @@ package com.s11group2.profiling_database.Controller;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Util.InputValidation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,21 +13,17 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @Controller
 public class HouseholdController {
+    private final DatabaseManager dbManager;
 
-    private DatabaseManager dbManager;
-
-    public HouseholdController() {
-        try {
-            this.dbManager = new DatabaseManager();
-        } catch (SQLException e) {
-            Logger.getLogger(HouseholdController.class.getName()).log(Level.SEVERE, null, e);
-        }
+    @Autowired
+    public HouseholdController(DatabaseManager databaseManager) {
+        this.dbManager = databaseManager;
     }
+
 
     @GetMapping("/addhousehold")
     public String registerPage() {

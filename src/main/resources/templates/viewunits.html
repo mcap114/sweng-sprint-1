@@ -86,7 +86,7 @@
               <button class="edit-btn" th:onclick="'window.location.href=\'/editunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
                 <img src="/png/edit-icon.png" alt="Edit">
               </button>
-              <button class="delete-btn" th:onclick="'window.location.href=\'/deleteunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
+              <button class="delete-btn" onclick="confirmDelete([[${household.buildingNum}]], [[${household.unitNum}]]);">
                 <img src="/png/delete-icon.png" alt="Delete">
               </button>
             </td>

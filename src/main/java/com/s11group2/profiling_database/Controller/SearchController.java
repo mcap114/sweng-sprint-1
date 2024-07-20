@@ -23,7 +23,7 @@ public class SearchController {
     }
 
     public void search(String searchTerm) {
-        try (Connection conn = dbManager.getConnection()) {
+        try (Connection conn = dbManager.getConn()) {
             String query = buildDynamicQuery(conn, searchTerm);
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 for (int i = 1; i <= 10; i++) {
@@ -61,7 +61,7 @@ public class SearchController {
      * @param buildingNum the building number to search for
      */
     public void searchByBuilding(int buildingNum) {
-        try (Connection conn = dbManager.getConnection()) {
+        try (Connection conn = dbManager.getConn()) {
             String query = "SELECT * FROM Households WHERE buildingNum = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 pstmt.setInt(1, buildingNum);
@@ -81,7 +81,7 @@ public class SearchController {
      * @param unitNum the unit number to search for
      */
     public void searchByUnit(int unitNum) {
-        try (Connection conn = dbManager.getConnection()) {
+        try (Connection conn = dbManager.getConn()) {
             String query = "SELECT * FROM Households WHERE unitNum = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 pstmt.setInt(1, unitNum);

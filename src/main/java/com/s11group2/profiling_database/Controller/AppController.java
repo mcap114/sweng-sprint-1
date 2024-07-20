@@ -29,7 +29,7 @@ public class AppController {
      */
     public AppController() {
         try {
-            dbManager = new DatabaseManager();
+            this.dbManager = DatabaseManager.getInstance();
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error initializing DatabaseManager: " + e.getMessage());
@@ -54,7 +54,7 @@ public class AppController {
     
     public void dropTables() {
         try {
-            dbManager.dropTables(dbManager.getConnection());
+            dbManager.dropTables(dbManager.getConn());
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,25 +87,26 @@ public class AppController {
     /**
      * Inserts a member record into the database after validating the input.
      *
-     * @param lastName the last name
-     * @param firstName the first name
-     * @param middleName the middle name
-     * @param gender the gender
-     * @param birthday the birthday
-     * @param healthStatus the health status
-     * @param pwdType the type of PWD
-     * @param isSeniorCitizen indicates if the person is a senior citizen
-     * @param civilStatus the civil status
-     * @param contactNumber the contact number
+     * @param lastName                     the last name
+     * @param firstName                    the first name
+     * @param middleName                   the middle name
+     * @param gender                       the gender
+     * @param birthday                     the birthday
+     * @param healthStatus                 the health status
+     * @param pwdType                      the type of PWD
+     * @param isSeniorCitizen              indicates if the person is a senior citizen
+     * @param civilStatus                  the civil status
+     * @param contactNumber                the contact number
      * @param highestEducationalAttainment the highest educational attainment
-     * @param occupation the occupation
-     * @param monthlyIncome the monthly income
-     * @param isMainRespondent indicates if the person is the main respondent
-     * @param buildingNum the building number
-     * @param unitNum the unit number
-     * @param profileImagePath the path to the profile image
+     * @param occupation                   the occupation
+     * @param monthlyIncome                the monthly income
+     * @param isMainRespondent             indicates if the person is the main respondent
+     * @param buildingNum                  the building number
+     * @param unitNum                      the unit number
+     * @param profileImagePath             the path to the profile image
+     * @param relationToMainRespondent
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImagePath) throws IOException {
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImagePath, String relationToMainRespondent) throws IOException {
         try {
             // Input validation
             validateMemberInput(lastName, firstName, gender, birthday, healthStatus, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);
@@ -159,7 +160,7 @@ public class AppController {
      * @return the current Connection object
      */
     public Connection fetchConnection() {
-        return dbManager.getConnection();
+        return dbManager.getConn();
     }
 
     /**

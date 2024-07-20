@@ -2,7 +2,9 @@ package com.s11group2.profiling_database;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import java.io.IOException;
+import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,18 +16,25 @@ public class AppSpringboot {
         SpringApplication.run(AppSpringboot.class, args);
     }
 
+    @Autowired
+    private DatabaseManager databaseManager;
+
     @Bean
     public CommandLineRunner openBrowser() {
         return args -> {
             System.out.println("CommandLineRunner executed");
 
-            DatabaseManager initialize = new DatabaseManager();
-            initialize.createTables();
+            try {
+                databaseManager.createTables();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Failed to create tables.");
+            }
 
             new Thread(() -> {
                 try {
                     System.out.println("Waiting for the server to start...");
-                    Thread.sleep(1000); 
+                    Thread.sleep(1000);
                     openHomePage();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

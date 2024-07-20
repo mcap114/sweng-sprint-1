@@ -3,6 +3,7 @@ package com.s11group2.profiling_database.Controller;
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Model.Household;
 import com.s11group2.profiling_database.Model.Member;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,19 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Controller
 public class ViewSearchController {
-    private DatabaseManager databaseManager;
+    private final DatabaseManager databaseManager;
 
-    public ViewSearchController() {
-        try {
-            this.databaseManager = new DatabaseManager();
-        } catch (SQLException e) {
-            Logger.getLogger(ViewSearchController.class.getName()).log(Level.SEVERE, null, e);
-        }
+    @Autowired
+    public ViewSearchController(DatabaseManager databaseManager) {
+        this.databaseManager = databaseManager;
     }
 
     @GetMapping("/viewunits")
