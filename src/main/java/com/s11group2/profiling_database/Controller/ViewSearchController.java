@@ -41,7 +41,7 @@ public class ViewSearchController {
     }
 
     @GetMapping("/search")
-    public String searchHouseholds(@RequestParam String searchTerm, Model model) {
+    public String searchHouseholds(@RequestParam("searchTerm") String searchTerm, Model model) {
         try {
             List<Household> households = databaseManager.searchHouseholds(searchTerm);
             model.addAttribute("households", households);
@@ -52,27 +52,28 @@ public class ViewSearchController {
             return "error";
         }
     }
+    
 
     @GetMapping("/viewaunit/{buildingNum}/{unitNum}")
-    public String showHouseholdInfo(@PathVariable int buildingNum, @PathVariable int unitNum, Model model) {
-        try {
-            Household household = databaseManager.getHousehold(buildingNum, unitNum);
-            if (household != null) {
-                //List<Member> members = databaseManager.getMembersByHousehold(buildingNum, unitNum);
-                model.addAttribute("household", household);
-                model.addAttribute("mainRespondent", databaseManager.getMainRespondent(buildingNum, unitNum));
-                model.addAttribute("otherMembers", databaseManager.getAllMembers());
-                return "viewaunit";
-            } else {
-                model.addAttribute("errorMessage", "Household not found for buildingNum: " + buildingNum + " and unitNum: " + unitNum);
-                return "error";
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            model.addAttribute("errorMessage", "Failed to retrieve household information.");
+public String showHouseholdInfo(@PathVariable("buildingNum") int buildingNum, @PathVariable("unitNum") int unitNum, Model model) {
+    try {
+        Household household = databaseManager.getHousehold(buildingNum, unitNum);
+        if (household != null) {
+            model.addAttribute("household", household);
+            model.addAttribute("mainRespondent", databaseManager.getMainRespondent(buildingNum, unitNum));
+            model.addAttribute("otherMembers", databaseManager.getAllMembers());
+            return "viewaunit";
+        } else {
+            model.addAttribute("errorMessage", "Household not found for buildingNum: " + buildingNum + " and unitNum: " + unitNum);
             return "error";
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        model.addAttribute("errorMessage", "Failed to retrieve household information.");
+        return "error";
     }
+}
+
 
 
 
