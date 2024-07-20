@@ -197,42 +197,60 @@ public class DatabaseManager {
             pstmt.setString(15, relationToMainRespondent);
             pstmt.setInt(16, buildingNum);
             pstmt.setInt(17, unitNum);
-
+    
             String tempPath = null;
             String extension = "." + FilenameUtils.getExtension(profileImage.getOriginalFilename());
-
-            File temp = File.createTempFile("image", extension, new File("./res"));
+    
+            // Ensure the directory exists
+            File dir = new File("./res");
+            if (!dir.exists()) {
+                dir.mkdirs(); // Create the directory if it does not exist
+            }
+    
+            File temp = File.createTempFile("image", extension, dir);
             tempPath = temp.getCanonicalPath();
-
+    
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(profileImage.getBytes());
             }
-
+    
             pstmt.setString(18, tempPath);
             pstmt.executeUpdate();
+        } catch (IOException e) {
+            e.printStackTrace(); // Print stack trace to help with debugging
+            throw e; // Rethrow exception to handle it further up the call stack if needed
         }
     }
 
     public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum, MultipartFile petImage) throws SQLException, IOException {
-        String insertSQL = "INSERT INTO Pets (petName, petSpecies, buildingNum, unitNum) VALUES (?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO Pets (petName, petSpecies, buildingNum, unitNum, petImagePath) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, petName);
             pstmt.setString(2, petSpecies);
             pstmt.setInt(3, buildingNum);
             pstmt.setInt(4, unitNum);
-
+    
             String tempPath = null;
             String extension = "." + FilenameUtils.getExtension(petImage.getOriginalFilename());
-
-            File temp = File.createTempFile("image", extension, new File("./res"));
+    
+            // Ensure the directory exists
+            File dir = new File("./res");
+            if (!dir.exists()) {
+                dir.mkdirs(); // Create the directory if it does not exist
+            }
+    
+            File temp = File.createTempFile("image", extension, dir);
             tempPath = temp.getCanonicalPath();
-
+    
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(petImage.getBytes());
             }
-
+    
             pstmt.setString(5, tempPath);
             pstmt.executeUpdate();
+        } catch (IOException e) {
+            e.printStackTrace(); // Print stack trace to help with debugging
+            throw e; // Rethrow exception to handle it further up the call stack if needed
         }
     }
 
