@@ -1,9 +1,10 @@
+
 package com.s11group2.profiling_database.Controller;
 
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Model.Household;
 import com.s11group2.profiling_database.Util.ValidationException;
-import java.io.File;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -104,7 +105,7 @@ public class AppController {
      * @param unitNum the unit number
      * @param profileImagePath the path to the profile image
      */
-    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, String profileImagePath) {
+    public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImagePath) throws IOException {
         try {
             // Input validation
             validateMemberInput(lastName, firstName, gender, birthday, healthStatus, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum);

@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.s11group2.profiling_database.Controller.AppController;
 import com.s11group2.profiling_database.Controller.SearchController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Serves as pseudo-View, displays sub-menus in AppTerminal.
@@ -156,10 +157,10 @@ public class TerminalMenus {
 
                     int isMainRespondent = 1;
 
-                    String profileImagePath = "/";
+                    //MultipartFile profileImagePath = "/";
 
                     appController.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
-                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
+                    //appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
                     System.out.println("Household record inserted successfully.");
                 } catch (Exception e) {
                     System.err.println("Error: " + e.getMessage());
@@ -225,9 +226,9 @@ public class TerminalMenus {
 
                     int isMainRespondent = 1;
 
-                    String profileImagePath = "/";
+                    //MultipartFile profileImagePath = "/";
 
-                    appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
+                    //appController.insertMember(lastName, firstName, middleName, gender, birthday, healthStatus, pwdType, isSeniorCitizen, civilStatus, contactNumber, highestEducationalAttainment, occupation, monthlyIncome, isMainRespondent, buildingNum, unitNum, profileImagePath);
                     System.out.println("Member record inserted successfully.");
                 } catch (Exception e) {
                     System.err.println("Error: " + e.getMessage());
