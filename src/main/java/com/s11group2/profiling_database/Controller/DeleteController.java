@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 public class DeleteController {
@@ -25,6 +26,20 @@ public class DeleteController {
     public String delete(@PathVariable int buildingNum, @PathVariable int unitNum, Model model) throws SQLException {
 
         databaseManager.deleteHousehold(buildingNum, unitNum);
+
+        try {
+            List<Household> households = databaseManager.getAllHouseholds();
+
+            for (Household household : households) {
+                Member mainRespondent = databaseManager.getMainRespondent(household.getBuildingNum(), household.getUnitNum());
+                household.setMembers(mainRespondent != null ? List.of(mainRespondent) : List.of());
+            }
+
+            model.addAttribute("households", households);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            model.addAttribute("errorMessage", "Failed to retrieve households from database.");
+        }
 
         return "viewunits";
     }
