@@ -54,14 +54,17 @@ public class ViewSearchController {
     }
     
 
-    @GetMapping("/viewaunit/{buildingNum}/{unitNum}")
+@GetMapping("/viewaunit/{buildingNum}/{unitNum}")
 public String showHouseholdInfo(@PathVariable("buildingNum") int buildingNum, @PathVariable("unitNum") int unitNum, Model model) {
     try {
         Household household = databaseManager.getHousehold(buildingNum, unitNum);
         if (household != null) {
+            Member mainRespondent = databaseManager.getMainRespondent(buildingNum, unitNum);
+            List<Member> additionalMembers = databaseManager.getMembersByHousehold(buildingNum, unitNum);
+
             model.addAttribute("household", household);
-            model.addAttribute("mainRespondent", databaseManager.getMainRespondent(buildingNum, unitNum));
-            model.addAttribute("otherMembers", databaseManager.getAllMembers());
+            model.addAttribute("mainRespondent", mainRespondent);
+            model.addAttribute("otherMembers", additionalMembers);
             return "viewaunit";
         } else {
             model.addAttribute("errorMessage", "Household not found for buildingNum: " + buildingNum + " and unitNum: " + unitNum);
@@ -73,6 +76,8 @@ public String showHouseholdInfo(@PathVariable("buildingNum") int buildingNum, @P
         return "error";
     }
 }
+
+    
 
 
 

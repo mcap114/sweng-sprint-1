@@ -417,7 +417,7 @@ public class DatabaseManager {
 
     public List<Member> getMembersByHousehold(int buildingNum, int unitNum) throws SQLException {
         List<Member> members = new ArrayList<>();
-        String query = "SELECT * FROM Members WHERE buildingNum = ? AND unitNum = ?";
+        String query = "SELECT * FROM Members WHERE buildingNum = ? AND unitNum = ? AND isMainRespondent = FALSE";
 
         PreparedStatement pstmt;
         ResultSet rs;
