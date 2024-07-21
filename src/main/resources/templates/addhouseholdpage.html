@@ -54,7 +54,7 @@
 
           <div class="input-field">
             <label>Year of Residence</label>
-            <input type="number" name="yearOfResidence" min="1900" max="2099" step="1"/>
+            <input type="number" name="yearOfResidence" min="1900" max="2099" step="1" required/>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
 
               <div class="input-field">
                 <label>Middle Name</label>
-                <input type="text" name="resMiddleName"/>
+                <input type="text" name="resMiddleName" placeholder="Type &quot;-&quot; if N/A" required/>
               </div>
             </div>
 
@@ -108,8 +108,8 @@
                 <label>Gender</label>
                 <select id="resGender" name="resGender" required>
                   <option disabled selected value>---</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
 
@@ -122,10 +122,10 @@
                 <label>Civil Status</label>
                 <select id="resCivilStatus" name="resCivilStatus" required>
                   <option disabled selected value>---</option>
-                  <option value="single">Single</option>
-                  <option value="married">Married</option>
-                  <option value="separated">Separated</option>
-                  <option value="widowed">Widowed</option>
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Separated">Separated</option>
+                  <option value="Widowed">Widowed</option>
                 </select>
               </div>
 
@@ -140,13 +140,13 @@
                 <label>Highest Educational Attainment</label>
                 <select id="resHighestEducationalAttainment" name="resHighestEducationalAttainment" required>
                   <option disabled selected value>---</option>
-                  <option value="noEducation"> No Education</option>
-                  <option value="elementaryUndergraduate">Elementary Undergraduate</option>
-                  <option value="elementaryGraduate">Elementary Graduate</option>
-                  <option value="highschoolUndergraduate">High School Undergraduate</option>
-                  <option value="highschoolGraduate">High School Graduate</option>
-                  <option value="collegeUndergraduate">College Undergraduate</option>
-                  <option value="collegeGraduateOrHigher">College Graduate or Higher</option>
+                  <option value="No Education"> No Education</option>
+                  <option value="Elementary Undergraduate">Elementary Undergraduate</option>
+                  <option value="Elementary Graduate">Elementary Graduate</option>
+                  <option value="Highschool Undergraduate">High School Undergraduate</option>
+                  <option value="Highschool Graduate">High School Graduate</option>
+                  <option value="College Undergraduate">College Undergraduate</option>
+                  <option value="College Graduate Or Higher">College Graduate or Higher</option>
                 </select>
               </div>
 
@@ -157,7 +157,7 @@
 
               <div class="input-field">
                 <label>Monthly Income (leave blank if N/A)</label>
-                <input type="number" name="resMonthlyIncome" placeholder="Leave blank if N/A"/>
+                <input type="number" name="resMonthlyIncome" placeholder="Type &quot;0&quot; if Not Applicable" required/>
               </div>
             </div>
 
