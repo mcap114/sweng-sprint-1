@@ -620,6 +620,20 @@ public class DatabaseManager {
     
         return pets;
     }
+
+    public boolean checkHouseholdExists(int buildingNum, int unitNum) throws SQLException {
+        String query = "SELECT COUNT(*) AS count FROM Households WHERE buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, buildingNum);
+            pstmt.setInt(2, unitNum);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt("count");
+                return count > 0;
+            }
+        }
+        return false;
     
-    
+    }
+
 }

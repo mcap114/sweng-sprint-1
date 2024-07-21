@@ -210,18 +210,40 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       const form = document.getElementById("addhousehold");
+      
       form.addEventListener("submit", function(event) {
-          event.preventDefault(); 
+          event.preventDefault();
   
-          const userConfirmed = confirm("Are you sure you want to add this household?");
-          
-          if (userConfirmed) {
-              form.submit();
-          } else {
-              alert("Household registration canceled.");
-          }
+          const buildingNum = document.querySelector("input[name='buildingNum']").value;
+          const unitNum = document.querySelector("input[name='unitNum']").value;
+  
+          // Check if building number and unit number exist
+          $.ajax({
+              url: '/checkHousehold',
+              type: 'GET',
+              data: {
+                  buildingNum: buildingNum,
+                  unitNum: unitNum
+              },
+              success: function(response) {
+                  if (response.exists) {
+                      alert("Building number and unit number already exist.");
+                  } else {
+                      const userConfirmed = confirm("Are you sure you want to add this household?");
+                      if (userConfirmed) {
+                          form.submit();
+                      } else {
+                          alert("Household registration canceled.");
+                      }
+                  }
+              },
+              error: function() {
+                  alert("An error occurred while checking the household information.");
+              }
+          });
       });
   });
   </script>
+  
   
 </html>

@@ -8,11 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class HouseholdController {
@@ -109,5 +112,20 @@ public class HouseholdController {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
             return "addhouseholdpage";
         }
+    }
+
+    @GetMapping("/checkHousehold")
+    @ResponseBody
+    public Map<String, Boolean> checkHousehold(
+            @RequestParam("buildingNum") Integer buildingNum,
+            @RequestParam("unitNum") Integer unitNum) {
+        Map<String, Boolean> response = new HashMap<>();
+        try {
+            boolean exists = dbManager.checkHouseholdExists(buildingNum, unitNum);
+            response.put("exists", exists);
+        } catch (SQLException e) {
+            response.put("exists", false);
+        }
+        return response;
     }
 }
