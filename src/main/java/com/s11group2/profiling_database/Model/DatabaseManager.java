@@ -447,6 +447,7 @@ public class DatabaseManager {
             member.setOccupation(rs.getString("occupation"));
             member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
             member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setRelationToMainRespondent(rs.getString("relationToMainRespondent"));
             member.setBuildingNum(rs.getInt("buildingNum"));
             member.setUnitNum(rs.getInt("unitNum"));
             member.setProfileImagePath(rs.getString("profileImagePath"));
@@ -490,6 +491,7 @@ public class DatabaseManager {
             member.setOccupation(rs.getString("occupation"));
             member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
             member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setRelationToMainRespondent(rs.getString("relationToMainRespondent"));
             member.setBuildingNum(rs.getInt("buildingNum"));
             member.setUnitNum(rs.getInt("unitNum"));
             member.setProfileImagePath(rs.getString("profileImagePath"));
@@ -537,6 +539,7 @@ public class DatabaseManager {
             member.setOccupation(rs.getString("occupation"));
             member.setMonthlyIncome(rs.getDouble("monthlyIncome"));
             member.setIsMainRespondent(rs.getInt("isMainRespondent"));
+            member.setRelationToMainRespondent(rs.getString("relationToMainRespondent"));
             member.setBuildingNum(rs.getInt("buildingNum"));
             member.setUnitNum(rs.getInt("unitNum"));
             member.setProfileImagePath(rs.getString("profileImagePath"));
