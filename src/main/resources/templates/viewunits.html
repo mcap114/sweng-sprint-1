@@ -62,9 +62,9 @@
         </div>
         <div id="dropdown-menu" class="dropdown-content">
           <form th:action="@{/sort}" method="get">
-            <button name="sortCondition" type="submit" value="buildingNum">Numerical (Ascending)</button>
-            <button name="sortCondition" type="submit" value="unitNum">Alphabetical (A-Z)</button>
-            <button name="sortCondition" type="submit" value="yearOfResidence">Recently Added</button>
+            <button class="sort" name="sortCondition" type="submit" value="buildingNum">Numerical (Ascending)</button>
+            <button class="sort" name="sortCondition" type="submit" value="unitNum">Alphabetical (A-Z)</button>
+            <button class="sort" name="sortCondition" type="submit" value="yearOfResidence">Recently Added</button>
           </form>
         </div>
       </div>
