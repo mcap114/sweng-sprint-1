@@ -43,6 +43,26 @@ public class ViewSearchController {
         return "viewunits";
     }
 
+    @GetMapping("/sort")
+    public String sortHouseholds(@RequestParam("sortCondition") String sortCondition, Model model) {
+        try {
+            List<Household> households = databaseManager.sortHouseholds(sortCondition);
+
+            for (Household household : households) {
+                Member mainRespondent = databaseManager.getMainRespondent(household.getBuildingNum(), household.getUnitNum());
+                int memberCount = household.getMembers().size() + 1;
+                household.setMemberCount(memberCount);
+                household.setMembers(mainRespondent != null ? List.of(mainRespondent) : List.of());
+            }
+
+            model.addAttribute("households", households);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            model.addAttribute("errorMessage", "Failed to retrieve households from database.");
+        }
+        return "viewunits";
+    }
+
     @GetMapping("/search")
     public String searchHouseholds(@RequestParam("searchTerm") String searchTerm, Model model) {
         try {
