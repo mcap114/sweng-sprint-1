@@ -396,7 +396,7 @@ public class DatabaseManager {
         List<Household> households = new ArrayList<>();
 
 
-        String query = "SELECT h.*, m.* FROM Households h " +
+        String query = "SELECT DISTINCT h.* FROM Households h " +
                 "LEFT JOIN Members m ON h.buildingNum = m.buildingNum AND h.unitNum = m.unitNum " +
                 "WHERE h.buildingNum = ? OR h.unitNum = ? OR m.firstName LIKE ? OR m.lastName LIKE ?";
 

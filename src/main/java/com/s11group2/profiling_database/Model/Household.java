@@ -11,6 +11,7 @@ public class Household {
     private double monthlyExpenditure;
     private double monthlyAmortization;
     private int yearOfResidence;
+    private int memberCount;
     private List<Member> members;
 
 
@@ -60,6 +61,14 @@ public class Household {
 
     public void setMembers(List<Member> members) {
         this.members = members;
+    }
+
+    public int getMemberCount() {
+        return memberCount;
+    }
+
+    public void setMemberCount(int memberCount) {
+        this.memberCount = memberCount;
     }
 
     public Member getMainRespondent() {
