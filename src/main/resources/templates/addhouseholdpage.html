@@ -11,7 +11,6 @@
   <script src="https://unpkg.com/create-file-list@1.0.1/dist/create-file-list.min.js"></script>
   <script src="./script.js"></script>
   <title>Add Household</title>
-
 </head>
 <body>
 
@@ -28,7 +27,7 @@
     </div>
     <hr>
     <!--add info of form to database-->
-    <form action="/addhousehold" method="post" enctype="multipart/form-data">
+    <form id="addhousehold" action="/addhousehold" method="post" enctype="multipart/form-data">
       <div class="fields">
         <div class="form-row">
           <div class="input-field">
@@ -209,15 +208,20 @@
 <script src="/js/addhousehold.js"></script>
 </body>
 <script>
-  <!-- Will move to separate file later, placed here for testing-->
-  function showConfirmation() {
-    alert("Household registered successfully!");
-  }
-
-
-  let successMessage = "<%= model.getAttribute('message') %>";
-  if (successMessage.includes("Household registered successfully.")) {
-    showConfirmation();
-  }
-</script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("addhousehold");
+      form.addEventListener("submit", function(event) {
+          event.preventDefault(); 
+  
+          const userConfirmed = confirm("Are you sure you want to add this household?");
+          
+          if (userConfirmed) {
+              form.submit();
+          } else {
+              alert("Household registration canceled.");
+          }
+      });
+  });
+  </script>
+  
 </html>
