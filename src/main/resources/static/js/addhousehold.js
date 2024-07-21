@@ -37,7 +37,7 @@ function addMember() {
                     </div>
                     <div class="input-field">
                         <label>Middle Name</label>
-                        <input type="text" name="resMiddleName" required/>
+                        <input type="text" name="resMiddleName" placeholder="Type &quot;-&quot; if N/A" required/>
                     </div>
                 </div>
                 <div class="form-row">
@@ -45,8 +45,8 @@ function addMember() {
                         <label>Gender</label>
                         <select id="resGender" name="resGender" required>
                             <option disabled selected value>---</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                     <div class="input-field">
@@ -57,10 +57,10 @@ function addMember() {
                         <label>Civil Status</label>
                         <select id="resCivilStatus" name="resCivilStatus" required>
                             <option disabled selected value>---</option>
-                            <option value="single">Single</option>
-                            <option value="married">Married</option>
-                            <option value="separated">Separated</option>
-                            <option value="widowed">Widowed</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Separated">Separated</option>
+                            <option value="Widowed">Widowed</option>
                         </select>
                     </div>
                     <div class="input-field">
@@ -73,13 +73,13 @@ function addMember() {
                         <label>Highest Educational Attainment</label>
                         <select id="resHighestEducationalAttainment" name="resHighestEducationalAttainment" required>
                             <option disabled selected value>---</option>
-                            <option value="noEducation">No Education</option>
-                            <option value="elementaryUndergraduate">Elementary Undergraduate</option>
-                            <option value="elementaryGraduate">Elementary Graduate</option>
-                            <option value="highschoolUndergraduate">High School Undergraduate</option>
-                            <option value="highschoolGraduate">High School Graduate</option>
-                            <option value="collegeUndergraduate">College Undergraduate</option>
-                            <option value="collegeGraduateOrHigher">College Graduate or Higher</option>
+                            <option value="No Education">No Education</option>
+                            <option value="Elementary Undergraduate">Elementary Undergraduate</option>
+                            <option value="Elementary Graduate">Elementary Graduate</option>
+                            <option value="Highschool Undergraduate">High School Undergraduate</option>
+                            <option value="Highschool Graduate">High School Graduate</option>
+                            <option value="College Undergraduate">College Undergraduate</option>
+                            <option value="College Graduate Or Higher">College Graduate or Higher</option>
                         </select>
                     </div>
                     <div class="input-field">
@@ -88,7 +88,7 @@ function addMember() {
                     </div>
                     <div class="input-field">
                         <label>Monthly Income</label>
-                        <input type="number" name="resMonthlyIncome" required/>
+                        <input type="number" name="resMonthlyIncome" placeholder="Type &quot;0&quot; if Not Applicable" required/>
                     </div>
                     <div class="input-field">
                         <label>Relationship to Main Respondent</label>
@@ -97,12 +97,12 @@ function addMember() {
                 </div>
                 <div class="form-row">
                     <div class="input-field">
-                        <label>Health Status</label>
-                        <input type="text" name="resHealthStatus" required/>
+                        <label>Medical Complications</label>
+                        <input type="text" name="resHealthStatus" placeholder="Type N/A if none" required/>
                     </div>
                     <div class="input-field">
                         <label>PWD Type</label>
-                        <input type="text" name="resPwdType"/>
+                        <input type="text" name="resPwdType" placeholder="Type N/A if none" required/>
                     </div>
                 </div>
             </div>
@@ -139,10 +139,10 @@ function addPet() {
                 <div class="image-field">
                     <label>Upload Picture</label>
                     <div id="preview"> 
-                        <img class="pet-image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-${petCount}">
+                        <img class="pet-image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-pet-${petCount}">
                     </div>
-                    <label for="resPfp-${petCount}" class="custom-file-upload">Choose File</label>
-                    <input class="custom-file-upload" type="file" id="resPfp-${petCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${petCount}')" required/>
+                    <label for="resPfp-pet-${petCount}" class="custom-file-upload">Choose File</label>
+                    <input class="custom-file-upload" type="file" id="resPfp-pet-${petCount}" name="petPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-pet-${petCount}')" required/>
                 </div>
             </div>
             <div class="form-row">

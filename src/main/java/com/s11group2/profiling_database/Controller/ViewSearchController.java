@@ -3,6 +3,7 @@ package com.s11group2.profiling_database.Controller;
 import com.s11group2.profiling_database.Model.DatabaseManager;
 import com.s11group2.profiling_database.Model.Household;
 import com.s11group2.profiling_database.Model.Member;
+import com.s11group2.profiling_database.Model.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,14 +55,19 @@ public class ViewSearchController {
     }
     
 
-    @GetMapping("/viewaunit/{buildingNum}/{unitNum}")
+@GetMapping("/viewaunit/{buildingNum}/{unitNum}")
 public String showHouseholdInfo(@PathVariable("buildingNum") int buildingNum, @PathVariable("unitNum") int unitNum, Model model) {
     try {
         Household household = databaseManager.getHousehold(buildingNum, unitNum);
         if (household != null) {
+            Member mainRespondent = databaseManager.getMainRespondent(buildingNum, unitNum);
+            List<Member> additionalMembers = databaseManager.getMembersByHousehold(buildingNum, unitNum);
+            List<Pet> pets = databaseManager.getPetsByHousehold(buildingNum, unitNum);
+
             model.addAttribute("household", household);
-            model.addAttribute("mainRespondent", databaseManager.getMainRespondent(buildingNum, unitNum));
-            model.addAttribute("otherMembers", databaseManager.getAllMembers());
+            model.addAttribute("mainRespondent", mainRespondent);
+            model.addAttribute("otherMembers", additionalMembers);
+            model.addAttribute("pets", pets);
             return "viewaunit";
         } else {
             model.addAttribute("errorMessage", "Household not found for buildingNum: " + buildingNum + " and unitNum: " + unitNum);
@@ -73,6 +79,8 @@ public String showHouseholdInfo(@PathVariable("buildingNum") int buildingNum, @P
         return "error";
     }
 }
+
+    
 
 
 

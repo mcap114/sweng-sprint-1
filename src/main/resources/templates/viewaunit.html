@@ -104,10 +104,14 @@
                                     Contact Number
                                     <input type="text" class="detail" th:value="${mainRespondent.contactNumber}"/>
                                 </div>
+                                <div class="named-area">
+                                    Monthly Income
+                                    <input type="text" class="detail" th:value="${mainRespondent.monthlyIncome}"/>
+                                </div>
                             </div>
                             <div class="named-areas">
                                 <div class="adjust-named-area">
-                                    Health Status
+                                    Medical Complications
                                     <input type="text" class="detail" th:value="${mainRespondent.healthStatus}"/>
                                 </div>
                                 <div class="adjust-named-area">
@@ -131,9 +135,13 @@
                 <div th:each="member : ${otherMembers}">
                     <div class="section-deets">
                         <div class = "section-1">
-                            <div class="profile-pic">
-                                <p>Member</p>
-                                <div class="detail-img"><img th:src="${member.profileImagePath}"></div>
+                            <div class="simple-flex">
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        <center> Household Member </center>
+                                        <div class="detail-img"><img th:src="${member.profileImagePath}"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="simple-flex">
                                 <div class="named-areas">
@@ -167,26 +175,58 @@
                                         Contact Number
                                         <input type="text" class="detail" th:value="${member.contactNumber}"/>
                                     </div>
+                                    <div class="named-area">
+                                        Monthly Income
+                                        <input type="text" class="detail" th:value="${member.monthlyIncome}"/>
+                                    </div>
+                                </div>
+                                <div class="named-areas">
+                                    <div class="adjust-named-area">
+                                        Medical Complications
+                                        <input type="text" class="detail" th:value="${member.healthStatus}"/>
+                                    </div>
+                                    <div class="adjust-named-area">
+                                        PWD Type
+                                        <input type="text" class="detail" th:value="${member.pwdType}"/>
+                                    </div>
+                                    <div class="adjust-named-area">
+                                        Highest Educational Attainement
+                                        <input type="text" class="detail" th:value="${member.highestEducationalAttainment}"/>
+                                    </div>
+                                    <div class="adjust-named-area">
+                                        Occupation
+                                        <input type="text" class="detail" th:value="${member.occupation}"/>
+                                    </div>
                                 </div>
                                 
                             </div>
                         </div>
-                        <div class="named-areas">
-                            <div class="named-area">
-                                Health Status
-                                <input type="text" class="detail" th:value="${member.healthStatus}"/>
+                    </div>
+                </div>
+                                <!-- Additional household members loop -->
+                <div th:each="pet : ${pets}">
+                    <div class="section-deets">
+                        <div class = "section-1">
+                            <div class="simple-flex">
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        <center> Household Pet </center>
+                                        <div class="detail-img"><img th:src="${pet.petImagePath}"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="named-area">
-                                PWD Type
-                                <input type="text" class="detail" th:value="${member.pwdType}"/>
-                            </div>
-                            <div class="named-area">
-                                Highest Educational Attainement
-                                <input type="text" class="detail" th:value="${member.highestEducationalAttainment}"/>
-                            </div>
-                            <div class="named-area">
-                                Occupation
-                                <input type="text" class="detail" th:value="${member.occupation}"/>
+                            <div class="simple-flex">
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        Pet Name
+                                        <input type="text" class="detail" th:value="${pet.petName}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        Pet Type
+                                        <input type="text" class="detail" th:value="${pet.petSpecies}"/>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
