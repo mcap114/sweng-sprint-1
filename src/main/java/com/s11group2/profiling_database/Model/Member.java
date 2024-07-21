@@ -17,6 +17,7 @@ public class Member {
     private String occupation;
     private Double monthlyIncome;
     private Integer isMainRespondent;
+    private String relationToMainRespondent;
     private Integer buildingNum;
     private Integer unitNum;
     private String profileImagePath;
@@ -28,7 +29,7 @@ public class Member {
     public Member(String lastName, String firstName, String middleName, String gender, LocalDate birthday,
                   String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus,
                   String contactNumber, String highestEducationalAttainment, String occupation,
-                  Double monthlyIncome, Integer isMainRespondent, Integer buildingNum, Integer unitNum,
+                  Double monthlyIncome, Integer isMainRespondent, String relationToMainRespondent, Integer buildingNum, Integer unitNum,
                   String profileImagePath) {
         this.lastName = lastName;
         this.firstName = firstName;
@@ -44,6 +45,7 @@ public class Member {
         this.occupation = occupation;
         this.monthlyIncome = monthlyIncome;
         this.isMainRespondent = isMainRespondent;
+        this.relationToMainRespondent = relationToMainRespondent;
         this.buildingNum = buildingNum;
         this.unitNum = unitNum;
         this.profileImagePath = profileImagePath;
@@ -160,6 +162,14 @@ public class Member {
 
     public void setIsMainRespondent(Integer isMainRespondent) {
         this.isMainRespondent = isMainRespondent;
+    }
+
+    public String getRelationToMainRespondent() {
+        return relationToMainRespondent;
+    }
+
+    public void setRelationToMainRespondent(String relationToMainRespondent) {
+        this.relationToMainRespondent = relationToMainRespondent;
     }
 
     public Integer getBuildingNum() {
