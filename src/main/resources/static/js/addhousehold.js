@@ -139,10 +139,10 @@ function addPet() {
                 <div class="image-field">
                     <label>Upload Picture</label>
                     <div id="preview"> 
-                        <img class="pet-image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-${petCount}">
+                        <img class="pet-image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-pet-${petCount}">
                     </div>
-                    <label for="resPfp-${petCount}" class="custom-file-upload">Choose File</label>
-                    <input class="custom-file-upload" type="file" id="resPfp-${petCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${petCount}')" required/>
+                    <label for="resPfp-pet-${petCount}" class="custom-file-upload">Choose File</label>
+                    <input class="custom-file-upload" type="file" id="resPfp-pet-${petCount}" name="petPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-pet-${petCount}')" required/>
                 </div>
             </div>
             <div class="form-row">

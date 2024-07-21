@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-
 @Controller
 public class HouseholdController {
     private final DatabaseManager dbManager;
@@ -23,7 +22,6 @@ public class HouseholdController {
     public HouseholdController(DatabaseManager databaseManager) {
         this.dbManager = databaseManager;
     }
-
 
     @GetMapping("/addhousehold")
     public String registerPage() {
@@ -50,21 +48,19 @@ public class HouseholdController {
             @RequestParam(value="monthlyExpenditure") Double monthlyExpenditure,
             @RequestParam(value="monthlyAmortization") Double monthlyAmortization,
             @RequestParam(value="yearOfResidence") Integer yearOfResidence,
-            @RequestParam(value="resPfp") MultipartFile[] profileImage,
+            @RequestParam(value="resPfp") MultipartFile[] profileImages,
             @RequestParam(value="petName", required=false) String[] petName,
             @RequestParam(value="petAnimalType", required=false) String[] petSpecies,
-            @RequestParam(value="resPfp", required=false) MultipartFile[] petImage,
+            @RequestParam(value="petPfp", required=false) MultipartFile[] petImages,
             Model model) {
 
         try {
             // Handle file upload
             // TODO: fix method of storing file path
             // String uploadDirectory = "src/main/resources/static/images/";
-                
-            
+
             // adsImagesString += imageService.saveImageToStorage(uploadDirectory, profileImage);
-        
-            
+
             // by default, the initial member added is the main respondent
             int isMainRespondent = 1;
             String nullString = "";
@@ -79,7 +75,7 @@ public class HouseholdController {
             dbManager.insertMember(
                     lastName[0], firstName[0], middleName[0], gender[0], birthDate, healthStatus[0], pwdType[0], isSeniorCitizen,
                     civilStatus[0], contactNumber[0], highestEducationalAttainment[0], occupation[0], monthlyIncome[0], isMainRespondent, nullString,
-                    buildingNum, unitNum, profileImage[0]
+                    buildingNum, unitNum, profileImages[0]
             );
 
             isMainRespondent = 0;
@@ -94,13 +90,13 @@ public class HouseholdController {
                 dbManager.insertMember(
                         lastName[i], firstName[i], middleName[i], gender[i], birthDate, healthStatus[i], pwdType[i], isSeniorCitizen,
                         civilStatus[i], contactNumber[i], highestEducationalAttainment[i], occupation[i], monthlyIncome[i], isMainRespondent, relationToMainRespondent[i-1],
-                        buildingNum, unitNum, profileImage[i]
+                        buildingNum, unitNum, profileImages[i]
                 );
             }
 
             if (petName != null) {
                 for (int i = 0; i < petName.length; i++) {
-                    dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum, petImage[i]);
+                    dbManager.insertPet(petName[i], petSpecies[i], buildingNum, unitNum, petImages[i]);
                 }
             }
 
@@ -112,6 +108,5 @@ public class HouseholdController {
             System.out.println("Failed to register household: " + e.getMessage());
             return "addhouseholdpage";
         }
-
     }
 }

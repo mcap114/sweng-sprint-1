@@ -199,14 +199,14 @@ public class DatabaseManager {
             String tempPath = null;
             String extension = "." + FilenameUtils.getExtension(profileImage.getOriginalFilename());
     
-            // Ensure the directory exists
-            File dir = new File("./src/main/resources/static/user");
+            // Ensure the directory exists for user profiles
+            File dir = new File("./src/main/resources/static/user/profiles");
             if (!dir.exists()) {
                 dir.mkdirs(); // Create the directory if it does not exist
             }
     
-            File temp = File.createTempFile("image", extension, dir);
-            tempPath = "/user/" + temp.getName();
+            File temp = File.createTempFile("profile", extension, dir);
+            tempPath = "/user/profiles/" + temp.getName();
     
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(profileImage.getBytes());
@@ -219,7 +219,7 @@ public class DatabaseManager {
             throw e; // Rethrow exception to handle it further up the call stack if needed
         }
     }
-
+    
     public void insertPet(String petName, String petSpecies, Integer buildingNum, Integer unitNum, MultipartFile petImage) throws SQLException, IOException {
         String insertSQL = "INSERT INTO Pets (petName, petSpecies, buildingNum, unitNum, petImagePath) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
@@ -231,14 +231,14 @@ public class DatabaseManager {
             String tempPath = null;
             String extension = "." + FilenameUtils.getExtension(petImage.getOriginalFilename());
     
-            // Ensure the directory exists
-            File dir = new File("./src/main/resources/static/user");
+            // Ensure the directory exists for pet images
+            File dir = new File("./src/main/resources/static/user/pets");
             if (!dir.exists()) {
                 dir.mkdirs(); // Create the directory if it does not exist
             }
     
-            File temp = File.createTempFile("image", extension, dir);
-            tempPath = "/user/" + temp.getName();
+            File temp = File.createTempFile("pet", extension, dir);
+            tempPath = "/user/pets/" + temp.getName();
     
             try (OutputStream os = new FileOutputStream(temp)) {
                 os.write(petImage.getBytes());
@@ -251,6 +251,7 @@ public class DatabaseManager {
             throw e; // Rethrow exception to handle it further up the call stack if needed
         }
     }
+    
 
     public void editHousehold(int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
         String query = "UPDATE Households SET " + field + " = ? WHERE buildingNum = ? AND unitNum = ?";
@@ -310,12 +311,14 @@ public class DatabaseManager {
     }
 
     public void dropTables(Connection conn) throws SQLException {
-    String dropSQL1 = "DROP TABLE IF EXISTS Members";
-    String dropSQL2 = "DROP TABLE IF EXISTS Households";
-    Statement stmt = conn.createStatement() ;
+        String dropSQL1 = "DROP TABLE IF EXISTS Members";
+        String dropSQL2 = "DROP TABLE IF EXISTS Pets"; // Ensure to drop the Pets table as well
+        String dropSQL3 = "DROP TABLE IF EXISTS Households";
+        Statement stmt = conn.createStatement();
         stmt.executeUpdate(dropSQL1);
-        stmt.executeUpdate(dropSQL2);
-}
+        stmt.executeUpdate(dropSQL2); // Drop Pets table
+        stmt.executeUpdate(dropSQL3);
+    }
 
     /**
      * Checks if a household with the given building number and unit number already exists.
@@ -589,4 +592,31 @@ public class DatabaseManager {
 
         return household;
     }
+    public List<Pet> getPetsByHousehold(int buildingNum, int unitNum) throws SQLException {
+        List<Pet> pets = new ArrayList<>();
+        String query = "SELECT * FROM Pets WHERE buildingNum = ? AND unitNum = ?";
+    
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, buildingNum);
+        pstmt.setInt(2, unitNum);
+    
+        ResultSet rs = pstmt.executeQuery();
+    
+        while (rs.next()) {
+            Pet pet = new Pet(
+                rs.getString("petName"),
+                rs.getString("petSpecies"),
+                rs.getInt("buildingNum"),
+                rs.getInt("unitNum"),
+                rs.getString("petImagePath")
+                
+            );
+    
+            pets.add(pet); // Add pet to the list
+        }
+    
+        return pets;
+    }
+    
+    
 }

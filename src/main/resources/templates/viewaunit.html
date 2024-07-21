@@ -203,6 +203,34 @@
                         </div>
                     </div>
                 </div>
+                                <!-- Additional household members loop -->
+                <div th:each="pet : ${pets}">
+                    <div class="section-deets">
+                        <div class = "section-1">
+                            <div class="simple-flex">
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        <center> Household Pet </center>
+                                        <div class="detail-img"><img th:src="${pet.petImagePath}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="simple-flex">
+                                <div class="named-areas">
+                                    <div class="named-area">
+                                        Pet Name
+                                        <input type="text" class="detail" th:value="${pet.petName}"/>
+                                    </div>
+                                    <div class="named-area">
+                                        Pet Type
+                                        <input type="text" class="detail" th:value="${pet.petSpecies}"/>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Confirm and Cancel buttons -->
                 <div class="edit-buttons" style="display: none;">
