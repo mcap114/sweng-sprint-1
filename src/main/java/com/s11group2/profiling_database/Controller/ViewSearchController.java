@@ -47,6 +47,14 @@ public class ViewSearchController {
     public String searchHouseholds(@RequestParam("searchTerm") String searchTerm, Model model) {
         try {
             List<Household> households = databaseManager.searchHouseholds(searchTerm);
+
+            for (Household household : households) {
+                Member mainRespondent = databaseManager.getMainRespondent(household.getBuildingNum(), household.getUnitNum());
+                int memberCount = household.getMembers().size() + 1;
+                household.setMemberCount(memberCount);
+                household.setMembers(mainRespondent != null ? List.of(mainRespondent) : List.of());
+            }
+
             model.addAttribute("households", households);
             return "viewunits";
         } catch (SQLException e) {
