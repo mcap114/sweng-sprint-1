@@ -30,6 +30,8 @@ public class ViewSearchController {
 
             for (Household household : households) {
                 Member mainRespondent = databaseManager.getMainRespondent(household.getBuildingNum(), household.getUnitNum());
+                int memberCount = household.getMembers().size() + 1;
+                household.setMemberCount(memberCount);
                 household.setMembers(mainRespondent != null ? List.of(mainRespondent) : List.of());
             }
 
