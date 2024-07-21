@@ -386,6 +386,30 @@ public class DatabaseManager {
         return households;
     }
 
+    public List<Household> sortHouseholds(String sortCondition) throws SQLException {
+        List<Household> households = new ArrayList<>();
+        String query = "SELECT * FROM Households ORDER BY " + sortCondition;
+
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            Household household = new Household();
+            household.setBuildingNum(rs.getInt("buildingNum"));
+            household.setUnitNum(rs.getInt("unitNum"));
+            household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
+            household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
+            household.setYearOfResidence(rs.getInt("yearOfResidence"));
+
+            household.setMembers(getMembersByHousehold(household.getBuildingNum(), household.getUnitNum()));
+
+            households.add(household);
+        }
+
+        return households;
+    }
+
+
     /**
      * Retrieves all households from the database.
      *
