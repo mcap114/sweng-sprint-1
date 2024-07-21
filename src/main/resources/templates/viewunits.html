@@ -43,18 +43,6 @@
       </div>
     
       <!-- Filter and Sort Options -->
-      <div class="filter-container">
-        <div class="filter-button" onclick="toggleDropdownSort()">
-          <img class="filter-icon" src="/png/sorting-options.png">
-          <span class="filter-text">Sort</span>
-        </div>
-        <div id="dropdown-menu" class="dropdown-content">
-          <a href="#">Numerical (Ascending)</a>
-          <a href="#">Alphabetical (A-Z)</a>
-          <a href="#">Recently Added</a>
-        </div>
-      </div>
-    
       <div class="filter2-container">
         <div class="filter2-button" onclick="toggleDropdownFilter()">
           <img class="filter2-icon" src="/png/sorting-options.png">
@@ -64,6 +52,20 @@
           <a href="#">By Building Number</a>
           <a href="#">By Unit Number</a>
           <a href="#">By Respondent Name</a>
+        </div>
+      </div>
+
+      <div class="filter-container">
+        <div class="filter-button" onclick="toggleDropdownSort()">
+          <img class="filter-icon" src="/png/sorting-options.png">
+          <span class="filter-text">Sort</span>
+        </div>
+        <div id="dropdown-menu" class="dropdown-content">
+          <form th:action="@{/sort}" method="get">
+            <button name="sortCondition" type="submit" value="buildingNum">Numerical (Ascending)</button>
+            <button name="sortCondition" type="submit" value="unitNum">Alphabetical (A-Z)</button>
+            <button name="sortCondition" type="submit" value="yearOfResidence">Recently Added</button>
+          </form>
         </div>
       </div>
     </div>
@@ -90,7 +92,7 @@
               <span th:each="member : ${household.members}" th:if="${member.isMainRespondent == 1}" th:text="${member.firstName} + ' ' + ${member.lastName}"></span>
             </td>
             <td class="actions">
-              <button class="edit-btn" th:onclick="'window.location.href=\'/editunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
+              <button class="edit-btn" th:onclick="'window.location.href=\'/edithousehold/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
                 <img src="/png/edit-icon.png" alt="Edit">
               </button>
               <button class="delete-btn"

@@ -58,11 +58,6 @@ public class HouseholdController {
             Model model) {
 
         try {
-            // Handle file upload
-            // TODO: fix method of storing file path
-            // String uploadDirectory = "src/main/resources/static/images/";
-
-            // adsImagesString += imageService.saveImageToStorage(uploadDirectory, profileImage);
 
             // by default, the initial member added is the main respondent
             int isMainRespondent = 1;
@@ -107,10 +102,10 @@ public class HouseholdController {
             return "index";
         } catch (SQLException e) {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
-            return "addhouseholdpage";
+            return "error";
         } catch (IOException e) {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
-            return "addhouseholdpage";
+            return "error";
         }
     }
 
