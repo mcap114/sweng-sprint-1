@@ -9,6 +9,15 @@
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
     <title>Home</title>
+    <script type="text/javascript">
+        function showMessage(message) {
+            alert(message);
+        }
+
+        function showError(errorMessage) {
+            alert("Error: " + errorMessage);
+        }
+    </script>
 </head>
 <body>
 <header th:replace="partials/header :: header"></header>
@@ -18,6 +27,10 @@
 
     <div class="overlay">
         <!-- Any content for overlay -->
+    </div>
+    <div th:if="${message}"
+         th:data-successMessage="${message}"
+         onload="showMessage(this.getAttribute('data-successMessage'));">
     </div>
 </div>
 </body>

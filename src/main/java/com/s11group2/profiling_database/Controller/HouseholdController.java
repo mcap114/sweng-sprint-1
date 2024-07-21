@@ -104,12 +104,13 @@ public class HouseholdController {
                 }
             }
 
+            model.addAttribute("message", "Household registered successfully!");
             return "index";
         } catch (SQLException e) {
-            System.out.println("Failed to register household: " + e.getMessage());
+            model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
             return "addhouseholdpage";
         } catch (IOException e) {
-            System.out.println("Failed to register household: " + e.getMessage());
+            model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
             return "addhouseholdpage";
         }
 
