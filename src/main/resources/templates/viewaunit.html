@@ -34,9 +34,9 @@
             <div class ="simple-row">
             <span class="big-letter" th:text="'Building ' + ${household.buildingNum} + ' Unit ' + ${household.unitNum}"></span>
             <div class = "unit-buttons">
-                    <button id="edit-btn" class="edit-btn">
-                      <img src="/png/edit-icon.png" alt="Edit">
-                    </button>
+                <button class="edit-btn" th:onclick="'window.location.href=\'/edithousehold/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
+                    <img src="/png/edit-icon.png" alt="Edit">
+                </button>
                 <button class="delete-btn"
                         th:data-buildingNum="${household.buildingNum}"
                         th:data-unitNum="${household.unitNum}"
@@ -127,7 +127,7 @@
                                     <input type="text" class="detail" th:value="${mainRespondent.occupation}"/>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                                         <input type="text" class="detail" th:value="${member.occupation}"/>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -230,18 +230,18 @@
                                         <input type="text" class="detail" th:value="${pet.petSpecies}"/>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Confirm and Cancel buttons -->
                 <div class="edit-buttons" style="display: none;">
                     <button id="confirm-btn" class="confirm-btn">Confirm</button>
                     <button id="cancel-btn" class="cancel-btn">Cancel</button>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -300,6 +300,5 @@
         });
     });
 </script>
-
 </body>
 </html>

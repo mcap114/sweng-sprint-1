@@ -39,6 +39,7 @@ public class DeleteController {
         } catch (SQLException e) {
             e.printStackTrace();
             model.addAttribute("errorMessage", "Failed to retrieve households from database.");
+            return "error";
         }
 
         return "viewunits";

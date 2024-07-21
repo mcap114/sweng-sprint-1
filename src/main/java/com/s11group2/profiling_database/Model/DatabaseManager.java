@@ -263,7 +263,9 @@ public class DatabaseManager {
 
     }
 
-    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+    public void editMember(String lastName, String firstName, String middleName,
+                           int buildingNum, int unitNum, String field, Object newValue) throws SQLException
+    {
         String query = "UPDATE Members SET " + field + " = ? WHERE lastName = ? AND firstName = ? AND middleName = ? AND buildingNum = ? AND unitNum = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setObject(1, newValue);
@@ -274,6 +276,19 @@ public class DatabaseManager {
             pstmt.setInt(6, unitNum);
             pstmt.executeUpdate();
 
+    }
+
+    public void editPet(String petName, String petSpecies,
+                        int buildingNum, int unitNum, String field, Object newValue) throws SQLException
+    {
+        String query = "UPDATE Pets SET " + field + " = ? WHERE petName = ? AND petSpecies = ? AND buildingNum = ? AND unitNum = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setObject(1, newValue);
+            pstmt.setString(2, petName);
+            pstmt.setString(3, petSpecies);
+            pstmt.setInt(4, buildingNum);
+            pstmt.setInt(5, unitNum);
+            pstmt.executeUpdate();
     }
 
     /**

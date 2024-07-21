@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<div class="error-container">
+    <h1 class="error-title">Error</h1>
+    <p class="error-message" th:text="${message ?: errorMessage}">
+    </p>
+</div>
+</body>
+</html>

@@ -92,7 +92,7 @@
               <span th:each="member : ${household.members}" th:if="${member.isMainRespondent == 1}" th:text="${member.firstName} + ' ' + ${member.lastName}"></span>
             </td>
             <td class="actions">
-              <button class="edit-btn" th:onclick="'window.location.href=\'/editunit/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
+              <button class="edit-btn" th:onclick="'window.location.href=\'/edithousehold/' + ${household.buildingNum} + '/' + ${household.unitNum} + '\''">
                 <img src="/png/edit-icon.png" alt="Edit">
               </button>
               <button class="delete-btn"
