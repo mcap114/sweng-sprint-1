@@ -157,6 +157,10 @@
                                         Middle Name
                                         <input type="text" class="detail" th:value="${member.middleName}"/>
                                     </div>
+                                    <div class="named-area">
+                                        Relation to Main
+                                        <input type="text" class="detail" th:value="${member.relationToMainRespondent}"/>
+                                    </div>
                                 </div>
                                 <div class="named-areas">
                                     <div class="named-area">
@@ -176,15 +180,11 @@
                                         <input type="text" class="detail" th:value="${member.contactNumber}"/>
                                     </div>
                                     <div class="named-area">
-                                        Relation to Main Respondent
-                                        <input type="text" class="detail" th:value="${member.relationToMainRespondent}"/>
-                                    </div>
-                                </div>
-                                <div class="named-areas">
-                                    <div class="named-area">
                                         Monthly Income
                                         <input type="text" class="detail" th:value="${member.monthlyIncome}"/>
                                     </div>
+                                </div>
+                                <div class="named-areas">
                                     <div class="adjust-named-area">
                                         Medical Complications
                                         <input type="text" class="detail" th:value="${member.healthStatus}"/>
