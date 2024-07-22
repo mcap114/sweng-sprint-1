@@ -11,11 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class EditController {
@@ -48,6 +46,8 @@ public class EditController {
             @RequestParam(value="originalFirstName") String[] originalFirstName,
             @RequestParam(value="originalBuildingNum") Integer originalBuildingNum,
             @RequestParam(value="originalUnitNum") Integer originalUnitNum,
+            @RequestParam(value="originalPetName") String[] originalPetName,
+            @RequestParam(value= "originalPetAnimalType") String[] originalPetAnimalType,
             @RequestParam(value="resLastName") String[] lastName,
             @RequestParam(value="resFirstName") String[] firstName,
             @RequestParam(value="resMiddleName") String[] middleName,
@@ -98,12 +98,15 @@ public class EditController {
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "occupation", occupation[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "monthlyIncome", monthlyIncome[i]);
 
-
+                if (i > 0) {
+                    dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "relationToMainRespondent", relationToMainRespondent[i - 1]);
+                }
             }
 
             if (petName != null) {
                 for (int i = 0; i < petName.length; i++) {
-                    dbManager.editPet(petName[i], petSpecies[i], buildingNum, unitNum, "petImagePath", petImages[i].getOriginalFilename());
+                    dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petName", petName[i]);
+                    dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petSpecies[i]);
                 }
             }
 

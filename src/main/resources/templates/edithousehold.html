@@ -261,6 +261,11 @@
                                         <input type="number" name="resMonthlyIncome" th:value="${member.monthlyIncome}" min="0"/>
                                     </div>
 
+                                    <div class="input-field">
+                                        <label>Relationship to Main Respondent</label>
+                                        <input type="text" name="resRelationToRespondent" th:value="${member.relationToMainRespondent}" required/>
+                                    </div>
+
                                     <div class="form-row">
                                         <div class="input-field">
                                             <label>Medical Complications</label>
@@ -286,6 +291,9 @@
                 <div th:if="${pets.size() > 0}">
                     <div th:each="pet, iter : ${pets}">
 
+                        <input type="hidden" name="originalPetName" th:value="${pet.petName}">
+                        <input type="hidden" name="originalPetAnimalType" th:value="${pet.petSpecies}">
+
                         <hr>
                         <div class="pet-body">
                             <div class="image-panel">
@@ -297,15 +305,16 @@
                                     <label for="resPfp-pet-${iter.index + 1}" class="custom-file-upload">Choose File</label>
                                     <input class="custom-file-upload" type="file" id="resPfp-pet-${iter.index + 1}" name="petPfp-${iter.index + 1}" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-pet-${iter.index + 1}')" />
                                 </div>
+
                             </div>
                             <div class="form-row">
                                 <div class="input-field">
                                     <label>Pet Name</label>
-                                    <input type="text" name="petName-${iter.index + 1}" th:value="${pet.petName}" required/>
+                                    <input type="text" name="petName" th:value="${pet.petName}" required/>
                                 </div>
                                 <div class="input-field">
                                     <label>Animal Type</label>
-                                    <input type="text" name="petAnimalType-${iter.index + 1}" th:value="${pet.petSpecies}" required/>
+                                    <input type="text" name="petAnimalType" th:value="${pet.petSpecies}" required/>
                                 </div>
                             </div>
                         </div>
