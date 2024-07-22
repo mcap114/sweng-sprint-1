@@ -795,3 +795,37 @@ body {
     font-size: 15px;
 
 }
+
+.update-panel {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.update-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.update-button button {
+    background-color: #57804D; 
+    color: white; 
+    border: none; 
+    padding: 15px 30px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 50px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; 
+    transition: background-color 0.3s ease; 
+}
+
+.update-button button:hover {
+    background-color: #295e2b; 
+}
