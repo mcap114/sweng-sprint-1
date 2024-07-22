@@ -18,6 +18,19 @@
         <div class="welcome-text">Welcome, Admin!</div>
         <div class="welcome-text-sub">Profiling Database of APOAMFP Household Members, manage all of it here.</div>
     </div>
+    
+    <div class="key-features">
+        <div class="feature-item">
+            <img src="/png/manage-icon.png" alt="view icon" class="manage-icon" />
+            <h3>Search, Add, Edit, View, and Delete Records</h3>
+            <p>Users can easily manage household records with an intuitive interface, allowing them to perform all necessary actions quickly and accurately.</p>
+        </div>
+        <div class="feature-item">
+            <img src="/png/houses-icon.png" alt="view icon" class="houses-icon" />
+            <h3>Centralized List of Records</h3>
+            <p>All records will be stored in a centralized digital database, eliminating the risk of losing physical documents and ensuring that information is always accessible and up-to-date.</p>
+        </div>
+    </div>
     <div th:if="${message}"
          th:data-successMessage="${message}"
          onload="showMessage(this.getAttribute('data-successMessage'));">
