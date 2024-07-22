@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -117,7 +118,7 @@ public class EditController {
             }
 
             model.addAttribute("message", "Household updated successfully!");
-            return "index";
+            return "redirect:/viewaunit/" + buildingNum + "/" + unitNum;
         } catch (SQLException e) {
             model.addAttribute("errorMessage", "Failed to update household: " + e.getMessage());
             return "error";
