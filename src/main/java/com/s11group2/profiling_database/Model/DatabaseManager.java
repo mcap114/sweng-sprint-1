@@ -144,8 +144,7 @@ public class DatabaseManager {
         }
 
         StringBuilder fileString = new StringBuilder();
-
-        if (userFiles.length > 0) {
+        if (!userFiles[0].getOriginalFilename().equals("")) {
             File dir = new File("./src/main/resources/static/user/files");
             if (!dir.exists()) {
                 dir.mkdirs(); // Create the directory if it does not exist
@@ -153,9 +152,9 @@ public class DatabaseManager {
     
             for (MultipartFile userFile : userFiles) {
                 String originalFilename = userFile.getOriginalFilename();
+                System.out.println(originalFilename);
                 if (originalFilename != null) {
-                    String extension = "." + FilenameUtils.getExtension(originalFilename);
-                    File temp = new File(dir, originalFilename + extension);
+                    File temp = new File(dir + "/" + originalFilename);
                     fileString.append("/user/files/").append(temp.getName()).append(" "); // Construct file path
     
                     try (OutputStream os = new FileOutputStream(temp)) {
