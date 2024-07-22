@@ -5,6 +5,7 @@ import com.s11group2.profiling_database.Controller.AppController;
 import com.s11group2.profiling_database.Util.DisplayUtil;
 import com.s11group2.profiling_database.Util.TerminalMenus;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ import java.util.Scanner;
  * The main terminal application for interacting with the profiling database.
  */
 public class AppTerminal {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try {
             TerminalMenus terminalMenus = new TerminalMenus();
             Scanner scanner = new Scanner(System.in);

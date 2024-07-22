@@ -33,12 +33,12 @@
                 <div class="form-row">
                     <div class="input-field">
                         <label>Building Number</label>
-                        <input type="text" name="buildingNum" th:value="${household.buildingNum}" required/>
+                        <input type="text" name="buildingNum" th:value="${household.buildingNum}" readonly/>
                     </div>
 
                     <div class="input-field">
                         <label>Unit Number</label>
-                        <input type="text" name="unitNum" th:value="${household.unitNum}" required/>
+                        <input type="text" name="unitNum" th:value="${household.unitNum}" readonly/>
                     </div>
                 </div>
 
@@ -285,10 +285,10 @@
             </div>
 
             <div class="heading-2">
-                <p>Household Pets</p>
             </div>
             <div class="main-respondent-body">
                 <div th:if="${pets.size() > 0}">
+                    <p>Household Pets</p>
                     <div th:each="pet, iter : ${pets}">
 
                         <input type="hidden" name="originalPetName" th:value="${pet.petName}">

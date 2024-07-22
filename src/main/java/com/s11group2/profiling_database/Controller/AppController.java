@@ -179,7 +179,7 @@ public class AppController {
         dbManager.editHousehold(buildingNum, unitNum, field, newValue);
     }
 
-    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, String field, Object newValue) throws SQLException, IOException {
         dbManager.editMember(lastName, firstName, middleName, buildingNum, unitNum, field, newValue);
     }
 

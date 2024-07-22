@@ -1,5 +1,6 @@
 package com.s11group2.profiling_database.Util;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -265,7 +266,7 @@ public class TerminalMenus {
         }
     }
 
-    public void editProfileMenu() throws SQLException {
+    public void editProfileMenu() throws SQLException, IOException {
 
         DisplayUtil.displayTableContents(appController.fetchConnection(), "Households");
         DisplayUtil.displayTableContents(appController.fetchConnection(), "Members");
