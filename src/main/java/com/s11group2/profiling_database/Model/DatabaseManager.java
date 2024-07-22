@@ -145,20 +145,22 @@ public class DatabaseManager {
 
         StringBuilder fileString = new StringBuilder();
 
-        if (userFiles.length == 0) {
+        if (userFiles.length > 0) {
             File dir = new File("./src/main/resources/static/user/files");
-                if (!dir.exists()) {
-                    dir.mkdirs(); // Create the directory if it does not exist
-                }
-
-            for (int i = 0; i < userFiles.length; i++) {
-                String extension = "." + FilenameUtils.getExtension(userFiles[i].getOriginalFilename());
-        
-                File temp = File.createTempFile(userFiles[i].getOriginalFilename() + "|", extension, dir); //TODO: replace divider here
-                fileString.append("/user/files/" + temp.getName() + " "); //TODO: replace separator here
-        
-                try (OutputStream os = new FileOutputStream(temp)) {
-                    os.write(userFiles[i].getBytes());
+            if (!dir.exists()) {
+                dir.mkdirs(); // Create the directory if it does not exist
+            }
+    
+            for (MultipartFile userFile : userFiles) {
+                String originalFilename = userFile.getOriginalFilename();
+                if (originalFilename != null) {
+                    String extension = "." + FilenameUtils.getExtension(originalFilename);
+                    File temp = new File(dir, originalFilename + extension);
+                    fileString.append("/user/files/").append(temp.getName()).append(" "); // Construct file path
+    
+                    try (OutputStream os = new FileOutputStream(temp)) {
+                        os.write(userFile.getBytes());
+                    }
                 }
             }
         }
