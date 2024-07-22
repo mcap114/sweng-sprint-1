@@ -74,10 +74,18 @@
     </dependencies>
 
 	<build>
+		<finalName>APOAMFP-db</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<configuration>
+							<mainClass>com.s11group2.profiling_database.AppSpringboot</mainClass>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

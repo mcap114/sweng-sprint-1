@@ -172,7 +172,6 @@ public class DatabaseManager {
      * @param isMainRespondent indicates if the person is the main respondent
      * @param buildingNum the building number
      * @param unitNum the unit number
-     * @param profileImagePath the profile image path
      * @throws SQLException if a database access error occurs
      */
     public void insertMember(String lastName, String firstName, String middleName, String gender, LocalDate birthday, String healthStatus, String pwdType, Integer isSeniorCitizen, String civilStatus, String contactNumber, String highestEducationalAttainment, String occupation, Double monthlyIncome, Integer isMainRespondent, String relationToMainRespondent, Integer buildingNum, Integer unitNum, MultipartFile profileImage) throws SQLException, IOException {

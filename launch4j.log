@@ -1,0 +1,165 @@
+
+
+Version:	3.50
+CmdLine:	E:\0 projects\profiling_springboot\APOAMFP Profiling Database.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	E:\0 projects\profiling_springboot\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Program Files\Git\cmd\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Windows\sqlite;D:\Program Files\apache-maven-3.9.8\bin;%M2_HOME%\bin;C:\Program Files\swipl\bin;C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\migue\AppData\Local\Programs\Python\Python311\;C:\Users\migue\AppData\Local\Microsoft\WindowsApps;C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\migue\AppData\Roaming\npm;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Users\migue\.dotnet\tools;C:\Users\migue\AppData\Local\GitHubDesktop\bin;C:\Users\migue\AppData\Roaming\Python\Python312;C:\Program Files\Java\jre1.8.0_51\bin
+JRE paths:	;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Program Files\Git\cmd\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Windows\sqlite;D:\Program Files\apache-maven-3.9.8\bin;%M2_HOME%\bin;C:\Program Files\swipl\bin;C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\migue\AppData\Local\Programs\Python\Python311\;C:\Users\migue\AppData\Local\Microsoft\WindowsApps;C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\migue\AppData\Roaming\npm;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Users\migue\.dotnet\tools;C:\Users\migue\AppData\Local\GitHubDesktop\bin;C:\Users\migue\AppData\Roaming\Python\Python312;C:\Program Files\Java\jre1.8.0_51\bin
+Check launcher:	C:\Python312\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\system32\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\MinGW\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\bin\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\nodejs\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\chocolatey\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Calibre2\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\sqlite\bin\javaw.exe (not found)
+Check launcher:	D:\Program Files\apache-maven-3.9.8\bin\javaw.exe (not found)
+Check launcher:	E:\0 projects\profiling_springboot\%M2_HOME%\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\swipl\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Python\Python311\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Roaming\npm\bin\javaw.exe (not found)
+Check launcher:	C:\iverilog\bin\javaw.exe (not found)
+Check launcher:	C:\iverilog\gtkwave\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\.dotnet\tools\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\GitHubDesktop\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Roaming\Python\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe (OK)
+Version string: 1.008.000_051 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe
+Launcher args:	-jar "E:\0 projects\profiling_springboot\APOAMFP Profiling Database.exe"
+Args length:	72/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	E:\0 projects\profiling_springboot\APOAMFP Profiling Database.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	E:\0 projects\profiling_springboot\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Program Files\Git\cmd\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Windows\sqlite;D:\Program Files\apache-maven-3.9.8\bin;%M2_HOME%\bin;C:\Program Files\swipl\bin;C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\migue\AppData\Local\Programs\Python\Python311\;C:\Users\migue\AppData\Local\Microsoft\WindowsApps;C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\migue\AppData\Roaming\npm;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Users\migue\.dotnet\tools;C:\Users\migue\AppData\Local\GitHubDesktop\bin;C:\Users\migue\AppData\Roaming\Python\Python312;C:\Program Files\Java\jre1.8.0_51\bin
+JRE paths:	;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Program Files\Git\cmd\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Windows\sqlite;D:\Program Files\apache-maven-3.9.8\bin;%M2_HOME%\bin;C:\Program Files\swipl\bin;C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\migue\AppData\Local\Programs\Python\Python311\;C:\Users\migue\AppData\Local\Microsoft\WindowsApps;C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\migue\AppData\Roaming\npm;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Users\migue\.dotnet\tools;C:\Users\migue\AppData\Local\GitHubDesktop\bin;C:\Users\migue\AppData\Roaming\Python\Python312;C:\Program Files\Java\jre1.8.0_51\bin
+Check launcher:	C:\Python312\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\system32\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\MinGW\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\bin\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\nodejs\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\chocolatey\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Calibre2\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\sqlite\bin\javaw.exe (not found)
+Check launcher:	D:\Program Files\apache-maven-3.9.8\bin\javaw.exe (not found)
+Check launcher:	E:\0 projects\profiling_springboot\%M2_HOME%\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\swipl\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Python\Python311\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Roaming\npm\bin\javaw.exe (not found)
+Check launcher:	C:\iverilog\bin\javaw.exe (not found)
+Check launcher:	C:\iverilog\gtkwave\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\.dotnet\tools\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\GitHubDesktop\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Roaming\Python\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe (OK)
+Version string: 1.008.000_051 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe
+Launcher args:	-jar "E:\0 projects\profiling_springboot\APOAMFP Profiling Database.exe"
+Args length:	72/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	E:\0 projects\profiling_springboot\APOAMFP Profiling Database.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	E:\0 projects\profiling_springboot\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Program Files\Git\cmd\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Windows\sqlite;D:\Program Files\apache-maven-3.9.8\bin;%M2_HOME%\bin;C:\Program Files\swipl\bin;C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\migue\AppData\Local\Programs\Python\Python311\;C:\Users\migue\AppData\Local\Microsoft\WindowsApps;C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\migue\AppData\Roaming\npm;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Users\migue\.dotnet\tools;C:\Users\migue\AppData\Local\GitHubDesktop\bin;C:\Users\migue\AppData\Roaming\Python\Python312;C:\Program Files\Java\jre1.8.0_51\bin
+JRE paths:	;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Program Files\Git\cmd\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Windows\sqlite;D:\Program Files\apache-maven-3.9.8\bin;%M2_HOME%\bin;C:\Program Files\swipl\bin;C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\migue\AppData\Local\Programs\Python\Python311\;C:\Users\migue\AppData\Local\Microsoft\WindowsApps;C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\migue\AppData\Roaming\npm;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Users\migue\.dotnet\tools;C:\Users\migue\AppData\Local\GitHubDesktop\bin;C:\Users\migue\AppData\Roaming\Python\Python312;C:\Program Files\Java\jre1.8.0_51\bin
+Check launcher:	C:\Python312\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\system32\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\MinGW\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\bin\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\nodejs\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\chocolatey\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Calibre2\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\sqlite\bin\javaw.exe (not found)
+Check launcher:	D:\Program Files\apache-maven-3.9.8\bin\javaw.exe (not found)
+Check launcher:	E:\0 projects\profiling_springboot\%M2_HOME%\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\swipl\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Python\Python311\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Python\Python311\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\Programs\Microsoft VS Code\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Roaming\npm\bin\javaw.exe (not found)
+Check launcher:	C:\iverilog\bin\javaw.exe (not found)
+Check launcher:	C:\iverilog\gtkwave\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\.dotnet\tools\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Local\GitHubDesktop\bin\javaw.exe (not found)
+Check launcher:	C:\Users\migue\AppData\Roaming\Python\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe (OK)
+Version string: 1.008.000_051 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe
+Launcher args:	-jar "E:\0 projects\profiling_springboot\APOAMFP Profiling Database.exe"
+Args length:	72/32768 chars
+Exit code:	0
