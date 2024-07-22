@@ -144,12 +144,7 @@ public class DatabaseManager {
         }
     
         StringBuilder fileString = new StringBuilder();
-<<<<<<< HEAD
-    
-        if (userFiles.length > 0) {
-=======
         if (!userFiles[0].getOriginalFilename().equals("")) {
->>>>>>> 124ed3e2f689f1e17f12347093aaf1029f040512
             File dir = new File("./src/main/resources/static/user/files");
             if (!dir.exists()) {
                 dir.mkdirs(); // Create the directory if it does not exist
@@ -159,12 +154,7 @@ public class DatabaseManager {
                 String originalFilename = userFile.getOriginalFilename();
                 System.out.println(originalFilename);
                 if (originalFilename != null) {
-<<<<<<< HEAD
-                    // Ensure no extra extension is added
-                    File temp = new File(dir, originalFilename);
-=======
                     File temp = new File(dir + "/" + originalFilename);
->>>>>>> 124ed3e2f689f1e17f12347093aaf1029f040512
                     fileString.append("/user/files/").append(temp.getName()).append(" "); // Construct file path
     
                     try (OutputStream os = new FileOutputStream(temp)) {
