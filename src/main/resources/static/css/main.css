@@ -20,7 +20,7 @@ body {
     border: 1px solid #ccc;
     padding: 10px 50px 10px 20px;
     height: 40px;
-    width: 500px;
+    width: 800px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     background-color: #fff;
@@ -794,4 +794,38 @@ body {
     border-radius: 5px;
     font-size: 15px;
 
+}
+
+.update-panel {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.update-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.update-button button {
+    background-color: #57804D; 
+    color: white; 
+    border: none; 
+    padding: 15px 30px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 50px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; 
+    transition: background-color 0.3s ease; 
+}
+
+.update-button button:hover {
+    background-color: #295e2b; 
 }
