@@ -155,7 +155,7 @@
               </div>
 
               <div class="input-field">
-                <label>Monthly Income (leave blank if N/A)</label>
+                <label>Monthly Income</label>
                 <input type="number" name="resMonthlyIncome" placeholder="Type &quot;0&quot; if Not Applicable" required/>
               </div>
             </div>
@@ -230,7 +230,8 @@
                   } else {
                       const userConfirmed = confirm("Are you sure you want to add this household?");
                       if (userConfirmed) {
-                          form.submit();
+                        form.submit();
+                        alert("Household added successfully!") 
                       } else {
                           alert("Household registration canceled.");
                       }
