@@ -38,5 +38,31 @@ function clearSearch() {
     document.getElementById('searchInput').value = '';
   }
 
+  function showMessage(message) {
+    alert(message);
+}
+
+function showError(errorMessage) {
+    alert("Error: " + errorMessage);
+}
+
+$(document).ready(function() {
+    // Slideshow script
+    let currentIndex = 0;
+    const images = [
+        'url(../png/homepg.jpg)',
+        'url(../png/homepg2.jpg)',
+        'url(../png/homepg3.jpg)'
+    ];
+
+    $('.slideshow').css('background-image', images[currentIndex]);
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        $('.slideshow').css('background-image', images[currentIndex]);
+    }
+
+    setInterval(showNextSlide, 4000); // Change slide every 5 seconds
+});
 
 

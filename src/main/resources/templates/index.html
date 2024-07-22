@@ -5,28 +5,18 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
 
-    <!-- for final version, use a local dl instead of google hosted api-->
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
     <title>Home</title>
-    <script type="text/javascript">
-        function showMessage(message) {
-            alert(message);
-        }
-
-        function showError(errorMessage) {
-            alert("Error: " + errorMessage);
-        }
-    </script>
 </head>
 <body>
 <header th:replace="partials/header :: header"></header>
 <div class="home-page">
-    <div class="welcome-text">Welcome, Admin!</div>
-    <div class="welcome-text-sub"><i>Profiling Database of APOAMFP Household Members, manage all of it here.</i></div>
-
-    <div class="overlay">
-        <!-- Any content for overlay -->
+    <div class="slideshow"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="welcome-text">Welcome, Admin!</div>
+        <div class="welcome-text-sub">Profiling Database of APOAMFP Household Members, manage all of it here.</div>
     </div>
     <div th:if="${message}"
          th:data-successMessage="${message}"
