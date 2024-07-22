@@ -651,6 +651,8 @@ public class DatabaseManager {
             household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
             household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
             household.setYearOfResidence(rs.getInt("yearOfResidence"));
+            household.setUserFiles(rs.getString("fileString"));
+
         }
 
         rs.close();
