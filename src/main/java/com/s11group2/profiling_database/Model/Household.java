@@ -13,6 +13,8 @@ public class Household {
     private int yearOfResidence;
     private int memberCount;
     private List<Member> members;
+    private String userFiles;
+
 
 
     public int getBuildingNum(){
@@ -81,6 +83,15 @@ public class Household {
         }
         return null;
     }
+
+    public String getUserFiles() {
+        return userFiles;
+    }
+    
+    public void setUserFiles(String userFiles) {
+        this.userFiles = userFiles;
+    }
+    
     /*
     @Override
     public int hashCode() {

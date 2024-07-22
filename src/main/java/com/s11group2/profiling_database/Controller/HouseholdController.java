@@ -55,6 +55,7 @@ public class HouseholdController {
             @RequestParam(value="petName", required=false) String[] petName,
             @RequestParam(value="petAnimalType", required=false) String[] petSpecies,
             @RequestParam(value="petPfp", required=false) MultipartFile[] petImages,
+            @RequestParam(value="files") MultipartFile[] userFiles,
             Model model) {
 
         try {
@@ -69,7 +70,7 @@ public class HouseholdController {
             int isSeniorCitizen = InputValidation.isSeniorCitizen(age);
 
             // Insert member with profile image path
-            dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
+            dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence, userFiles);
             dbManager.insertMember(
                     lastName[0], firstName[0], middleName[0], gender[0], birthDate, healthStatus[0], pwdType[0], isSeniorCitizen,
                     civilStatus[0], contactNumber[0], highestEducationalAttainment[0], occupation[0], monthlyIncome[0], isMainRespondent, nullString,
@@ -102,9 +103,11 @@ public class HouseholdController {
             return "index";
         } catch (SQLException e) {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
+            e.printStackTrace();
             return "error";
         } catch (IOException e) {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
+            e.printStackTrace();
             return "error";
         }
     }

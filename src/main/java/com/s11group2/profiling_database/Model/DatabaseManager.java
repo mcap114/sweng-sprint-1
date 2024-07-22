@@ -76,6 +76,7 @@ public class DatabaseManager {
                 "monthlyExpenditure real, " +
                 "monthlyAmortization real, " +
                 "yearOfResidence integer, " +
+                "fileString varchar(255), " +
                 "constraint pk_building_unit primary key (buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
@@ -137,18 +138,40 @@ public class DatabaseManager {
      * @throws SQLException if a database access error occurs
      * @throws IllegalArgumentException if the household already exists
      */
-    public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence) throws SQLException {
+    public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence, MultipartFile[] userFiles) throws SQLException, IOException {
         if (householdExists(buildingNum, unitNum)) {
             throw new IllegalArgumentException("Household with building number " + buildingNum + " and unit number " + unitNum + " already exists.");
         }
+    
+        StringBuilder fileString = new StringBuilder();
+        if (!userFiles[0].getOriginalFilename().equals("")) {
+            File dir = new File("./src/main/resources/static/user/files");
+            if (!dir.exists()) {
+                dir.mkdirs(); // Create the directory if it does not exist
+            }
+    
+            for (MultipartFile userFile : userFiles) {
+                String originalFilename = userFile.getOriginalFilename();
+                System.out.println(originalFilename);
+                if (originalFilename != null) {
+                    File temp = new File(dir + "/" + originalFilename);
+                    fileString.append("/user/files/").append(temp.getName()).append(" "); // Construct file path
+    
+                    try (OutputStream os = new FileOutputStream(temp)) {
+                        os.write(userFile.getBytes());
+                    }
+                }
+            }
+        }
 
-        String insertSQL = "INSERT INTO Households (buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence) VALUES (?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO Households (buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence, fileString) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setInt(1, buildingNum);
             pstmt.setInt(2, unitNum);
             pstmt.setDouble(3, monthlyExpenditure);
             pstmt.setDouble(4, monthlyAmortization);
             pstmt.setInt(5, yearOfResidence);
+            pstmt.setString(6, fileString.toString());
             pstmt.executeUpdate();
         }
     }
@@ -629,6 +652,8 @@ public class DatabaseManager {
             household.setMonthlyExpenditure(rs.getDouble("monthlyExpenditure"));
             household.setMonthlyAmortization(rs.getDouble("monthlyAmortization"));
             household.setYearOfResidence(rs.getInt("yearOfResidence"));
+            household.setUserFiles(rs.getString("fileString"));
+
         }
 
         rs.close();
