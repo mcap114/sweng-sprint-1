@@ -84,7 +84,7 @@ public class EditController {
                 int isSeniorCitizen = InputValidation.isSeniorCitizen(age);
 
                 //edit member information
-                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "lastName", lastName[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "lastName", profileImages[i],lastName[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "firstName", firstName[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "middleName", middleName[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "gender", gender[i]);
@@ -100,7 +100,6 @@ public class EditController {
 
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "buildingNum", buildingNum);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "unitNum", unitNum);
-
 
 
                 if (i > 0) {
