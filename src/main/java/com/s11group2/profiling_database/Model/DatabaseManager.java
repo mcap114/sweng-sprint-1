@@ -76,6 +76,7 @@ public class DatabaseManager {
                 "monthlyExpenditure real, " +
                 "monthlyAmortization real, " +
                 "yearOfResidence integer, " +
+                "fileString varchar(255), " +
                 "constraint pk_building_unit primary key (buildingNum, unitNum) " +
                 ");";
         Statement stmt = conn.createStatement();
@@ -137,18 +138,39 @@ public class DatabaseManager {
      * @throws SQLException if a database access error occurs
      * @throws IllegalArgumentException if the household already exists
      */
-    public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence) throws SQLException {
+    public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence, MultipartFile[] userFiles) throws SQLException, IOException {
         if (householdExists(buildingNum, unitNum)) {
             throw new IllegalArgumentException("Household with building number " + buildingNum + " and unit number " + unitNum + " already exists.");
         }
 
-        String insertSQL = "INSERT INTO Households (buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence) VALUES (?, ?, ?, ?, ?)";
+        StringBuilder fileString = new StringBuilder();
+
+        if (userFiles.length == 0) {
+            File dir = new File("./src/main/resources/static/user/files");
+                if (!dir.exists()) {
+                    dir.mkdirs(); // Create the directory if it does not exist
+                }
+
+            for (int i = 0; i < userFiles.length; i++) {
+                String extension = "." + FilenameUtils.getExtension(userFiles[i].getOriginalFilename());
+        
+                File temp = File.createTempFile(userFiles[i].getOriginalFilename() + "|", extension, dir); //TODO: replace divider here
+                fileString.append("/user/files/" + temp.getName() + " "); //TODO: replace separator here
+        
+                try (OutputStream os = new FileOutputStream(temp)) {
+                    os.write(userFiles[i].getBytes());
+                }
+            }
+        }
+
+        String insertSQL = "INSERT INTO Households (buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence, fileString) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setInt(1, buildingNum);
             pstmt.setInt(2, unitNum);
             pstmt.setDouble(3, monthlyExpenditure);
             pstmt.setDouble(4, monthlyAmortization);
             pstmt.setInt(5, yearOfResidence);
+            pstmt.setString(6, fileString.toString());
             pstmt.executeUpdate();
         }
     }
