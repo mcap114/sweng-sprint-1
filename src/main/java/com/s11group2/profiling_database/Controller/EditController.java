@@ -44,6 +44,10 @@ public class EditController {
 
     @PostMapping("/edit")
     public String updateHousehold(
+            @RequestParam(value="originalLastName") String[] originalLastName,
+            @RequestParam(value="originalFirstName") String[] originalFirstName,
+            @RequestParam(value="originalBuildingNum") Integer originalBuildingNum,
+            @RequestParam(value="originalUnitNum") Integer originalUnitNum,
             @RequestParam(value="resLastName") String[] lastName,
             @RequestParam(value="resFirstName") String[] firstName,
             @RequestParam(value="resMiddleName") String[] middleName,
@@ -69,9 +73,9 @@ public class EditController {
             Model model) {
 
         try {
-            dbManager.editHousehold(buildingNum, unitNum, "monthlyExpenditure", monthlyExpenditure);
-            dbManager.editHousehold(buildingNum, unitNum, "monthlyAmortization", monthlyAmortization);
-            dbManager.editHousehold(buildingNum, unitNum, "yearOfResidence", yearOfResidence);
+            dbManager.editHousehold(originalBuildingNum, originalUnitNum, "monthlyExpenditure", monthlyExpenditure);
+            dbManager.editHousehold(originalBuildingNum, originalUnitNum, "monthlyAmortization", monthlyAmortization);
+            dbManager.editHousehold(originalBuildingNum, originalUnitNum, "yearOfResidence", yearOfResidence);
 
             //iterate thru all members, assumes main respondent is index 0
             for (int i = 0; i < lastName.length; i++) {
@@ -80,24 +84,21 @@ public class EditController {
                 int isSeniorCitizen = InputValidation.isSeniorCitizen(age);
 
                 //edit member information
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "gender", gender[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "birthday", birthDate);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "healthStatus", healthStatus[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "pwdType", pwdType[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "isSeniorCitizen", isSeniorCitizen);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "civilStatus", civilStatus[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "contactNumber", contactNumber[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "highestEducationalAttainment", highestEducationalAttainment[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "occupation", occupation[i]);
-                dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "monthlyIncome", monthlyIncome[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "lastName", lastName[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "firstName", firstName[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "middleName", middleName[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "gender", gender[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "birthday", birthDate);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "healthStatus", healthStatus[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "pwdType", pwdType[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "isSeniorCitizen", isSeniorCitizen);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "civilStatus", civilStatus[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "contactNumber", contactNumber[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "highestEducationalAttainment", highestEducationalAttainment[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "occupation", occupation[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "monthlyIncome", monthlyIncome[i]);
 
-                if (i > 0 && relationToMainRespondent != null && i <= relationToMainRespondent.length) {
-                    dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "relationToMainRespondent", relationToMainRespondent[i - 1]);
-                }
 
-                if (profileImages != null && i < profileImages.length) {
-                    dbManager.editMember(lastName[i], firstName[i], middleName[i], buildingNum, unitNum, "profileImagePath", profileImages[i].getOriginalFilename());
-                }
             }
 
             if (petName != null) {

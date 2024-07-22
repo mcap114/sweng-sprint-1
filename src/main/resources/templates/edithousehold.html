@@ -25,6 +25,10 @@
         </div>
         <hr>
         <form id="household-form" action="/edit" method="post" enctype="multipart/form-data">
+            <!--hidden fields for storing original values-->
+            <input type="hidden" name="originalBuildingNum" th:value="${household.buildingNum}">
+            <input type="hidden" name="originalUnitNum" th:value="${household.unitNum}">
+
             <div class="fields">
                 <div class="form-row">
                     <div class="input-field">
@@ -57,6 +61,8 @@
             </div>
             <hr>
             <div class="fields">
+                <input type="hidden" name="originalLastName" th:value="${mainRespondent.lastName}">
+                <input type="hidden" name="originalFirstName" th:value="${mainRespondent.firstName}">
                 <span>Main Respondent</span>
                 <div class="main-respondent-body">
                     <div class="image-panel">
@@ -155,18 +161,20 @@
                                     <label>PWD Type</label>
                                     <input type="text" name="resPwdType" th:value="${mainRespondent.pwdType}" />
                                 </div>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
 
             <!-- Display Additional Members -->
             <div class="fields">
-                <span>Additional Members</span>
                 <div th:if="${otherMembers.size() > 0}">
+                    <span>Additional Members</span>
                     <div th:each="member, iter : ${otherMembers}">
                         <hr>
                         <div class="additional-member-body">
+                            <input type="hidden" name="originalLastName" th:value="${member.lastName}">
+                            <input type="hidden" name="originalFirstName" th:value="${member.firstName}">
                             <div class="image-panel">
                                 <div class="image-field">
                                     <label>Upload Picture</label>
@@ -182,24 +190,24 @@
                                 <div class="form-row">
                                     <div class="input-field">
                                         <label>Last Name</label>
-                                        <input type="text" name="memberLastName-${iter.index + 1}" th:value="${member.lastName}" required/>
+                                        <input type="text" name="resLastName" th:value="${member.lastName}" required/>
                                     </div>
 
                                     <div class="input-field">
                                         <label>First Name</label>
-                                        <input type="text" name="memberFirstName-${iter.index + 1}" th:value="${member.firstName}" required/>
+                                        <input type="text" name="resFirstName" th:value="${member.firstName}" required/>
                                     </div>
 
                                     <div class="input-field">
                                         <label>Middle Name</label>
-                                        <input type="text" name="memberMiddleName-${iter.index + 1}" th:value="${member.middleName}" placeholder="Type &quot;-&quot; if N/A" required/>
+                                        <input type="text" name="resMiddleName" th:value="${member.middleName}" placeholder="Type &quot;-&quot; if N/A" required/>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="input-field">
                                         <label>Gender</label>
-                                        <select id="memberGender-${iter.index + 1}" name="memberGender-${iter.index + 1}" required>
+                                        <select id="memberGender-${iter.index + 1}" name="resGender" required>
                                             <option disabled selected value>---</option>
                                             <option value="Male" th:selected="${member.gender == 'Male'}">Male</option>
                                             <option value="Female" th:selected="${member.gender == 'Female'}">Female</option>
@@ -208,12 +216,12 @@
 
                                     <div class="input-field">
                                         <label>Birthday</label>
-                                        <input type="date" name="memberBirthday-${iter.index + 1}" th:value="${member.birthday}" required/>
+                                        <input type="date" name="resBirthday" th:value="${member.birthday}" required/>
                                     </div>
 
                                     <div class="input-field">
                                         <label>Civil Status</label>
-                                        <select id="memberCivilStatus-${iter.index + 1}" name="memberCivilStatus-${iter.index + 1}" required>
+                                        <select name="resCivilStatus" required>
                                             <option disabled selected value>---</option>
                                             <option value="Single" th:selected="${member.civilStatus == 'Single'}">Single</option>
                                             <option value="Married" th:selected="${member.civilStatus == 'Married'}">Married</option>
@@ -224,14 +232,14 @@
 
                                     <div class="input-field">
                                         <label>Contact Number</label>
-                                        <input type="tel" name="memberContactNumber-${iter.index + 1}" th:value="${member.contactNumber}" placeholder="09XX XXX XXXX" pattern="09[0-9]{2} [0-9]{3} [0-9]{4}" required/>
+                                        <input type="tel" name="resContactNumber" th:value="${member.contactNumber}" placeholder="09XX XXX XXXX" pattern="09[0-9]{2} [0-9]{3} [0-9]{4}" required/>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="input-field">
                                         <label>Highest Educational Attainment</label>
-                                        <select id="memberHighestEducationalAttainment-${iter.index + 1}" name="memberHighestEducationalAttainment-${iter.index + 1}" required>
+                                        <select  name="resHighestEducationalAttainment" required>
                                             <option disabled selected value>---</option>
                                             <option value="No Education" th:selected="${member.highestEducationalAttainment == 'No Education'}">No Education</option>
                                             <option value="Elementary Undergraduate" th:selected="${member.highestEducationalAttainment == 'Elementary Undergraduate'}">Elementary Undergraduate</option>
@@ -245,12 +253,24 @@
 
                                     <div class="input-field">
                                         <label>Occupation</label>
-                                        <input type="text" name="memberOccupation-${iter.index + 1}" th:value="${member.occupation}" required/>
+                                        <input type="text" name="resOccupation" th:value="${member.occupation}" required/>
                                     </div>
 
                                     <div class="input-field">
                                         <label>Monthly Income (leave blank if N/A)</label>
-                                        <input type="number" name="memberMonthlyIncome-${iter.index + 1}" th:value="${member.monthlyIncome}" min="0"/>
+                                        <input type="number" name="resMonthlyIncome" th:value="${member.monthlyIncome}" min="0"/>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-field">
+                                            <label>Medical Complications</label>
+                                            <input type="text" name="resHealthStatus" th:value="${member.healthStatus}" required/>
+                                        </div>
+
+                                        <div class="input-field">
+                                            <label>PWD Type</label>
+                                            <input type="text" name="resPwdType" th:value="${member.pwdType}" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -265,6 +285,7 @@
             <div class="main-respondent-body">
                 <div th:if="${pets.size() > 0}">
                     <div th:each="pet, iter : ${pets}">
+
                         <hr>
                         <div class="pet-body">
                             <div class="image-panel">
