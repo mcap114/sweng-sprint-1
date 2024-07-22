@@ -142,9 +142,9 @@ public class DatabaseManager {
         if (householdExists(buildingNum, unitNum)) {
             throw new IllegalArgumentException("Household with building number " + buildingNum + " and unit number " + unitNum + " already exists.");
         }
-
+    
         StringBuilder fileString = new StringBuilder();
-
+    
         if (userFiles.length > 0) {
             File dir = new File("./src/main/resources/static/user/files");
             if (!dir.exists()) {
@@ -154,8 +154,8 @@ public class DatabaseManager {
             for (MultipartFile userFile : userFiles) {
                 String originalFilename = userFile.getOriginalFilename();
                 if (originalFilename != null) {
-                    String extension = "." + FilenameUtils.getExtension(originalFilename);
-                    File temp = new File(dir, originalFilename + extension);
+                    // Ensure no extra extension is added
+                    File temp = new File(dir, originalFilename);
                     fileString.append("/user/files/").append(temp.getName()).append(" "); // Construct file path
     
                     try (OutputStream os = new FileOutputStream(temp)) {

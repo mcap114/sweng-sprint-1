@@ -813,9 +813,17 @@ body {
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 10px;
+}
+
+.modal-content > h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
 }
 
 .close {
@@ -830,4 +838,18 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.space {
+    margin-bottom: 20px;
+}
+
+.file-link {
+    cursor: pointer;
+    color: black;
+    font-weight: 500;
+}
+
+.file-link:hover {
+    background-color: grey ;
 }

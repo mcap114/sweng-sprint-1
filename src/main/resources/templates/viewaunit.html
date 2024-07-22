@@ -62,7 +62,7 @@
                         </div>
                         <div class="adjust-named-area">
                             Household Files
-                            <span class="file-link detail" th:attr="data-fileString=${household.userFiles}">View File</span>
+                            <span class="file-link detail" th:attr="data-fileString=${household.userFiles}">View Files</span>
                         </div>
                         
                     </div>
@@ -255,39 +255,63 @@
 <div id="fileModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>File Details</h2>
-        <iframe id="fileIframe" style="display: none; width: 100%; height: 80vh;"></iframe>
-        <img id="fileImage" style="display: none; max-width: 100%; height: auto;">
+        <h2>Household Files</h2>
+        <br>
+        <div id="fileContainer"></div>
+        <br>
     </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const modal = document.getElementById("fileModal");
-        const span = document.getElementsByClassName("close")[0];
-        const fileIframe = document.getElementById("fileIframe");
-        const fileImage = document.getElementById("fileImage");
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById("fileModal");
+    const span = document.getElementsByClassName("close")[0];
+    const fileContainer = document.getElementById("fileContainer");
 
-        document.querySelectorAll('.file-link').forEach(function (link) {
-            link.addEventListener('click', function () {
-                const fileString = link.getAttribute('data-fileString');
-                fileIframe.style.display = 'block';
-                    fileImage.style.display = 'none';
-                    fileIframe.src = fileString;
-                modal.style.display = "block";
+    document.querySelectorAll('.file-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+            const fileString = link.getAttribute('data-fileString');
+            const fileArray = fileString.split(' '); // Split by space or other delimiter
+            fileContainer.innerHTML = ''; // Clear previous content
+
+            fileArray.forEach(file => {
+                const fileType = file.split('.').pop().toLowerCase();
+                if (['pdf', 'txt'].includes(fileType)) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = file;
+                    iframe.style.width = '100%';
+                    iframe.style.height = '80vh';
+                    fileContainer.appendChild(iframe);
+                } else if (['jpg', 'jpeg', 'png', 'gif'].includes(fileType)) {
+                    const img = document.createElement('img');
+                    img.src = file;
+                    img.style.maxWidth = '100%';
+                    img.style.height = 'auto';
+                    fileContainer.appendChild(img);
+                } else {
+                    const p = document.createElement('p');
+                    fileContainer.appendChild(p);
+                }
+                fileContainer.appendChild(document.createElement('br')); //
+
+
+
             });
-        });
 
-        span.onclick = function () {
+            modal.style.display = "block";
+        });
+    });
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    });
+    }
+});
     document.addEventListener('DOMContentLoaded', function () {
         const editButton = document.getElementById('edit-btn');
         const confirmButton = document.getElementById('confirm-btn');
