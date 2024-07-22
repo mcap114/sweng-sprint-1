@@ -60,7 +60,6 @@ public class HouseholdController {
 
         try {
 
-            System.out.println(userFiles==null);
             // by default, the initial member added is the main respondent
             int isMainRespondent = 1;
             String nullString = "";
@@ -104,9 +103,11 @@ public class HouseholdController {
             return "index";
         } catch (SQLException e) {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
+            e.printStackTrace();
             return "error";
         } catch (IOException e) {
             model.addAttribute("errorMessage", "Failed to register household: " + e.getMessage());
+            e.printStackTrace();
             return "error";
         }
     }
