@@ -151,15 +151,15 @@ body {
 }
 
 .menu:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow */
-    filter: brightness(0.8); /* Darken the image slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    filter: brightness(0.8); 
 }
 
 .home-page {
     position: relative;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: auto;
 
 }
 
@@ -179,7 +179,7 @@ body {
 .overlay {
 
     position: absolute;
-    background-color: rgba(91, 91, 91, 0.5); /* Updated for better contrast */
+    background-color: rgba(91, 91, 91, 0.5); 
     width: 100%;
     height: 60%;
     top: 0;
@@ -189,17 +189,17 @@ body {
 .content {
     position: absolute;
     width: 100%;
-    height: 40%; /* Covers the bottom 40% of the viewport */
+    height: 40%; 
     bottom: 0;
     left: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    text-align: left;
+    text-align: center;
     padding-bottom: 130px;
-    padding-left: 20px;
-    z-index: 2; /* Ensure content is above overlay */
+    z-index: 2; 
+    background-color: #E7F0DC;
 }
 
 .welcome-text {
@@ -217,6 +217,53 @@ body {
     margin-top: 10px;
     margin: 20px;
 }
+
+.key-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 200px;
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+}
+.feature-icon {
+    width: 120px; /* Adjust size as needed */
+    height: 120px; /* Adjust size as needed */
+    background-color: #4DA9AF; /* Adjust color as needed */
+    color: white; /* Icon color */
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em; /* Adjust icon size as needed */
+    margin: 0 auto; /* Center the circle */
+    margin-bottom: 50px; /* Space between icon and heading */
+}
+
+.feature-item {
+    width: 30%;
+    text-align: center;
+}
+
+.feature-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-family: 'Montserrat', sans-serif;
+    color: #555555;
+    font-size: 1em;
+    padding-top: 15px;
+}
+
 
 
 .filter-container {
@@ -620,8 +667,8 @@ body {
     width: auto;
     font-weight: 500;
     color: #4a4a4a;
-    flex: 1; /* Allow each named area to grow and fill space */
-    min-width: 150px; /* Minimum width to prevent shrinking too much */
+    flex: 1; 
+    min-width: 150px;
     
 }
 
@@ -745,7 +792,7 @@ body {
 }
 
 .add-link {
-    background-color: #70A563;
+    background-color: #C27729;
     gap: 20px;
     transition: box-shadow 0.3s ease, filter 0.3s ease;
 }
@@ -783,6 +830,24 @@ body {
     object-position: center;
     width: 40px;
     padding: 5px;
+}
+
+.manage-icon {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 90px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.houses-icon {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 100px;
+    padding: 5px;
+    margin-bottom: 20px;
 }
 
 .home-text {

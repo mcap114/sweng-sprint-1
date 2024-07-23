@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,14 +42,14 @@ public class EditController {
         return "edithousehold";
     }
 
-       @PostMapping("/edit")
+    @PostMapping("/edit")
     public String updateHousehold(
             @RequestParam(value="originalLastName") String[] originalLastName,
             @RequestParam(value="originalFirstName") String[] originalFirstName,
             @RequestParam(value="originalBuildingNum") Integer originalBuildingNum,
             @RequestParam(value="originalUnitNum") Integer originalUnitNum,
             @RequestParam(value="originalPetName", required=false) String[] originalPetName,
-            @RequestParam(value="originalPetAnimalType", required=false) String[] originalPetAnimalType,
+            @RequestParam(value= "originalPetAnimalType", required=false) String[] originalPetAnimalType,
             @RequestParam(value="resLastName") String[] lastName,
             @RequestParam(value="resFirstName") String[] firstName,
             @RequestParam(value="resMiddleName") String[] middleName,
@@ -78,13 +79,14 @@ public class EditController {
             dbManager.editHousehold(originalBuildingNum, originalUnitNum, "monthlyAmortization", monthlyAmortization);
             dbManager.editHousehold(originalBuildingNum, originalUnitNum, "yearOfResidence", yearOfResidence);
 
+            //iterate thru all members, assumes main respondent is index 0
             for (int i = 0; i < lastName.length; i++) {
                 LocalDate birthDate = LocalDate.parse(birthday[i]);
                 int age = InputValidation.calculateAge(birthDate);
                 int isSeniorCitizen = InputValidation.isSeniorCitizen(age);
 
                 //edit member information
-                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "lastName", profileImages[i],lastName[i]);
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "lastName", lastName[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "firstName", firstName[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "middleName", middleName[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "gender", gender[i]);
@@ -97,32 +99,26 @@ public class EditController {
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "highestEducationalAttainment", highestEducationalAttainment[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "occupation", occupation[i]);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "monthlyIncome", monthlyIncome[i]);
-
+                
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "buildingNum", buildingNum);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "unitNum", unitNum);
+
 
 
                 if (i > 0) {
                     dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "relationToMainRespondent", relationToMainRespondent[i - 1]);
                 }
             }
-            
 
             if (petName != null) {
                 for (int i = 0; i < petName.length; i++) {
-                    if (petImages != null && petImages.length > i && petImages[i] != null && !petImages[i].isEmpty()) {
-                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petName", petImages[i], petName[i]);
-                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petImages[i], petSpecies[i]);
-                    } else {
-                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petName", petName[i]);
-                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petSpecies[i]);
-                    }
+                    dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petName", petName[i]);
+                    dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petSpecies[i]);
                 }
             }
 
-
             model.addAttribute("message", "Household updated successfully!");
-            return "index";
+            return "redirect:/viewaunit/" + buildingNum + "/" + unitNum;
         } catch (SQLException e) {
             model.addAttribute("errorMessage", "Failed to update household: " + e.getMessage());
             return "error";
