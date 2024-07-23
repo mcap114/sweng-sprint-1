@@ -306,6 +306,12 @@ public class DatabaseManager {
             pstmtMembers.setInt(2, unitNum);
             pstmtMembers.executeUpdate();
 
+        String petDeleteSQL = "DELETE FROM Pets WHERE buildingNum = ? AND unitNum = ?";
+        PreparedStatement pstmtPet = conn.prepareStatement(petDeleteSQL);
+            pstmtPet.setInt(1, buildingNum);
+            pstmtPet.setInt(2, unitNum);
+            pstmtPet.executeUpdate();
+
 
         //deletes associated members as well
         String deleteHouseholdSQL = "DELETE FROM Households WHERE buildingNum = ? AND unitNum = ?";
