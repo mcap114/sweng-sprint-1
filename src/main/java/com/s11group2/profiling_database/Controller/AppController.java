@@ -73,17 +73,14 @@ public class AppController {
      */
     public void insertHousehold(int buildingNum, int unitNum, double monthlyExpenditure, double monthlyAmortization, int yearOfResidence) {
         try {
-            MultipartFile userFiles[] = null;
             // Input validation
             validateHouseholdInput(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
-            dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence, userFiles);
+            dbManager.insertHousehold(buildingNum, unitNum, monthlyExpenditure, monthlyAmortization, yearOfResidence);
         } catch (ValidationException e) {
             System.err.println("Validation Error: " + e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error inserting household: " + e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
