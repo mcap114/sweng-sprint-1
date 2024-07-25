@@ -103,20 +103,23 @@ public class EditController {
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "buildingNum", buildingNum);
                 dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "unitNum", unitNum);
 
-
-
                 if (i > 0) {
                     dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "relationToMainRespondent", relationToMainRespondent[i - 1]);
                 }
 
-                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "profileImagePath", profileImages[i], profileImages);
+                if (!profileImages[i].getOriginalFilename().equals("")) {
+                    dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "profileImagePath", profileImages[i], profileImages);
+                }
             }
 
             if (petName != null) {
                 for (int i = 0; i < petName.length; i++) {
                     dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petName", petName[i]);
                     dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petSpecies[i]);
-                    dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petImagePath", petImages[i], petImages);
+
+                    if (!petImages[i].getOriginalFilename().equals("")) {
+                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petImagePath", petImages[i], petImages);
+                    }
                 }
             }
 
