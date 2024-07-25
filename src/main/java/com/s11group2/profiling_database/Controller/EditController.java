@@ -69,9 +69,11 @@ public class EditController {
             @RequestParam(value="monthlyAmortization") Double monthlyAmortization,
             @RequestParam(value="yearOfResidence") Integer yearOfResidence,
             @RequestParam(value="resPfp", required=false) MultipartFile[] profileImages,
+            @RequestParam(value="originalProfileImagePath", required=false) String[] originalProfileImagePath,
             @RequestParam(value="petName", required=false) String[] petName,
             @RequestParam(value="petAnimalType", required=false) String[] petSpecies,
             @RequestParam(value="petPfp", required=false) MultipartFile[] petImages,
+            @RequestParam(value="originalPetImagePath", required=false) String[] originalPetImagePath,
             Model model) throws IOException {
 
         try {
@@ -108,7 +110,7 @@ public class EditController {
                 }
 
                 if (!profileImages[i].getOriginalFilename().equals("")) {
-                    dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "profileImagePath", profileImages[i], profileImages);
+                    dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, profileImages[i], originalProfileImagePath[i]);
                 }
             }
 
@@ -118,7 +120,7 @@ public class EditController {
                     dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petSpecies[i]);
 
                     if (!petImages[i].getOriginalFilename().equals("")) {
-                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petImagePath", petImages[i], petImages);
+                        dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, petImages[i], originalPetImagePath[i]);
                     }
                 }
             }

@@ -75,6 +75,7 @@
                             </div>
                             <label for="resPfp-${memberCount}" class="custom-file-upload">Choose File</label>
                             <input class="custom-file-upload" type="file" id="resPfp-${memberCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${memberCount}')" />
+                            <input type="hidden" name="originalProfileImagePath" th:value="${mainRespondent.profileImagePath}">
                         </div>
                     </div>
 
@@ -186,6 +187,7 @@
                                     </div>
                                     <label for="resPfp-${iter.index + 1}" class="custom-file-upload">Choose File</label>
                                     <input class="custom-file-upload" type="file" id="resPfp-${iter.index + 1}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${iter.index + 1}')" />
+                                    <input type="hidden" name="originalProfileImagePath" th:value="${member.profileImagePath}">
                                 </div>
                             </div>
 
@@ -308,6 +310,7 @@
                                             </div>
                                             <label for="resPfp-pet-${iter.index + 1}" class="custom-file-upload">Choose File</label>
                                             <input class="custom-file-upload" type="file" id="resPfp-pet-${iter.index + 1}" name="petPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-pet-${iter.index + 1}')" />
+                                            <input type="hidden" name="originalPetImagePath" th:value="${pet.petImagePath}">
                                         </div>
 
                                     </div>

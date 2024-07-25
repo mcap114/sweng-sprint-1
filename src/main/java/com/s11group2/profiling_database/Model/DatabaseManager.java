@@ -276,9 +276,12 @@ public class DatabaseManager {
         }
     }
 
-    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, String field, MultipartFile profileImage, Object newValue) throws SQLException, IOException {
-        String query = "UPDATE Members SET " + field + " = ?, profileImagePath = ? WHERE lastName = ? AND firstName = ? AND middleName = ? AND buildingNum = ? AND unitNum = ?";
+    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, MultipartFile profileImage, String originalProfileImagePath) throws SQLException, IOException {
+        String query = "UPDATE Members SET " + "profileImagePath" + " = ? WHERE lastName = ? AND firstName = ? AND middleName = ? AND buildingNum = ? AND unitNum = ?";
         
+        File oldImage = new File("./src/main/resources/static" + originalProfileImagePath);
+        oldImage.delete();
+
         String tempPath = null;
         if (profileImage != null && !profileImage.isEmpty()) {
             String extension = "." + FilenameUtils.getExtension(profileImage.getOriginalFilename());
@@ -294,68 +297,60 @@ public class DatabaseManager {
         }
 
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setObject(1, newValue);
-            if (tempPath != null) {
-                pstmt.setString(2, tempPath);
-            } else {
-                pstmt.setNull(2, java.sql.Types.VARCHAR);
-            }
-            pstmt.setString(3, lastName);
-            pstmt.setString(4, firstName);
-            pstmt.setString(5, middleName);
-            pstmt.setInt(6, buildingNum);
-            pstmt.setInt(7, unitNum);
+            pstmt.setString(1, tempPath);
+            pstmt.setString(2, lastName);
+            pstmt.setString(3, firstName);
+            pstmt.setString(4, middleName);
+            pstmt.setInt(5, buildingNum);
+            pstmt.setInt(6, unitNum);
 
             pstmt.executeUpdate();
         }
     }
 
-
-public void editPet(String petName, String petSpecies,
-                    int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
-    String query = "UPDATE Pets SET " + field + " = ? WHERE petName = ? AND petSpecies = ? AND buildingNum = ? AND unitNum = ?";
-    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-        pstmt.setObject(1, newValue);
-        pstmt.setString(2, petName);
-        pstmt.setString(3, petSpecies);
-        pstmt.setInt(4, buildingNum);
-        pstmt.setInt(5, unitNum);
-        pstmt.executeUpdate();
-    }
-}
-
-public void editPet(String petName, String petSpecies,
-                    int buildingNum, int unitNum, String field, MultipartFile petImage, Object newValue) throws SQLException, IOException {
-    String query = "UPDATE Pets SET " + field + " = ?, petImagePath = ? WHERE petName = ? AND petSpecies = ? AND buildingNum = ? AND unitNum = ?";
-    
-    String tempPath = null;
-    if (petImage != null && !petImage.isEmpty()) {
-        String extension = "." + FilenameUtils.getExtension(petImage.getOriginalFilename());
-        File dir = new File("./src/main/resources/static/user/pets");
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        File temp = File.createTempFile("pet", extension, dir);
-        tempPath = "/user/pets/" + temp.getName();
-        try (OutputStream os = new FileOutputStream(temp)) {
-            os.write(petImage.getBytes());
+    public void editPet(String petName, String petSpecies,
+                        int buildingNum, int unitNum, String field, Object newValue) throws SQLException {
+        String query = "UPDATE Pets SET " + field + " = ? WHERE petName = ? AND petSpecies = ? AND buildingNum = ? AND unitNum = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setObject(1, newValue);
+            pstmt.setString(2, petName);
+            pstmt.setString(3, petSpecies);
+            pstmt.setInt(4, buildingNum);
+            pstmt.setInt(5, unitNum);
+            pstmt.executeUpdate();
         }
     }
 
-    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-        pstmt.setObject(1, newValue);
-        if (tempPath != null) {
-            pstmt.setString(2, tempPath);
-        } else {
-            pstmt.setNull(2, java.sql.Types.VARCHAR);
+    public void editPet(String petName, String petSpecies,
+                        int buildingNum, int unitNum, MultipartFile petImage, String originalPetImagePath) throws SQLException, IOException {
+        String query = "UPDATE Pets SET " + "petImagePath" + " = ? WHERE petName = ? AND petSpecies = ? AND buildingNum = ? AND unitNum = ?";
+        
+        File oldImage = new File("./src/main/resources/static" + originalPetImagePath);
+        oldImage.delete();
+
+        String tempPath = null;
+        if (petImage != null && !petImage.isEmpty()) {
+            String extension = "." + FilenameUtils.getExtension(petImage.getOriginalFilename());
+            File dir = new File("./src/main/resources/static/user/pets");
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File temp = File.createTempFile("pet", extension, dir);
+            tempPath = "/user/pets/" + temp.getName();
+            try (OutputStream os = new FileOutputStream(temp)) {
+                os.write(petImage.getBytes());
+            }
         }
-        pstmt.setString(3, petName);
-        pstmt.setString(4, petSpecies);
-        pstmt.setInt(5, buildingNum);
-        pstmt.setInt(6, unitNum);
-        pstmt.executeUpdate();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, tempPath);
+            pstmt.setString(2, petName);
+            pstmt.setString(3, petSpecies);
+            pstmt.setInt(4, buildingNum);
+            pstmt.setInt(5, unitNum);
+            pstmt.executeUpdate();
+        }
     }
-}
 
 
     /**
