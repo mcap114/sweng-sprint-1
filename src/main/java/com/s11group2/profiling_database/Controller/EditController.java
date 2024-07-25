@@ -108,12 +108,15 @@ public class EditController {
                 if (i > 0) {
                     dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "relationToMainRespondent", relationToMainRespondent[i - 1]);
                 }
+
+                dbManager.editMember(originalLastName[i], originalFirstName[i], middleName[i], originalBuildingNum, originalUnitNum, "profileImagePath", profileImages[i], profileImages);
             }
 
             if (petName != null) {
                 for (int i = 0; i < petName.length; i++) {
                     dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petName", petName[i]);
                     dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petSpecies", petSpecies[i]);
+                    dbManager.editPet(originalPetName[i], originalPetAnimalType[i], buildingNum, unitNum, "petImagePath", petImages[i], petImages);
                 }
             }
 

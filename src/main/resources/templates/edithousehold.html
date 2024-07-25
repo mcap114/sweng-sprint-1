@@ -8,6 +8,7 @@
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/addhousehold.js}"></script>
+
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script src="https://unpkg.com/create-file-list@1.0.1/dist/create-file-list.min.js"></script>
     <title>Edit Household</title>
@@ -72,6 +73,8 @@
                             <div id="preview" class="image-display">
                                 <img class="image-display" th:src="@{${mainRespondent.profileImagePath}}" alt="Avatar" id="avatar-${memberCount}">
                             </div>
+                            <label for="resPfp-${memberCount}" class="custom-file-upload">Choose File</label>
+                            <input class="custom-file-upload" type="file" id="resPfp-${memberCount}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${memberCount}')" />
                         </div>
                     </div>
 
@@ -181,6 +184,8 @@
                                     <div id="preview" class="image-display">
                                         <img class="image-display" th:src="@{${member.profileImagePath}}" alt="Avatar" id="avatar-${iter.index + 1}">
                                     </div>
+                                    <label for="resPfp-${iter.index + 1}" class="custom-file-upload">Choose File</label>
+                                    <input class="custom-file-upload" type="file" id="resPfp-${iter.index + 1}" name="resPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-${iter.index + 1}')" />
                                 </div>
                             </div>
 
@@ -301,6 +306,8 @@
                                             <div id="preview">
                                                 <img class="pet-image-display" th:src="@{${pet.petImagePath}}" alt="Default Avatar" id="avatar-pet-${iter.index + 1}">
                                             </div>
+                                            <label for="resPfp-pet-${iter.index + 1}" class="custom-file-upload">Choose File</label>
+                                            <input class="custom-file-upload" type="file" id="resPfp-pet-${iter.index + 1}" name="petPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-pet-${iter.index + 1}')" />
                                         </div>
 
                                     </div>
@@ -330,24 +337,6 @@
         </form>
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById("household-form");
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); 
-  
-            const userConfirmed = confirm("Are you sure you want to update changes?");
-  
-            if (userConfirmed) {
-                form.submit();
-                alert("Household uhas been updated successfully!");
-
-            } else {
-                alert("Household update canceled.");
-            }
-        });
-    });
-    </script>
 
 </body>
 </html>
