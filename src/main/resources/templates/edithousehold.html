@@ -20,7 +20,7 @@
     <div class="input-addpage">
         <div id="heading-1" class="heading-1">
             <p>Edit Household</p>
-            <div class="back-button" onclick="window.location.href='/'">
+            <div class="back-button" onclick="window.location.href='/viewunits'">
                 <img src="/png/left-arrow.png">
                 <span>Back to Menu</span>
             </div>
@@ -150,7 +150,7 @@
                             </div>
 
                             <div class="input-field">
-                                <label>Monthly Income (leave blank if N/A)</label>
+                                <label>Monthly Income</label>
                                 <input type="number" name="resMonthlyIncome" th:value="${mainRespondent.monthlyIncome}" min="0"/>
                             </div>
 
@@ -262,7 +262,7 @@
                                     </div>
 
                                     <div class="input-field">
-                                        <label>Monthly Income (leave blank if N/A)</label>
+                                        <label>Monthly Income</label>
                                         <input type="number" name="resMonthlyIncome" th:value="${member.monthlyIncome}" min="0"/>
                                     </div>
 
@@ -340,6 +340,24 @@
         </form>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("household-form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+  
+            const userConfirmed = confirm("Are you sure you want to update changes?");
+  
+            if (userConfirmed) {
+                form.submit();
+                alert("Household has been updated successfully!");
+
+            } else {
+                alert("Household update canceled.");
+            }
+        });
+    });
+    </script>
 
 </body>
 </html>
