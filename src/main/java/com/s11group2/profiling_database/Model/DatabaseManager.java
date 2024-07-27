@@ -276,7 +276,7 @@ public class DatabaseManager {
         }
     }
 
-    public void editMember(String lastName, String firstName, String middleName, int buildingNum, int unitNum, MultipartFile profileImage, String originalProfileImagePath) throws SQLException, IOException {
+    public void editMemberImage(String lastName, String firstName, String middleName, int buildingNum, int unitNum, MultipartFile profileImage, String originalProfileImagePath) throws SQLException, IOException {
         String query = "UPDATE Members SET " + "profileImagePath" + " = ? WHERE lastName = ? AND firstName = ? AND middleName = ? AND buildingNum = ? AND unitNum = ?";
         
         File oldImage = new File("./src/main/resources/static" + originalProfileImagePath);
@@ -321,7 +321,7 @@ public class DatabaseManager {
         }
     }
 
-    public void editPet(String petName, String petSpecies,
+    public void editPetImage(String petName, String petSpecies,
                         int buildingNum, int unitNum, MultipartFile petImage, String originalPetImagePath) throws SQLException, IOException {
         String query = "UPDATE Pets SET " + "petImagePath" + " = ? WHERE petName = ? AND petSpecies = ? AND buildingNum = ? AND unitNum = ?";
         

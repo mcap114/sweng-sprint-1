@@ -65,6 +65,7 @@
             <div class="fields">
                 <input type="hidden" name="originalLastName" th:value="${mainRespondent.lastName}">
                 <input type="hidden" name="originalFirstName" th:value="${mainRespondent.firstName}">
+                <input type="hidden" name="originalMiddleName" th:value="${mainRespondent.middleName}">
                 <span>Main Respondent</span>
                 <div class="main-respondent-body">
                     <div class="image-panel">
@@ -179,6 +180,7 @@
                         <div class="main-respondent-body">
                             <input type="hidden" name="originalLastName" th:value="${member.lastName}">
                             <input type="hidden" name="originalFirstName" th:value="${member.firstName}">
+                            <input type="hidden" name="originalMiddleName" th:value="${member.middleName}">
                             <div class="image-panel">
                                 <div class="image-field">
                                     <label>Upload Picture</label>
@@ -357,7 +359,7 @@
             }
         });
     });
-    </script>
+</script>
 
 </body>
 </html>
