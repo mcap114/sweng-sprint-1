@@ -36,6 +36,8 @@ window.onclick = function(event) {
 
 function clearSearch() {
     document.getElementById('searchInput').value = '';
+    window.location.href = '/viewunits';
+
   }
 
   function showMessage(message) {
