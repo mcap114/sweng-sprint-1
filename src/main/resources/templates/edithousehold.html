@@ -294,7 +294,7 @@
             <div class="fields">
                 
                     <div th:if="${pets.size() > 0}">
-                        <div th:each="pet, iter : ${pets}">
+                        <div th:each="pet, status : ${pets}">
                             <hr>
                             <span>Household Pets</span>
                             <div class="main-respondent-body">
@@ -303,19 +303,17 @@
                                 <input type="hidden" name="originalPetAnimalType" th:value="${pet.petSpecies}">
 
                                 
-                                
-                                    <div class="image-panel">
-                                        <div class="image-field">
-                                            <label></label>
-                                            <div id="preview">
-                                                <img class="pet-image-display" th:src="@{${pet.petImagePath}}" alt="Default Avatar" id="avatar-pet-${iter.index + 1}">
-                                            </div>
-                                            <label for="resPfp-pet-${iter.index + 1}" class="custom-file-upload">Choose File</label>
-                                            <input class="custom-file-upload" type="file" id="resPfp-pet-${iter.index + 1}" name="petPfp" accept="image/jpeg, image/png" onchange="upload(event, 'avatar-pet-${iter.index + 1}')" />
-                                            <input type="hidden" name="originalPetImagePath" th:value="${pet.petImagePath}">
+                                <div class="image-panel">
+                                    <div class="image-field">
+                                        <label></label>
+                                        <div id="preview">
+                                            <img class="pet-image-display" th:src="@{${pet.petImagePath}}" alt="Default Avatar" th:id="'pet-' + ${status.index}">
                                         </div>
-
+                                        <label th:for="'resPfp-pet-' + ${status.index}" class="custom-file-upload">Choose File</label>
+                                        <input class="custom-file-upload" type="file" th:id="'resPfp-pet-' + ${status.index}" name="petPfp" accept="image/jpeg, image/png" th:onchange="'upload(event, ' + 'pet-' + ${status.index} + ')'" />
+                                        <input type="hidden" name="originalPetImagePath" th:value="${pet.petImagePath}">
                                     </div>
+                                </div>
                                     <div class="form-row">
                                         <div class="input-field">
                                             <label>Pet Name</label>
@@ -343,6 +341,7 @@
     </div>
 </div>
 <script>
+
     document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("household-form");
         form.addEventListener("submit", function(event) {
