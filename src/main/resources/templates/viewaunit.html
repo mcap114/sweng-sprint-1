@@ -10,9 +10,10 @@
     <title>View A Unit</title>
     <script type="text/javascript">
         function confirmDelete(buildingNum, unitNum) {
-            if (confirm("Are you sure you want to delete this household and related members/pets? This cannot be undone.")) {
-                window.location.href = '/deleteunit/' + buildingNum + '/' + unitNum;
-            }
+        if (confirm("Are you sure you want to delete this household and related members/pets? This cannot be undone.")) {
+            alert("Household deleted successfully");
+            window.location.href = '/deleteunit/' + buildingNum + '/' + unitNum;
+        }
         }
     </script>
 </head>
