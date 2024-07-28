@@ -17,7 +17,6 @@ function addMember() {
         <div class="main-respondent-body">
             <div class="image-panel">
                 <div class="image-field">
-                    <label>Upload Picture</label>
                     <div id="preview" class="image-display"> 
                         <img class="image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-${memberCount}">
                     </div>
@@ -137,7 +136,6 @@ function addPet() {
         <div class="main-respondent-body">
             <div class="image-panel">
                 <div class="image-field">
-                    <label>Upload Picture</label>
                     <div id="preview"> 
                         <img class="pet-image-display" src="png/avatar.jpg" alt="Default Avatar" id="avatar-pet-${petCount}">
                     </div>
